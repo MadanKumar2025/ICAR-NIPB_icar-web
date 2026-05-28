@@ -1,0 +1,315 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import React from "react";
+import { useLanguage } from "../LanguageContext";
+import { Helmet } from "react-helmet-async";
+
+function StaffDetails() {
+  const API_URL = process.env.REACT_APP_API_URL;
+  const IMG_BASE_URL = process.env.REACT_APP_API_BASE_URL_img;
+  const { lang } = useLanguage();
+
+  const [apiData, setApiData] = useState(null);
+  const [PageData, setPageData] = useState(null);
+  const { slug, id } = useParams();
+
+  const getPage = async () => {
+    if (!slug) return;
+
+    try {
+      const res = await axios.get(`${API_URL}/pages/get/slug/${slug}`, {
+        headers: {
+          "Cache-Control": "no-cache",
+          Pragma: "no-cache",
+        },
+      });
+
+      setPageData(res.data?.data || []);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const getData = async () => {
+    if (!id) return;
+    try {
+      const res = await axios.get(`${API_URL}/staff/get/web/byID/${id}`, {
+        headers: {
+          "Cache-Control": "no-cache",
+          Pragma: "no-cache",
+        },
+      });
+      setApiData(res.data?.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    getPage();
+  }, [slug]);
+
+  useEffect(() => {
+    getData();
+  }, [id]);
+
+  return (
+    <div className="main-wrapper">
+      {/* ================= SEO START ================= */}
+      <Helmet>
+        <title>{PageData?.pageTitle?.[lang] || "Technical Staff"}</title>
+
+        <meta
+          name="description"
+          content={PageData?.metaDescription?.[lang] || ""}
+        />
+
+        <meta name="keywords" content={PageData?.keyWord?.[lang] || ""} />
+
+        <meta property="og:title" content={PageData?.pageTitle?.[lang]} />
+        <meta
+          property="og:description"
+          content={PageData?.metaDescription?.[lang]}
+        />
+        <meta
+          property="og:image"
+          content={`${IMG_BASE_URL}/${PageData?.photo}`}
+        />
+      </Helmet>
+      {/* ================= SEO END ================= */}
+
+      <section
+        className="banner-section position-relative"
+        style={{
+          backgroundImage: `url(${IMG_BASE_URL}/${PageData?.photo})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <div className="banner-title z_index1">
+                <h1 className="banner-slider-title fw-500 text-white">
+                  {PageData?.pageTitle?.[lang]}
+                </h1>
+                <ul className="breadcrumb-area m-0 p-0">
+                  <li>
+                    <Link to={"/"}>Home</Link>
+                  </li>
+                  <li>
+                    <i className="fa-solid fa-angle-right"></i>
+                  </li>
+                  <li className="breadcrumb-title">
+                    {PageData?.pageTitle?.[lang]}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="director-section section-padding body-shape position-relative overflow-hidden">
+        <div className="container position-relative">
+          <div className="director-details-area">
+            <div className="director-inner-area">
+              <div className="row">
+                <div className="col-md-5 col-lg-3 hover-effect">
+                  <div className="desk-image-area image-effect  position-relative">
+                    <div className="inner-desk-area">
+                      <img
+                        src={`${IMG_BASE_URL}/${apiData?.photo}`}
+                        alt={apiData?.photoTitle}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-7 col-lg-9 mt-4 mt-md-0">
+                  <div className="desk-content m-0">
+                    <div className="section-heading mb-3">
+                      <h2 className="section-title fs-48 fw-600 mb-0">
+                        {apiData?.staffName?.[lang]}
+                      </h2>
+                    </div>
+                    <div className="director-besic-info">
+                      {apiData?.email && (
+                        <div className="single-info">
+                          <i className="fa-solid fa-envelope fs-18 theme-color"></i>
+                          <div className="director-single-contact">
+                            {apiData?.email && (
+                              <a
+                                className="mail-box position-relative fs-16"
+                                href="mailto:director.nipb@icar.gov.com"
+                              >
+                                {apiData?.email}
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {apiData?.phone && (
+                        <div className="single-info">
+                          <i className="fa-solid fa-phone fs-18 theme-color"></i>
+                          <div className="director-single-contact">
+                            <a className="fs-16" href="tel:9868357986">
+                              {apiData?.phone}
+                            </a>
+                          </div>
+                        </div>
+                      )}
+
+                      {apiData?.education?.[lang] && (
+                        <div className="education-box">
+                          <div className="education-title fw-600 fs-16 theme-color mb-2">
+                            Education :
+                          </div>
+                          <div className="education-details">
+                            <p className="mb-1 fs-16">
+                              <i className="fa-solid fa-mars-stroke-right theme-color fs-16 position-relative"></i>
+                              <span>{apiData?.education?.[lang]}</span>
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                      {apiData?.department?.[lang] && (
+                        <div className="education-box d-flex">
+                          <div className="education-title fw-600 fs-16 theme-color mb-2">
+                            Department :
+                          </div>
+
+                          <p className="mb-1 fs-16">
+                            <span>{apiData?.department?.[lang]}</span>
+                          </p>
+                        </div>
+                      )}
+                      {apiData?.designation?.[lang] && (
+                        <div className="education-box d-flex">
+                          <div className="education-title fw-600 fs-16 theme-color mb-2">
+                            Designation :
+                          </div>
+
+                          <p className="mb-1 fs-16">
+                            <span>{apiData?.designation?.[lang]}</span>
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section className="research-area-section section-padding pt-4">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 mt-3">
+              <div className="section-heading">
+                {/* <h2 className="section-title fs-30 fw-600 mb-2">Publications </h2> */}
+              </div>
+              <div className="common-content-area research-column">
+                {apiData?.Research?.[lang] && (
+                  <div className="publications-column">
+                    <h5 className="box-type-title fs-24 fw-600 theme-color">
+                      Research Area
+                    </h5>
+                    <div className="publications-info-box">
+                      <p
+                        className="fs-16"
+                        dangerouslySetInnerHTML={{
+                          __html: apiData?.Research?.[lang],
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
+                {apiData?.Publications?.[lang] && (
+                  <div className="publications-column">
+                    <h5 className="box-type-title fs-24 fw-600 theme-color">
+                      Publications
+                    </h5>
+                    <div className="publications-info-box">
+                      <p
+                        className="fs-16"
+                        dangerouslySetInnerHTML={{
+                          __html: apiData?.Publications?.[lang],
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
+                {/* this is use for html test editer  */}
+                {/* {apiData?.IPR?.[lang] && (
+                  <div className="publications-column">
+                    <h5 className="box-type-title fs-24 fw-600 theme-color">
+                      IPR
+                    </h5>
+                    <div className="publications-info-box">
+                      <p
+                        className="fs-16"
+                        dangerouslySetInnerHTML={{
+                          __html: apiData?.IPR?.[lang],
+                        }}
+                      />
+                    </div>
+                  </div>
+                )} */}
+
+                {apiData?.IPR.length > 1 && (
+                  <div className="publications-column">
+                    <h5 className="box-type-title fs-24 fw-600 theme-color">
+                      IPR
+                    </h5>
+                    {apiData?.IPR?.map((item, index) => {
+                      if (item?.en) {
+                        return (
+                          <div className="publications-info-box">
+                            <p
+                              className="fs-16"
+                              dangerouslySetInnerHTML={{
+                                __html: item?.[lang],
+                              }}
+                            />
+                          </div>
+                        );
+                      }
+                    })}
+                  </div>
+                )}
+
+                {apiData?.Awards.length > 1 && (
+                  <div className="publications-column">
+                    <h5 className="box-type-title fs-24 fw-600 theme-color">
+                      Awards
+                    </h5>
+                    {apiData?.Awards?.map((item, index) => {
+                      if (item?.en) {
+                        return (
+                          <div className="publications-info-box">
+                            <p
+                              className="fs-16"
+                              dangerouslySetInnerHTML={{
+                                __html: item?.[lang],
+                              }}
+                            />
+                          </div>
+                        );
+                      }
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default StaffDetails;

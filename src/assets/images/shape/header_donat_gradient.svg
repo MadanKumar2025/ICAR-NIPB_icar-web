@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="103.585" height="44.705" viewBox="0 0 103.585 44.705">
+  <defs>
+    <radialGradient id="radial-gradient" cx="-0.075" cy="0.474" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fd0"/>
+      <stop offset="1" stop-color="#ff3d0c"/>
+    </radialGradient>
+    <filter id="path932" x="0" y="0" width="103.585" height="44.705" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#path932)">
+    <path id="path932-2" data-name="path932" d="M21.352,103.585a9.542,9.542,0,0,0-6.494-2.568q-.275,0-.561.016c-.558.032-1.121.05-1.681.05-3.823,0-7.445-.839-7.739-3.615C4.541,94.287,0,97.469,0,91.614V11.972C0,6.117,4.541,9.3,4.878,6.117,5.171,3.342,8.793,2.5,12.615,2.5c.56,0,1.124.018,1.682.051.189.011.376.016.559.016A9.542,9.542,0,0,0,21.352,0a9.543,9.543,0,0,0,6.5,2.569q.275,0,.559-.016c.558-.033,1.123-.051,1.683-.051,3.823,0,7.445.839,7.738,3.614.336,3.182,4.878,0,4.878,5.855V91.614c0,5.855-4.542,2.673-4.878,5.855-.293,2.776-3.916,3.615-7.74,3.615-.559,0-1.123-.018-1.681-.05-.19-.011-.377-.016-.561-.016a9.54,9.54,0,0,0-6.494,2.568" transform="translate(103.59) rotate(90)" fill="url(#radial-gradient)"/>
+  </g>
+</svg>
