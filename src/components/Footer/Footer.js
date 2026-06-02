@@ -191,8 +191,8 @@ function Footer() {
                   <div className="footer-single-info footer-address">
                     <i className="fas fa-map-marker-alt"></i>
                     <p>
-                      {organization?.addressLine1?.[lang]},
                       {organization?.addressLine1?.[lang]}
+                      {organization?.addressLine2?.[lang]}
                     </p>
                   </div>
                   <div className="footer-single-info footer-phone">

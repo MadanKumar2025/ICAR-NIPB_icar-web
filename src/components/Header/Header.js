@@ -214,19 +214,12 @@ function Header() {
           <div className="container">
             <div className="row">
               <div className="col-12">
-                <nav className="navbar navbar-expand-lg position-relative justify-content-between p-0">
-                  {/* <!-- Mobile Toggle --> */}
-                  <button className="btn menu-toggle d-lg-none">☰</button>
-                  {/* <!-- Menu --> */}
-                  <div className="sidebar-menu">
-                    {/* <!-- Close Button --> */}
-                    <div className="menu-header d-lg-none">
-                      <a href="#">
-                        {/* <img src="images/icar_logo.svg" alt=""> */}
-                      </a>
-                      <button className="menu-close">&times;</button>
-                    </div>
-                    <ul className="navbar-nav">
+                <nav className="navbar navbar-expand-lg p-0">
+                  <div
+                    className="collapse navbar-collapse"
+                    id="navbarSupportedContent"
+                  >
+                    <ul className="theme-nav-navbar navbar-nav me-auto mb-2 mb-lg-0">
                       <li className="nav-item">
                         <Link
                           // style={{ cursor: "pointer", color: "#fff" }}
@@ -244,10 +237,10 @@ function Header() {
                         //  Agar child nahi hai → normal menu
                         if (!childItems || childItems.length === 0) {
                           return (
-                            <li className="nav-item" key={parent.id}>
-                              {parent.page?.id ? (
+                            <li class="nav-item" key={parent?.id}>
+                              {parent?.page?.id ? (
                                 <span
-                                  className="menu-link"
+                                  class="menu-link"
                                   style={{ cursor: "pointer" }}
                                   onClick={() =>
                                     handlePageClick(parent?.page?.id)
@@ -258,10 +251,10 @@ function Header() {
                                 </span>
                               ) : (
                                 <a
-                                  href={parent.customUrl}
+                                  href={parent?.customUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="menu-link"
+                                  class="menu-link"
                                 >
                                   {/* {parent?.menuName_en?.toUpperCase()} */}
                                   {parent?.[`menuName_${lang}`]?.toUpperCase()}
@@ -273,18 +266,25 @@ function Header() {
 
                         // Agar child hai → dropdown menu
                         return (
-                          <li className="nav-item dropdown" key={parent.id}>
+                          <li
+                            class="nav-item dropdown custom-nav-dropdown"
+                            key={parent.id}
+                          >
                             <a
-                              className="menu-link dropdown-toggle"
+                              class="nav-link dropdown-toggle"
                               href="#"
+                              id="navbarDropdown"
                               role="button"
                               data-bs-toggle="dropdown"
+                              aria-expanded="false"
                             >
                               {/* {parent?.menuName_en?.toUpperCase()} */}
                               {parent?.[`menuName_${lang}`]?.toUpperCase()}
                             </a>
 
-                            <ul className="theme-dropdown-nav">
+                            <ul
+                             class="dropdown-menu" aria-labelledby="navbarDropdown"
+                            >
                               {childItems.map((child) => (
                                 <li key={child.id}>
                                   {child.page?.id ? (
@@ -292,7 +292,7 @@ function Header() {
                                       style={{
                                         cursor: "pointer",
                                       }}
-                                      className="dropdown-item"
+                                     class="dropdown-item" 
                                       onClick={() =>
                                         handlePageClick(child?.page?.id)
                                       }
@@ -307,7 +307,7 @@ function Header() {
                                       href={child?.customUrl}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="dropdown-item"
+                                      class="dropdown-item" 
                                     >
                                       {/* {child?.menuName_en?.toUpperCase()} */}
                                       {child?.[

@@ -113,11 +113,11 @@ function Current_Director() {
         </div>
       </section>
 
-      <div className="director-section section-padding">
+      <div className="director-section section-padding body-shape ">
         <div className="container">
-          <div className="desk-header">
+          {/* <div className="desk-header">
             <div className="row">
-              {/* <div className="col-lg-5 col-md-6">
+              <div className="col-lg-5 col-md-6">
                 <div className="section-heading m-0">
                   <h2 className="section-title fs-40 fw-600 m-0">
                     From the Desk of <span className="text-gradient">Director</span>
@@ -130,11 +130,11 @@ function Current_Director() {
                     Committed to innovation and academic excellence
                   </p>
                 </div>
-              </div> */}
+              </div> 
             </div>
-          </div>
+          </div> */}
           <div className="row">
-            <div className="col-md-5 col-lg-4 hover-effect">
+            <div className="col-md-5 col-lg-3 hover-effect">
               <div className="desk-image-area image-effect  position-relative">
                 <div className="inner-desk-area">
                   <img
@@ -143,15 +143,13 @@ function Current_Director() {
                   />
                 </div>
               </div>
-              <div className="desk-info">
-                <h6 className="desk-persion-title fw-600 text-white fs-20 mb-0">
-                  {apiData?.name?.[lang]}
-                </h6>
-                <p className="fs-16 text-white m-0">{lang === "hi" ? "निदेशक" : "Director"}</p>
               </div>
-            </div>
-            <div className="col-md-7 col-lg-8 mt-4 mt-md-0">
+            <div className="col-md-7 col-lg-9 mt-4 mt-md-0">
               <div className="desk-content">
+              <div class="section-heading current-dirctor-heading">
+                <h2 class="section-title fs-48 fw-600 mb-0"> {apiData?.name?.[lang]}</h2>
+                <p class="director-text fs-20 fw-600 theme-color">{lang === "hi" ? "निदेशक" : "Director"}</p>
+              </div>
                 <div className="director-contact">
                   <div className="director-contact-title fs-16 fw-600">
                   {lang === "hi" ? "ईमेल आईडी" : "Email Id"}:
