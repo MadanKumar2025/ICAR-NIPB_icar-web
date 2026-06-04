@@ -38,21 +38,35 @@ function Header() {
     }
   };
 
-  // this is use for get slug
+  // // this is use for get slug
+  // const handlePageClick = async (id) => {
+  //   try {
+  //     const res = await axios.get(`${API_URL}/pages/get/web/${id}`);
+
+  //     const slug = res?.data?.data?.slug;
+  //     // const designTemplate = res?.data?.data?.designTemplate?._id;
+
+  //     if (slug) {
+  //       navigate(`/${slug}`);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching page slug:", error);
+  //   }
+  // };
   const handlePageClick = async (id) => {
-    try {
-      const res = await axios.get(`${API_URL}/pages/get/web/${id}`);
-
-      const slug = res?.data?.data?.slug;
-      // const designTemplate = res?.data?.data?.designTemplate?._id;
-
-      if (slug) {
-        navigate(`/${slug}`);
-      }
-    } catch (error) {
-      console.error("Error fetching page slug:", error);
+  document
+    .getElementById("navbarSupportedContent")
+    ?.classList.remove("show");
+  try {
+    const res = await axios.get(`${API_URL}/pages/get/web/${id}`);
+    const slug = res?.data?.data?.slug;
+    if (slug) {
+      navigate(`/${slug}`);
     }
-  };
+  } catch (error) {
+    console.error("Error fetching page slug:", error);
+  }
+};
 
   useEffect(() => {
     getMenu();
@@ -222,10 +236,21 @@ function Header() {
                   >
                     <ul className="theme-nav-navbar navbar-nav me-auto mb-2 mb-lg-0">
                       <li className="nav-item">
-                        <Link
+                        {/* <Link
                           // style={{ cursor: "pointer", color: "#fff" }}
                           to={"/"}
                           className="menu-link active"
+                        >
+                          {homeLabel}
+                        </Link> */}
+                        <Link
+                          to="/"
+                          className="menu-link active"
+                          onClick={() =>
+                            document
+                              .getElementById("navbarSupportedContent")
+                              ?.classList.remove("show")
+                          }
                         >
                           {homeLabel}
                         </Link>
