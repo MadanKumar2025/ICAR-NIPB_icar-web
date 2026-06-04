@@ -74,6 +74,12 @@ function Footer() {
     lang === "hi"
       ? "© 2025 आईसीएआर-एनआईपीबी। सर्वाधिकार सुरक्षित। | राष्ट्रीय पादप जैव प्रौद्योगिकी संस्थान के लिए डिज़ाइन किया गया"
       : "© 2025 ICAR-NIPB. All rights reserved. | Designed for National Institute of Plant Biotechnology";
+
+  const parents = menu?.filter(
+    (item) => item.menuCategory === "footer" && item.menuType === "parent",
+  );
+
+  const children = menu?.filter((item) => item.menuType === "child");
   return (
     <div className={`theme-${theme}`}>
       <GovernmentLogoSlider />
@@ -87,7 +93,7 @@ function Footer() {
 
           <div className="footer-inner position-relative z_index1">
             <div className="row">
-              <div className="col-xxl-3 col-xl-4 col-lg-12 col-md-6 about-col position-relative footer-about-col">
+              <div className="col-xxl-3 col-xl-3 col-lg-12 col-md-6 about-col position-relative footer-about-col">
                 <div className="footer-about">
                   <Link to={"/"}>
                     <img
@@ -98,68 +104,117 @@ function Footer() {
                   <p className="text-white fs-16">{footerText}</p>
                 </div>
               </div>
-              <div className="col-xxl-3 col-xl-2 col-lg-3 col-md-6 col-sm-4 importent-links-col">
-                <div className="widget-footer-links">
-                  <h5 className="widget-title text-white fw-700">
-                    {lang === "hi" ? "महत्वपूर्ण लिंक" : "Important Links"}
-                  </h5>
-                  <ul className="footer-links-list d-flex flex-column gap-3 m-0 p-0">
-                    <li>
-                      <Link to={"/"}>
-                        {lang === "hi" ? "मुख्य पृष्ठ" : "Home"}
-                      </Link>
-                    </li>
-                    <li>
+
+              {parents?.map((parent) => {
+                const childItems = children?.filter(
+                  (child) => child.parentMenu?.id === parent.id,
+                );
+                //  Agar child nahi hai
+
+                if (
+                  !childItems ||
+                  (childItems.length === 0 &&
+                    parent?.menuName_en !== "Contact Us")
+                ) {
+                  return (
+                    <div
+                      className="col-xxl-3 col-xl-3 col-lg-5 col-md-6 col-sm-8 contact-col"
+                      key={parent?.id}
+                    >
+                      <div className="footer-contact">
+                        {parent?.page?.id ? (
+                          <h5
+                            className="widget-title text-white fw-700"
+                            style={{ cursor: "pointer" }}
+                            onClick={() => handlePageClick(parent?.page?.id)}
+                          >
+                            {/* {parent?.menuName_en?.toUpperCase()} */}
+                            {parent?.[`menuName_${lang}`]?.toUpperCase()}
+                          </h5>
+                        ) : (
+                          <a
+                            href={parent?.customUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="widget-title text-white fw-700"
+                          >
+                            {/* {parent?.menuName_en?.toUpperCase()} */}
+                            {parent?.[`menuName_${lang}`]?.toUpperCase()}
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  );
+                }
+
+                // Agar child hai
+                return (
+                  <div
+                    className="col-xxl-3 col-xl-3 col-lg-5 col-md-6 col-sm-8 contact-col"
+                    key={parent.id}
+                  >
+                    <div className="widget-footer-links">
                       <a
-                        style={{ cursor: "pointer", color: "#fff" }}
-                        onClick={() =>
-                          handlePageClick("6a02c787adbccb91e02a14fe")
-                        }
+                        className="widget-title text-white fw-700"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                       >
-                        {lang === "hi" ? "एनआईपीबी के बारे में" : "About NIPB"}
+                        {/* {parent?.menuName_en?.toUpperCase()} */}
+                        {parent?.[`menuName_${lang}`]?.toUpperCase()}
                       </a>
-                    </li>
-                    <li>
-                      <a style={{ cursor: "pointer", color: "#fff" }} href="#">
-                        {lang === "hi" ? "हमारी टीम" : "Our Team"}
-                      </a>
-                    </li>
-                    <li>
-                      <a style={{ cursor: "pointer", color: "#fff" }} href="#">
-                        {lang === "hi" ? "अनुसंधान" : "Research"}
-                      </a>
-                    </li>
-                    <li>
-                      <a style={{ cursor: "pointer", color: "#fff" }} href="#">
-                        {lang === "hi" ? "प्रकाशन" : "Publication"}{" "}
-                      </a>
-                    </li>
-                    <li>
-                      <a style={{ cursor: "pointer", color: "#fff" }} href="#">
-                        {lang === "hi" ? "शैक्षणिक" : "Academics"}
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        style={{ cursor: "pointer", color: "#fff" }}
-                        onClick={() =>
-                          handlePageClick("6a019615b41b02c9e0121bdb")
-                        }
-                      >
-                        {lang === "hi" ? "संपर्क करें" : "Contact Us"}
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="col-xxl-3 col-xl-2 col-lg-4 col-md-6 col-sm-4 quick-links-col">
+
+                      <ul className="footer-links-list d-flex flex-column gap-3 m-0 p-0">
+                        {childItems.map((child) => (
+                          <li key={child.id}>
+                            {child.page?.id ? (
+                              <span
+                                style={{
+                                  cursor: "pointer",
+                                  color: "white",
+                                }}
+                                onClick={() => handlePageClick(child?.page?.id)}
+                              >
+                                {/* {child?.menuName_en?.toUpperCase()} */}
+                                {child?.[`menuName_${lang}`]?.toUpperCase()}
+                              </span>
+                            ) : (
+                              <a
+                                href={child?.customUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {/* {child?.menuName_en?.toUpperCase()} */}
+                                {child?.[`menuName_${lang}`]?.toUpperCase()}
+                              </a>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* </div>
+              </div> */}
+              {/* <div className="col-xxl-3 col-xl-2 col-lg-4 col-md-6 col-sm-4 quick-links-col">
                 <div className="widget-footer-links">
                   <h5 className="widget-title text-white fw-700">
                     {lang === "hi" ? "त्वरित लिंक" : "Quick Links"}
                   </h5>
                   <ul className="footer-links-list d-flex flex-column gap-3 m-0 p-0 quick-links-groups">
                     {menu
-                      ?.filter((item) => item?.menuCategory === "footer")
+                      // ?.filter((item) => {
+                      //     console.log("Footer Item:", item);
+                      //     item?.menuCategory === "footer";
+                      //   })
+                      ?.filter((item) => {
+                        // console.log("Footer Item:", item);
+                        return item?.menuCategory === "footer";
+                      })
                       .map((item) => (
                         <li key={item.id}>
                           {item?.page?.id ? (
@@ -182,7 +237,7 @@ function Footer() {
                       ))}
                   </ul>
                 </div>
-              </div>
+              </div> */}
               <div className="col-xxl-3 col-xl-3 col-lg-5 col-md-6 col-sm-8 contact-col">
                 <div className="footer-contact">
                   <h5 className="widget-title text-white fw-700">

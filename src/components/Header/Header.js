@@ -92,6 +92,7 @@ function Header() {
   };
 
   const homeLabel = lang === "hi" ? "होम" : "HOME";
+
   return (
     <div className={`theme-${theme}`}>
       <div className="menu-overlay"></div>
@@ -100,7 +101,7 @@ function Header() {
           <div className="container">
             <div className="row">
               <div className="col-12 position-relative">
-                <div className="top-header theme-bg navbar">
+                <div className="top-header theme-bg">
                   <div className="header-contact">
                     <span>
                       <img src="images/icons/phone_icon.svg" alt="" />
@@ -235,7 +236,12 @@ function Header() {
                           (child) => child.parentMenu?.id === parent.id,
                         );
                         //  Agar child nahi hai → normal menu
-                        if (!childItems || childItems.length === 0) {
+
+                        if (
+                          !childItems ||
+                          (childItems.length === 0 &&
+                            parent?.menuName_en !== "Contact Us")
+                        ) {
                           return (
                             <li class="nav-item" key={parent?.id}>
                               {parent?.page?.id ? (
@@ -283,7 +289,8 @@ function Header() {
                             </a>
 
                             <ul
-                             class="dropdown-menu" aria-labelledby="navbarDropdown"
+                              class="dropdown-menu"
+                              aria-labelledby="navbarDropdown"
                             >
                               {childItems.map((child) => (
                                 <li key={child.id}>
@@ -292,7 +299,7 @@ function Header() {
                                       style={{
                                         cursor: "pointer",
                                       }}
-                                     class="dropdown-item" 
+                                      class="dropdown-item"
                                       onClick={() =>
                                         handlePageClick(child?.page?.id)
                                       }
@@ -307,7 +314,7 @@ function Header() {
                                       href={child?.customUrl}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      class="dropdown-item" 
+                                      class="dropdown-item"
                                     >
                                       {/* {child?.menuName_en?.toUpperCase()} */}
                                       {child?.[
@@ -323,12 +330,30 @@ function Header() {
                       })}
                     </ul>
                   </div>
+                  <button
+                    class="navbar-toggler theme-toggle-btn"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
                   <div className="header-contact-btn">
                     <a className="contact-link" href="#">
                       <span className="theme-bg d-flex justify-content-center align-items-center rounded-circle">
                         <i className="fa-solid fa-user"></i>
                       </span>
-                      <span className="theme-color">Contact Us</span>
+                      <span
+                        className="theme-color"
+                        onClick={() =>
+                          handlePageClick("6a019615b41b02c9e0121bdb")
+                        }
+                      >
+                        Contact Us
+                      </span>
                     </a>
                   </div>
                 </nav>

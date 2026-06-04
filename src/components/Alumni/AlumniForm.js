@@ -157,265 +157,270 @@ function AlumniForm({}) {
 
   return (
     <>
-      <div style={{ width: "90%", marginLeft: "5%", marginTop: "3vh" }}>
-        <div className="card card-info card-outline mb-4">
-          <div className="card-header">
-            <div className="card-title">Alumni</div>
-          </div>
-
-          <form
-            className="needs-validation"
-            ref={formRef}
-            onSubmit={handleSubmit}
-          >
-            <div className="card-body">
-              <div className="row g-3">
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Name (English)
-                  </label>
-                  <input
-                    type="text"
-                    name="name_en"
-                    value={data?.name_en}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="name_en"
-                    required
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Name (Hindi)
-                  </label>
-                  <input
-                    type="text"
-                    name="name_hi"
-                    value={data?.name_hi}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="name_hi"
-                    required
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={data?.email}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="email"
-                    required
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Batch (English)
-                  </label>
-                  <input
-                    type="text"
-                    name="batch_en"
-                    value={data?.batch_en}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="batch_en"
-                    required
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Batch (Hindi)
-                  </label>
-                  <input
-                    type="text"
-                    name="batch_hi"
-                    value={data?.batch_hi}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="batch_hi"
-                    required
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Degree Name (English)
-                  </label>
-                  <input
-                    type="text"
-                    name="degree_en"
-                    value={data?.degree_en}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="degree_en"
-                    required
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Degree Name (Hindi)
-                  </label>
-                  <input
-                    type="text"
-                    name="degree_hi"
-                    value={data?.degree_hi}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="degree_hi"
-                    required
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Profile Link
-                  </label>
-                  <input
-                    type="text"
-                    name="profileLink"
-                    value={data?.profileLink}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="profileLink"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Facebook
-                  </label>
-                  <input
-                    type="text"
-                    name="facebook"
-                    value={data?.facebook}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="facebook"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Twitter
-                  </label>
-                  <input
-                    type="text"
-                    name="twitter"
-                    value={data?.twitter}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="twitter"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    You Tube
-                  </label>
-                  <input
-                    type="text"
-                    name="youtube"
-                    value={data?.youtube}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="youtube"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Linkedin
-                  </label>
-                  <input
-                    type="text"
-                    name="linkedin"
-                    value={data?.linkedin}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="linkedin"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Instagram
-                  </label>
-                  <input
-                    type="text"
-                    name="instagram"
-                    value={data?.instagram}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="instagram"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom02" className="form-label">
-                    Photo Title
-                  </label>
-                  <input
-                    type="text"
-                    name="photoTitle"
-                    value={data?.photoTitle}
-                    onChange={handleChange}
-                    className="form-control"
-                    id="photoTitle"
-                  />
+      <div className="alumni-section body-shape section-padding">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <div className="card card-info card-outline mb-4">
+                <div className="card-header alumni-header">
+                  <h2 className="card-title m-0 fs-30">Alumni</h2>
                 </div>
 
-                {/* <div className="col-md-6">
-                  <label className="form-label">Is Active</label>
-                  <select
-                    name="isApproved"
-                    value={data?.isApproved}
-                    onChange={handleChange}
-                    className="form-control"
-                  >
-                    <option value={true}>Active</option>
-                    <option value={false}>Inactive</option>
-                  </select>
-                </div> */}
-                <div className="col-md-6">
-                  <label htmlFor="validationCustom05" className="form-label">
-                    Photo
-                  </label>
-                  <div className="d-flex">
-                    <input
-                      type="file"
-                      name="photo"
-                      onChange={handleChange}
-                      className="form-control col-md-6"
-                      id="validationCustom05"
-                      style={{ height: "4vh" }}
-                    />
+                <form
+                  className="needs-validation common-forms"
+                  ref={formRef}
+                  onSubmit={handleSubmit}
+                >
+                  <div className="card-body">
+                    <div className="row g-3">
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Name (English)
+                        </label>
+                        <input
+                          type="text"
+                          name="name_en"
+                          value={data?.name_en}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="name_en"
+                          required
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Name (Hindi)
+                        </label>
+                        <input
+                          type="text"
+                          name="name_hi"
+                          value={data?.name_hi}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="name_hi"
+                          required
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={data?.email}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="email"
+                          required
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Batch (English)
+                        </label>
+                        <input
+                          type="text"
+                          name="batch_en"
+                          value={data?.batch_en}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="batch_en"
+                          required
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Batch (Hindi)
+                        </label>
+                        <input
+                          type="text"
+                          name="batch_hi"
+                          value={data?.batch_hi}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="batch_hi"
+                          required
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Degree Name (English)
+                        </label>
+                        <input
+                          type="text"
+                          name="degree_en"
+                          value={data?.degree_en}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="degree_en"
+                          required
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Degree Name (Hindi)
+                        </label>
+                        <input
+                          type="text"
+                          name="degree_hi"
+                          value={data?.degree_hi}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="degree_hi"
+                          required
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Profile Link
+                        </label>
+                        <input
+                          type="text"
+                          name="profileLink"
+                          value={data?.profileLink}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="profileLink"
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Facebook
+                        </label>
+                        <input
+                          type="text"
+                          name="facebook"
+                          value={data?.facebook}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="facebook"
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Twitter
+                        </label>
+                        <input
+                          type="text"
+                          name="twitter"
+                          value={data?.twitter}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="twitter"
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          You Tube
+                        </label>
+                        <input
+                          type="text"
+                          name="youtube"
+                          value={data?.youtube}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="youtube"
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Linkedin
+                        </label>
+                        <input
+                          type="text"
+                          name="linkedin"
+                          value={data?.linkedin}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="linkedin"
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Instagram
+                        </label>
+                        <input
+                          type="text"
+                          name="instagram"
+                          value={data?.instagram}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="instagram"
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom02" className="form-label">
+                          Photo Title
+                        </label>
+                        <input
+                          type="text"
+                          name="photoTitle"
+                          value={data?.photoTitle}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="photoTitle"
+                        />
+                      </div>
+
+                      {/* <div className="col-md-6">
+                        <label className="form-label">Is Active</label>
+                        <select
+                          name="isApproved"
+                          value={data?.isApproved}
+                          onChange={handleChange}
+                          className="form-control"
+                        >
+                          <option value={true}>Active</option>
+                          <option value={false}>Inactive</option>
+                        </select>
+                      </div> */}
+                      <div className="col-md-6">
+                        <label htmlFor="validationCustom05" className="form-label">
+                          Photo
+                        </label>
+                        <div className="d-flex">
+                          <input
+                            type="file"
+                            name="photo"
+                            onChange={handleChange}
+                            className="form-control col-md-6 upload-file-inbut"
+                            id="validationCustom05"
+                          />
+                        </div>
+                        {preview && (
+                          <img
+                            src={preview}
+                            alt="Preview"
+                            style={{
+                              marginLeft: "20px",
+                              height: "50px",
+                              objectFit: "cover",
+                            }}
+                          />
+                        )}
+                      </div>
+                    </div>
                   </div>
-                  {preview && (
-                    <img
-                      src={preview}
-                      alt="Preview"
-                      style={{
-                        marginLeft: "20px",
-                        height: "50px",
-                        objectFit: "cover",
-                      }}
-                    />
-                  )}
-                </div>
+                  <div
+                    style={{
+                      marginLeft: "10PX",
+                      marginBottom: "20PX",
+                      // marginRight:"10PX"
+                    }}
+                    className="d-flex justify-content-between"
+                  >
+                    <div className="Alumni-create ">
+                      <button className="save-btn" type="submit">Save</button>
+                    </div>
+                    {/* <div className="Alumni-create ">
+                      <button onClick={handleClose}>Close</button>
+                    </div> */}
+                  </div>
+                </form>
               </div>
-            </div>
-            <div
-              style={{
-                marginLeft: "10PX",
-                marginBottom: "20PX",
-                // marginRight:"10PX"
-              }}
-              className="d-flex justify-content-between"
-            >
-              <div className="Alumni-create ">
-                <button type="submit">Save</button>
-              </div>
-              {/* <div className="Alumni-create ">
-                <button onClick={handleClose}>Close</button>
-              </div> */}
-            </div>
-          </form>
+               </div>
+          </div>
         </div>
       </div>
       <></>

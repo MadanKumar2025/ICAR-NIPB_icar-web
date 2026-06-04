@@ -142,12 +142,12 @@ function Feedback({}) {
       </section>
       <div style={{ width: "90%", marginLeft: "5%", marginTop: "3vh" }}>
         <div className="card card-info card-outline mb-4">
-          <div className="card-header">
-            <div className="card-title">Feedback</div>
+          <div className="card-header feedback-header">
+            <h2 className="card-title m-0 fs-30">Feedback</h2>
           </div>
 
           <form
-            className="needs-validation"
+            className="needs-validation common-forms"
             ref={formRef}
             onSubmit={handleSubmit}
           >
@@ -191,7 +191,7 @@ function Feedback({}) {
               className="d-flex justify-content-between"
             >
               <div className="Alumni-create ">
-                <button type="submit">Save</button>
+                <button class="save-btn" type="submit">Save</button>
               </div>
             </div>
           </form>
