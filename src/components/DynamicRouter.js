@@ -26,6 +26,7 @@ import AlumniForm from "./Alumni/AlumniForm";
 import Organogram from "./Organogram/Organogram";
 import Payment from "./Payment/Payment";
 import Feedback from "./Feedback/Feedback";
+import TrainingProgram from "./Training Program/TrainingProgram";
 
 function DynamicRouter() {
   const { slug } = useParams();
@@ -110,7 +111,7 @@ function DynamicRouter() {
     case "vigilanceOfficer":
       return <VigilanceOfficer />;
 
-      // this is FAQ
+    // this is FAQ
     case "Help":
       return <Help />;
 
@@ -131,6 +132,9 @@ function DynamicRouter() {
 
     case "Feedback":
       return <Feedback />;
+
+    case "Training Program":
+      return <TrainingProgram />;
 
     default:
       return <StaticContent />;

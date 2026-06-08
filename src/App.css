@@ -3,88 +3,68 @@
   width: 91px;
   margin-bottom: 15px;
 }
-
 .table-container {
   width: 90%;
   margin: 40px auto;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
   background: #ffffff;
 }
-
 thead {
   background: var(--bs-primary);
   color: #ffffff;
 }
-
 thead th {
   padding: 15px;
   text-align: center;
   font-weight: bold;
   /* border: 1px solid #0a8f2f; */
 }
-
 tbody td {
   padding: 15px;
   border: 1px solid #ccc;
   vertical-align: top;
 }
-
 tbody td:first-child {
   font-weight: bold;
   width: 30%;
 }
-
 tbody td:nth-child(2) {
   /* width: 50%; */
 }
-
 tbody td:nth-child(3) {
   width: 20%;
   text-align: left;
 }
-
 .element.style {
   color: black !important;
 }
-
 .title-name * {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
 }
-
 .single-collaborations-card:hover .title-name {
   color: var(--bs-primary) !important;
 }
-
 /* .fruits-area {
   justify-content: center !important;
   gap: 131px !important;
 } */
-
 .new_Box1 p {
   color: white !important;
 }
-
 .gallery-img {
   height: 30vh;
 }
- 
-
-.accordion-button::after {
+ .accordion-button::after {
     /* Use an SVG chevron in white */
     --bs-accordion-btn-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
 }
-
-
-
 .hero-slider {
   position: relative;
 }
-
 /* Navigation buttons */
 .custom-prev,
 .custom-next {
@@ -92,31 +72,23 @@ tbody td:nth-child(3) {
   top: 50%;
   transform: translateY(-50%);
   z-index: 999;
-
   width: 50px;
   height: 50px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: rgba(0, 0, 0, 0.4);
   color: #fff;
-
   border-radius: 50%;
   cursor: pointer;
-
-  font-size: 18px;
+  font-size: 1.125rem;
 }
-
 .custom-prev {
   left: 20px;
 }
-
 .custom-next {
   right: 20px;
 }
-
 .custom-prev:hover,
 .custom-next:hover {
   background: #000;
@@ -125,13 +97,59 @@ tbody td:nth-child(3) {
 .mandate-content * {
   background-color: #f6f6f6 !important;
 }
-
-
-.my-swal-popup{
-   min-height: 500px;  
+.onload-page-popup {
+	min-height: 300px;
+	padding-bottom: 0;
+	max-height: 100%;
 }
-
+.onload-page-popup .swal2-close {
+	background: #fff;
+	border: 1px solid #e7e7e7;
+	top: 5px;
+	right: 5px;
+	position: absolute;
+	box-shadow: -2px 6px 8px -3px #00000017;
+	padding: 2px;
+	width: 30px;
+	height: 30px;
+	font-size: 20px;
+}
+.onload-page-popup .swal2-close:hover {
+	color: var(--bs-primary);
+	transform: scale(1.02);
+}
+.popup-card-box {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	border: 1px solid #e5eaf4 !important;
+	border-radius: .625rem !important;
+	box-shadow: rgba(149, 157, 165, .1) 0px 0px 14px !important;
+	padding: 10px;
+}
+.onload-page-popup #swal2-html-container {
+	padding: 20px;
+}
+.popup-image-wrapper {
+	border-radius: 10px;
+	overflow: hidden;
+  width: 100%;
+}
+.popup-card-title {
+	padding: 10px;
+	margin: 0;
+	font-weight: 500;
+}
 .table-thead th {
   text-align: left !important;
 }
-
+.accordion-button::after {
+  display: none !important;
+}
+@media (min-width:768px) {
+.onload-page-popup{
+   min-height: 500px;
+}
+}

@@ -50,21 +50,16 @@ function Home() {
       await new Promise((resolve) => {
         Swal.fire({
           customClass: {
-            popup: "my-swal-popup",
+            popup: "my-swal-popup onload-page-popup",
           },
           html: `
-          <div  onclick="${item.url ? `window.open('${item.url}', '_blank')` : ""}">
-          <div style="text-align:center;display: flex;
+          <div class="popup-card-box" onclick="${item.url ? `window.open('${item.url}', '_blank')` : ""}">
+          <div  class="popup-image-wrapper" style="text-align:center;display: flex;
                 justify-content: center; cursor:pointer"  >
-            <img 
-              src="${IMG_BASE_URL}/${item.photo}" 
-              style="width:100%; max-width:300px; border-radius:10px; "
-               
-            />
-
-         
+            <img class="w-100"
+              src="${IMG_BASE_URL}/${item.photo}" />
           </div>
-           ${item.title ? `<p   >${item?.title}</p>` : ""}
+           ${item.title ? `<p class="popup-card-title">${item.title}</p>` : ""}
            </div>
         `,
           showCloseButton: true,
@@ -78,12 +73,6 @@ function Home() {
       });
     }
   };
-
-  // ${
-  //             item.url
-  //               ? `<a href="${item.url}" target="_blank">Visit Link</a>`
-  //               : ""
-  //           }
 
   useEffect(() => {
     getPopup();
@@ -314,7 +303,10 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-4">
+              <div
+                className="col-md-6 col-lg-4"
+                onClick={() => handlePageClick("6a224c44f2fcc50bcfa6ed73")}
+              >
                 <div className="programs-box h-100">
                   <div className="program-image-area text-center position-relative">
                     <img src="images/resources/training_programs.png" alt="" />
@@ -323,14 +315,14 @@ function Home() {
                     <h5 className="program-box-title fs-25 slow-effect">
                       {lang === "hi"
                         ? "प्रशिक्षण कार्यक्रम"
-                        : "Training Programs"}{" "}
+                        : "Training Programs"}
                     </h5>
                     <a className="common-btn btn-style-one mx-auto">
                       <span className="btn-static-text">
                         {lang === "hi" ? "अधिक विवरण" : "More Details"}
                       </span>
                       <span className="btn-arrow">
-                        <i className="fa-solid fa-arrow-right-long"></i>{" "}
+                        <i className="fa-solid fa-arrow-right-long"></i>
                       </span>
                     </a>
                   </div>

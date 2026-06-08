@@ -43,6 +43,7 @@ if ("scrollRestoration" in window.history) {
 }
   return (
     <LanguageProvider>
+      {/* <div className={`theme-hi theme-${theme}`}> */}
       <div className={`theme-${theme}`}>
         <div className="menu-overlay"></div>
         <Header />

@@ -352,7 +352,9 @@ button {
 .fs-48 {
   font-size: 1.75rem;
 }
-
+.theme-hi .fs-48 { 
+	font-size: 1.5rem;
+}
 /* 28px */
 .orange-text {
   color: var(--bs-orange);
@@ -507,7 +509,7 @@ button {
 
 .header-contact i {
   color: #fff;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .header-contact img {
@@ -609,8 +611,11 @@ button {
   font-family: "Signika", sans-serif;
   /* font-size: 1.875rem; */
   margin-bottom: -10px;
-  font-size: 22px;
+  font-size: 1.375rem;
   line-height: 1.2;
+}
+.theme-hi .header-logo-title {
+	font-size: 0.9375rem
 }
 .header-logo-sub-title {
   color: #2b3324;
@@ -795,13 +800,21 @@ button {
   .header-logos {
     display: flex;
   }
+  }
+@media (min-width: 768px) {
+.theme-hi .header-logo-title {
+	font-size: 1rem;
+}
 }
 @media (min-width: 768px) {
   .header-logo-title {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
+  .theme-hi .header-logo-title { 
+	font-size: 1.375rem;
+}
   .header-logo-sub-title {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 } 
 @media (min-width: 992px) {
@@ -832,10 +845,10 @@ button {
     align-items: end;
   }
   .header-logo-title {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
   .header-logo-sub-title {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 .custom-nav-dropdown:hover > .dropdown-menu {
 	display: block;
@@ -853,7 +866,7 @@ button {
 	gap: 10px;
 }
 .menu-link, .nav-link.dropdown-toggle, .contact-link { 
-	font-size: 14px;
+	font-size: 0.875rem;
 }
   .dropdown {
     position: relative;
@@ -872,7 +885,21 @@ button {
 }
   
 }
-
+@media (min-width: 992px) and (max-width: 1199px)  {
+.theme-hi .top-header.theme-bg {
+	position: relative;
+	background: transparent;
+}
+.theme-hi .icar-logo {
+	width: 125px;
+}
+.theme-hi .nipb-logo {
+	width: 125px;
+}
+.theme-hi .header-logo-title {
+	font-size: 1.625rem;
+}
+}
 @media (min-width: 1200px) { 
     .top-header {
     max-width: 900px;
@@ -880,6 +907,9 @@ button {
   .header-logo-title {
     font-size: 2.25rem;
   }
+  .theme-hi .header-logo-title { 
+	font-size: 1.375rem;
+}
   .header-logo {
     width: 110px;
   } 
@@ -894,6 +924,9 @@ button {
   .header-logo {
     width: 200px;
   }
+.theme-hi .header-logo-title { 
+	font-size: 1.5rem
+}
 }     
 /*===================================
      Main Slider Section
@@ -1999,7 +2032,9 @@ i.fa-chevron-circle-right {
   .fs-48 {
     font-size: 1.75rem;
   }
-
+.theme-hi .fs-48 {
+	font-size: 1.625rem;
+}
   /* 28px */
 }
 
@@ -2034,7 +2069,7 @@ i.fa-chevron-circle-right {
   }
 
   /* 26px */
-  .fs-48 {
+  .fs-48, .theme-hi .fs-48 {
     font-size: 1.875rem;
   }
 
@@ -2094,10 +2129,9 @@ i.fa-chevron-circle-right {
   }
 
   /* 30px */
-  .fs-48 {
-    font-size: 2.5rem;
-  }
-
+.fs-48, .theme-hi .fs-48 {
+	font-size: 2.25rem;
+}
   /* 40px */
   .hero-style .slide-title h1 {
     font-size: 2.875rem;
@@ -2128,8 +2162,8 @@ i.fa-chevron-circle-right {
     max-width: 1320px;
   }
 
-  .fs-48 {
-    font-size: 2rem;
+  .fs-48, .theme-hi .fs-48 {
+    font-size: 2.5rem;
   }
 
   /* 48px */
