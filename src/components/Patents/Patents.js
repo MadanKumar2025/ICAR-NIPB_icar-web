@@ -69,6 +69,8 @@ function Patents() {
     (item) => item?.type?.en === "Patents Obtained",
   );
 
+  console.log("patentApplicationsFiled", patentApplicationsFiled);
+
   return (
     <div className="main-wrapper">
       {/* ================= SEO START ================= */}
@@ -130,55 +132,73 @@ function Patents() {
       <section className="institution-section body-shape section-padding">
         <div className="container">
           <div className="row row-gap">
-            <div className="col-12">
-              <div class="section-heading">
-                <h2 class="section-title fs-48 fw-600 m-0">
-                 {lang === "hi" ? "दायर पेटेंट आवेदन" : "Patent applications filed"} :-
-                </h2>
-              </div>
-              <div className="collaborations-grid common-space">
-                {patentApplicationsFiled?.map((item, index) => {
-                  return (
-                    <div key={index} className="single-collaborations-card">
-                      <div className="list-details">
-                        <div className="sr-number">
-                          <i className="fa-solid fa-circle-check fs-22"></i>
+            {patentApplicationsFiled?.length > 0 && (
+              <>
+                {" "}
+                <div className="col-12">
+                  <div class="section-heading">
+                    <h2 class="section-title fs-48 fw-600 m-0">
+                      {patentApplicationsFiled?.length > 0 && (
+                        <>
+                          {lang === "hi"
+                            ? "दायर पेटेंट आवेदन"
+                            : "Patent applications filed"}{" "}
+                          :-
+                        </>
+                      )}
+                      {/* {lang === "hi" ? "दायर पेटेंट आवेदन" : "Patent applications filed"} :- */}
+                    </h2>
+                  </div>
+                  <div className="collaborations-grid common-space">
+                    {patentApplicationsFiled?.map((item, index) => {
+                      return (
+                        <div key={index} className="single-collaborations-card">
+                          <div className="list-details">
+                            <div className="sr-number">
+                              <i className="fa-solid fa-circle-check fs-22"></i>
+                            </div>
+                            <div className="title-name m-0 fw-600 fs-16 slow-effect">
+                              {parse(item?.title?.[lang] || "")}
+                            </div>
+                          </div>
                         </div>
-                        <div className="title-name m-0 fw-600 fs-16 slow-effect">
-                          {parse(item?.title?.[lang] || "")}
+                      );
+                    })}
+                  </div>
+                </div>
+              </>
+            )}
+            {patentApplicationsFiled?.length > 0 && (
+              <>
+                <div className="col-12">
+                  <div class="section-heading">
+                    <h2 class="section-title fs-48 fw-600 m-0">
+                      {lang === "hi" ? "प्राप्त पेटेंट" : "Patents Obtained"} :
+                      -
+                    </h2>
+                  </div>
+                  <div className="collaborations-grid common-space">
+                    {patentsObtained?.map((item, index) => {
+                      return (
+                        <div key={index} className="single-collaborations-card">
+                          <div className="list-details">
+                            <div className="sr-number">
+                              <i className="fa-solid fa-circle-check fs-22"></i>
+                            </div>
+                            <p
+                              className="title-name m-0 fw-600 fs-16 slow-effect"
+                              dangerouslySetInnerHTML={{
+                                __html: item?.title?.[lang],
+                              }}
+                            />
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className="col-12">
-              <div class="section-heading">
-                <h2 class="section-title fs-48 fw-600 m-0">
-               {lang === "hi" ? "प्राप्त पेटेंट" : "Patents Obtained"} : -
-                </h2>
-              </div>
-              <div className="collaborations-grid common-space">
-                {patentsObtained?.map((item, index) => {
-                  return (
-                    <div key={index} className="single-collaborations-card">
-                      <div className="list-details">
-                        <div className="sr-number">
-                          <i className="fa-solid fa-circle-check fs-22"></i>
-                        </div>
-                        <p
-                          className="title-name m-0 fw-600 fs-16 slow-effect"
-                          dangerouslySetInnerHTML={{
-                            __html: item?.title?.[lang],
-                          }}
-                        />
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+                      );
+                    })}
+                  </div>
+                </div>{" "}
+              </>
+            )}
           </div>
         </div>
       </section>
