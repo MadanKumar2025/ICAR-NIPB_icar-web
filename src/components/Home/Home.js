@@ -234,7 +234,7 @@ function Home() {
                     <span className="mini-logo d-inline-flex justify-content-center align-items-center bg-white">
                       <img src="images/resources/mini_logo.png" alt="" />
                     </span>
-                    <span className="sub-heading-text fs-16 fw-500 signika-font">
+                    <span className="sub-heading-text fs-16 fw-500 ">
                       {lang === "hi"
                         ? "शिक्षा एवं प्रशिक्षण"
                         : "Education & Training"}
@@ -353,7 +353,7 @@ function Home() {
                     src="images/resources/research_publications.jpg"
                     alt=""
                   />
-                  <a className="publication-title position-absolute text-white fs-20 signika-font">
+                  <a className="publication-title position-absolute text-white fs-20 ">
                     {lang === "hi"
                       ? "अनुसंधान प्रकाशन"
                       : "Research Publications"}
@@ -367,7 +367,7 @@ function Home() {
               >
                 <div className="publication-box position-relative">
                   <img src="images/resources/annual_reports.jpg" alt="" />
-                  <a className="publication-title position-absolute text-white fs-20 signika-font">
+                  <a className="publication-title position-absolute text-white fs-20 ">
                     {lang === "hi" ? "वार्षिक रिपोर्ट" : "Annual Reports"}
                   </a>
                 </div>
@@ -379,7 +379,7 @@ function Home() {
               >
                 <div className="publication-box position-relative">
                   <img src="images/resources/newsletter.jpg" alt="" />
-                  <a className="publication-title position-absolute text-white fs-20 signika-font">
+                  <a className="publication-title position-absolute text-white fs-20 ">
                     {lang === "hi" ? "समाचार पत्रिका" : "Newsletter"}
                   </a>
                 </div>
@@ -391,7 +391,7 @@ function Home() {
               >
                 <div className="publication-box position-relative">
                   <img src="images/resources/other.jpg" alt="" />
-                  <a className="publication-title position-absolute text-white fs-20 signika-font">
+                  <a className="publication-title position-absolute text-white fs-20 ">
                     {lang === "hi" ? "अन्य" : "Other"}
                   </a>
                 </div>
@@ -419,7 +419,7 @@ function Home() {
                         <span className="mini-logo d-inline-flex justify-content-center align-items-center bg-white">
                           <img src="images/resources/mini_logo.png" alt="" />
                         </span>
-                        <span className="sub-heading fs-16 fw-500 signika-font">
+                        <span className="sub-heading fs-16 fw-500 ">
                           {lang === "hi"
                             ? "उपलब्धियाँ एवं मुख्य बिंदु"
                             : "Achievements & Highlights"}
@@ -449,7 +449,7 @@ function Home() {
                           </h2>
                           <span>+</span>
                         </div>
-                        <div className="signika-font fs-18 fw-500">
+                        <div className=" fs-18 fw-500">
                           {lang === "hi"
                             ? "उत्कृष्टता के वर्ष"
                             : "Years of Excellence"}
@@ -472,7 +472,7 @@ function Home() {
                           </h2>
                           <span>+</span>
                         </div>
-                        <div className="signika-font fs-18 fw-500">
+                        <div className=" fs-18 fw-500">
                           {lang === "hi"
                             ? "वित्तपोषित अनुसंधान परियोजनाएँ"
                             : "Funded Research Projects"}
@@ -495,7 +495,7 @@ function Home() {
                           </h2>
                           <span>+</span>
                         </div>
-                        <div className="signika-font fs-18 fw-500">
+                        <div className=" fs-18 fw-500">
                           {lang === "hi"
                             ? "वैज्ञानिक प्रकाशन"
                             : "Scientific Publications"}
@@ -518,7 +518,7 @@ function Home() {
                           </h2>
                           <span>+</span>
                         </div>
-                        <div className="signika-font fs-18 fw-500">
+                        <div className=" fs-18 fw-500">
                           {lang === "hi"
                             ? "वैश्विक सहयोग"
                             : "Global Collaborations"}

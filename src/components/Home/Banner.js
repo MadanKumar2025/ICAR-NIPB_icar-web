@@ -64,7 +64,7 @@ function Banner() {
               <div className="container">
                 <div className="slider-content">
                   <div className="slide-title">
-                    <h1 className="banner-slider-title fw-500 text-white">
+                    <h1 className="banner-slider-title fw-600 text-white">
                       {item?.title?.[lang]}
                     </h1>
                   </div>

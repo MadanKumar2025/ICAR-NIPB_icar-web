@@ -14,7 +14,7 @@ import { Route, Routes, useParams } from "react-router-dom";
 import StaticContent from "./components/Static content/StaticContent.js";
 import InstitutionalProjects from "./components/InstitutionalProjects/InstitutionalProjects.js";
 import ExternallyFunded from "./components/Externally Funded/ExternallyFunded.js";
-import { LanguageProvider } from "./components/LanguageContext.js";
+import { LanguageProvider, useLanguage } from "./components/LanguageContext.js";
 import DynamicRouter from "./components/DynamicRouter.js";
 import ScientistDetails from "./components/Scientist Details/ScientistDetails.js";
 import { useTheme } from "./components/ThemeContext.js";
@@ -24,8 +24,9 @@ import AllGallery from "./components/Album/AllGallery.js";
 import AlumniDetails from "./components/Alumni/AlumniDetails.js";
 import StaffDetails from "./components/Staff Details/StaffDetails.js";
 
-function App() {
+function AppContent() {
   const { theme } = useTheme();
+  const { lang } = useLanguage();
   function MainRouter() {
     const { type } = useParams();
 
@@ -38,13 +39,15 @@ function App() {
 
     return <StaticContent />;
   }
-if ("scrollRestoration" in window.history) {
-  window.history.scrollRestoration = "manual";
-}
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
   return (
-    <LanguageProvider>
+    <>
       {/* <div className={`theme-hi theme-${theme}`}> */}
-      <div className={`theme-${theme}`}>
+      <div
+        className={lang === "hi" ? `theme-hi theme-${theme}` : `theme-${theme}`}
+      >
         <div className="menu-overlay"></div>
         <Header />
         <Routes>
@@ -58,6 +61,18 @@ if ("scrollRestoration" in window.history) {
         </Routes>
         <Footer />
       </div>
+    </>
+  );
+}
+
+function App() {
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
+
+  return (
+    <LanguageProvider>
+      <AppContent />
     </LanguageProvider>
   );
 }

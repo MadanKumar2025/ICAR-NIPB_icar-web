@@ -261,7 +261,7 @@ function Director() {
               <div className="vision-inner">
                 <div className="vision-box vision-box theme-gray slow-effect hover-effect h-100">
                   <div className="vision-header">
-                    <h3 className="fs-26 fw-500 heading-color m-0">
+                    <h3 className="fs-26 fw-600 heading-color m-0">
                       {Page_OurVision?.data?.pageTitle?.[lang]}
                     </h3>
                     <div className="vision-icon">
@@ -282,7 +282,7 @@ function Director() {
                 </div>
                 <div className="vision-box mission-box theme-gray slow-effect hover-effect h-100">
                   <div className="vision-header">
-                    <h3 className="fs-26 fw-500 heading-color m-0">
+                    <h3 className="fs-26 fw-600 heading-color m-0">
                       {Page_OurMission?.data?.pageTitle?.[lang]}
                     </h3>
                     <div className="vision-icon">
@@ -302,7 +302,7 @@ function Director() {
                 </div>
                 <div className="vision-box mandate-box theme-gray slow-effect hover-effect h-100">
                   <div className="vision-header">
-                    <h3 className="fs-26 fw-500 heading-color m-0">
+                    <h3 className="fs-26 fw-600 heading-color m-0">
                       {Page_Mandate?.data?.pageTitle?.[lang]}
                     </h3>
                     <div className="vision-icon">
