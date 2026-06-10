@@ -114,7 +114,7 @@ function Home() {
           </div>
           <div className="container position-relative z_index1">
             <div className="row align-items-center gy-3">
-              <div className="col-lg-8">
+              <div className="col-lg-12">
                 <div className="section-heading">
                   <h2 className="section-title fs-48 fw-600 mb-2">
                     {lang === "hi"
@@ -124,11 +124,12 @@ function Home() {
                   <p className="section-text fs-20 secondry-text m-0">
                     {lang === "hi"
                       ? "संस्थान नवाचार, स्थिरता और वैज्ञानिक उत्कृष्टता के माध्यम से कृषि में सुधार हेतु अनेक अनुसंधान क्षेत्रों में कार्य करता है।"
-                      : "The institute works across multiple research areas to improve agriculture through innovation, sustainability, and scientific excellence."}
+                       
+                      : "Rapid advances in genomics, biotechnology, and molecular biology have transformed modern crop improvement strategies, enabling precise identification and utilization of genes associated with yield, stress tolerance, nutritional quality, and resistance to biotic and abiotic stresses. However, the growing challenges of climate change, emerging pathogens, shrinking genetic diversity, and increasing nutritional demands necessitate the integration of advanced omics technologies and innovative breeding approaches for sustainable agriculture. In this context, research at ICAR-National Institute for Plant Biotechnology, Delhi focuses on gene discovery, functional genomics, genome analysis, genetic modification, and metabolomic studies to harness the potential of crop plants, wild relatives, and beneficial microbes. These multidisciplinary approaches aim to accelerate crop improvement, enhance nutritional security, and support the development of climate-resilient and high-value agricultural systems.All the ongoing research programmes at ICAR-NIPB, Delhi are broadly categorized into four major groups based on their respective areas of research."}
                   </p>
                 </div>
               </div>
-              <div className="col-lg-4">
+              {/* <div className="col-lg-4">
                 <a
                   onClick={() => handlePageClick("6a11796cd5ca81e12de72558")}
                   className="common-btn btn-style-one ms-lg-auto"
@@ -140,13 +141,13 @@ function Home() {
                     <i className="fa-solid fa-arrow-right-long"></i>
                   </span>
                 </a>
-              </div>
+              </div> */}
             </div>
             <div className="row common-space row-gap">
               <div className="col-sm-6 col-xl-3">
                 <div className="research-box h-100 slow-effect hover-effect text-center">
                   <a className="research-links fs-22 fw-500 d-block" href="#">
-                    {lang === "hi" ? "फसल सुधार" : "Crop Improvement"}
+                    {lang === "hi" ? "जीन की खोज" : "Gene discovery"}
                   </a>
                   <div className="research-content">
                     <div className="research-image-area image-effect position-relative">
@@ -164,8 +165,8 @@ function Home() {
                 <div className="research-box h-100 slow-effect hover-effect text-center">
                   <a className="research-links fs-22 fw-500 d-block" href="#">
                     {lang === "hi"
-                      ? "पादप जैव प्रौद्योगिकी"
-                      : "Plant Biotechnology"}
+                      ? "आनुवंशिक संशोधन"
+                      : "Genetic modification"}
                   </a>
                   <div className="research-content">
                     <div className="research-image-area image-effect position-relative">
@@ -183,8 +184,8 @@ function Home() {
                 <div className="research-box h-100 slow-effect hover-effect text-center">
                   <a className="research-links fs-22 fw-500 d-block" href="#">
                     {lang === "hi"
-                      ? "जलवायु-स्मार्ट कृषि"
-                      : "Climate Smart Agriculture"}
+                      ? "जीनोम विश्लेषण"
+                      : "Genome analysis "}
                   </a>
                   <div className="research-content">
                     <div className="research-image-area image-effect position-relative">
@@ -202,8 +203,8 @@ function Home() {
                 <div className="research-box h-100 slow-effect hover-effect text-center">
                   <a className="research-links fs-22 fw-500 d-block" href="#">
                     {lang === "hi"
-                      ? "आनुवंशिक संसाधन संरक्षण"
-                      : "Genetic Resource Conservation"}
+                      ? "खोज के लिए पाथवे विश्लेषण"
+                      : " Pathway analysis for discovery"}
                   </a>
                   <div className="research-content">
                     <div className="research-image-area image-effect position-relative">

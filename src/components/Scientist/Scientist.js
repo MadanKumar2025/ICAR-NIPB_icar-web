@@ -33,6 +33,8 @@ function Scientist() {
   };
 
   const getData = async (apiName) => {
+    console.log("apiName",apiName);
+    
     try {
       const res = await axios.get(`${API_URL}/${apiName}`, {
         headers: {

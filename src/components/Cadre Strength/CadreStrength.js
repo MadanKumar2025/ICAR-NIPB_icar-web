@@ -60,6 +60,19 @@ function CadreStrength() {
     }
   }, [PageData]);
 
+  const totalSanctionedStrength = apiData?.reduce(
+    (sum, item) => sum + (Number(item?.sanctionedStrength) || 0),
+    0,
+  );
+  const totalfilled = apiData?.reduce(
+    (sum, item) => sum + (Number(item?.filled) || 0),
+    0,
+  );
+  const totalvacant = apiData?.reduce(
+    (sum, item) => sum + (Number(item?.vacant) || 0),
+    0,
+  );
+
   return (
     <div className="main-wrapper">
       {/* ================= SEO START ================= */}
@@ -139,16 +152,18 @@ function CadreStrength() {
                   <thead className="table-thead">
                     <tr>
                       <th className="table-title  fw-600 fs-20" scope="col">
-                       {lang === "hi" ? "क्रमांक" : "Sr.No."}
+                        {lang === "hi" ? "क्रमांक" : "Sr.No."}
                       </th>
                       <th className="table-title fw-600 fs-20" scope="col">
-                       {lang === "hi" ? "कर्मचारी" : "Staff"}
+                        {lang === "hi" ? "श्रेणी" : "Category"}
                       </th>
                       <th className="table-title fw-600 fs-20" scope="col">
-                       {lang === "hi" ? "स्वीकृत पद संख्या" : "Sanctioned strength"}
+                        {lang === "hi"
+                          ? "स्वीकृत पद संख्या"
+                          : "Sanctioned strength"}
                       </th>
                       <th className="table-title fw-600 fs-20" scope="col">
-                       {lang === "hi" ? "भरे हुए" : "Filled"}
+                        {lang === "hi" ? "भरे हुए" : "Filled"}
                       </th>
                       <th className="table-title fw-600 fs-20" scope="col">
                         {lang === "hi" ? "रिक्त" : "Vacant"}
@@ -167,12 +182,20 @@ function CadreStrength() {
                         </tr>
                       );
                     })}
+                    <tr>
+                      <th> </th>
+                      <td style={{fontWeight:"900"}}>Total</td>
+                      <td style={{fontWeight:"900"}}>{totalSanctionedStrength}</td>
+                      <td style={{fontWeight:"900"}}>{totalfilled}</td>
+                      <td style={{fontWeight:"900"}}>{totalvacant}</td>
+                    </tr>
                   </tbody>
-                  <tfoot className="table-tfoot"> 
+                  <tfoot className="table-tfoot">
                     <tr>
                       <td colSpan="5" className="text-end">
-                     {lang === "hi" ? "दिनांक 03.02.2022 तक" : "As on 03.02.2022"}
+                        {/* {lang === "hi" ? "दिनांक 03.02.2022 तक" : "As on 03.02.2022"} */}
                       </td>
+                     
                     </tr>
                   </tfoot>
                 </table>
