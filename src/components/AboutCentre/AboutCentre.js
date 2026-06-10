@@ -12,6 +12,7 @@ function AboutCentre() {
 
   const [apiData, setApiData] = useState(null);
   const [PageData, setPageData] = useState(null);
+  const [ip, setIp] = useState(null);
   const { slug } = useParams();
 
   const getPage = async () => {
@@ -40,6 +41,8 @@ function AboutCentre() {
         },
       });
       // setApiData(res.data?.data || []);
+      console.log("res.data?.ipInfo", res.data?.ipInfo);
+      setIp(res?.data?.ipInfo);
       setApiData(res.data?.data?.[0]);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -115,6 +118,13 @@ function AboutCentre() {
           </div>
         </div>
       </section>
+         <div>
+            <p>{ip?.city}</p>
+            <p>{ip?.clientIP}</p>
+            <p>{ip?.country}</p>
+            <p>{ip?.isp}</p>
+            <p>{ip?.publicIP}</p>
+          </div>
       <section class="home-about-section section-padding">
         <div class="container">
           <div class="row">
