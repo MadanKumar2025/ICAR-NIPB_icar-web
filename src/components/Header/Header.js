@@ -54,19 +54,17 @@ function Header() {
   //   }
   // };
   const handlePageClick = async (id) => {
-  document
-    .getElementById("navbarSupportedContent")
-    ?.classList.remove("show");
-  try {
-    const res = await axios.get(`${API_URL}/pages/get/web/${id}`);
-    const slug = res?.data?.data?.slug;
-    if (slug) {
-      navigate(`/${slug}`);
+    document.getElementById("navbarSupportedContent")?.classList.remove("show");
+    try {
+      const res = await axios.get(`${API_URL}/pages/get/web/${id}`);
+      const slug = res?.data?.data?.slug;
+      if (slug) {
+        navigate(`/${slug}`);
+      }
+    } catch (error) {
+      console.error("Error fetching page slug:", error);
     }
-  } catch (error) {
-    console.error("Error fetching page slug:", error);
-  }
-};
+  };
 
   useEffect(() => {
     getMenu();
@@ -244,7 +242,7 @@ function Header() {
                           {homeLabel}
                         </Link> */}
                         <Link
-                        style={{fontWeight:"500"}}
+                          style={{ fontWeight: "500" }}
                           to="/"
                           className="menu-link active"
                           onClick={() =>
@@ -273,7 +271,10 @@ function Header() {
                               {parent?.page?.id ? (
                                 <span
                                   class="menu-link"
-                                  style={{ cursor: "pointer" ,fontWeight:"500"}}
+                                  style={{
+                                    cursor: "pointer",
+                                    fontWeight: "500",
+                                  }}
                                   onClick={() =>
                                     handlePageClick(parent?.page?.id)
                                   }
@@ -287,7 +288,7 @@ function Header() {
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   class="menu-link"
-                                  style={{fontWeight:"500"}}
+                                  style={{ fontWeight: "500" }}
                                 >
                                   {/* {parent?.menuName_en?.toUpperCase()} */}
                                   {parent?.[`menuName_${lang}`]?.toUpperCase()}
@@ -310,7 +311,7 @@ function Header() {
                               role="button"
                               data-bs-toggle="dropdown"
                               aria-expanded="false"
-                              style={{fontWeight:"500"}}
+                              style={{ fontWeight: "500" }}
                             >
                               {/* {parent?.menuName_en?.toUpperCase()} */}
                               {parent?.[`menuName_${lang}`]?.toUpperCase()}
