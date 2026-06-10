@@ -118,13 +118,13 @@ function AboutCentre() {
           </div>
         </div>
       </section>
-         <div>
+         {/* <div>
             <p>{ip?.city}</p>
             <p>{ip?.clientIP}</p>
             <p>{ip?.country}</p>
             <p>{ip?.isp}</p>
             <p>{ip?.publicIP}</p>
-          </div>
+          </div> */}
       <section class="home-about-section section-padding">
         <div class="container">
           <div class="row">
