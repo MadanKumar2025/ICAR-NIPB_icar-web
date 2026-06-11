@@ -1,19 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import React from "react";
 import { useLanguage } from "../LanguageContext";
 import { Helmet } from "react-helmet-async";
 
-function Scientist() {
+function CommitteesDetails() {
   const API_URL = process.env.REACT_APP_API_URL;
   const IMG_BASE_URL = process.env.REACT_APP_API_BASE_URL_img;
   const { lang } = useLanguage();
 
   const [apiData, setApiData] = useState(null);
   const [PageData, setPageData] = useState(null);
-  const { slug } = useParams();
-  const navigate = useNavigate();
+  const { slug, id } = useParams();
 
   const getPage = async () => {
     if (!slug) return;
@@ -32,20 +31,17 @@ function Scientist() {
     }
   };
 
-  const getData = async (apiName) => {
-    console.log("apiName",apiName);
-    
+  const getData = async () => {
+    if (!id) return;
     try {
-      const res = await axios.get(`${API_URL}/${apiName}`, {
+      const res = await axios.get(`${API_URL}/CommitteesRoutes/get/web/${id}`, {
         headers: {
           "Cache-Control": "no-cache",
           Pragma: "no-cache",
         },
       });
-      const activeData = (res.data?.data || []).filter(
-        (item) => item.isActive === true,
-      );
-      setApiData(activeData);
+
+      setApiData(res.data?.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -56,28 +52,10 @@ function Scientist() {
   }, [slug]);
 
   useEffect(() => {
-    if (PageData?.apiName) {
-      getData(PageData?.apiName);
-    }
-  }, [PageData]);
+    getData();
+  }, [id]);
 
-  //This ID belongs to the page where I am sending it.
-  const handlePageClick = async (id) => {
-    try {
-      const res = await axios.get(
-        `${API_URL}/pages/get/web/69fc0b26a07edc05b03aca93`,
-      );
-
-      const slug = res?.data?.data?.slug;
-      if (slug) {
-        navigate(`/${slug}/${id}`);
-      }
-    } catch (error) {
-      console.error("Error fetching page slug:", error);
-    }
-  };
-
-  console.log("sass");
+  console.log("apiData",apiData?.content?.en);
   
   return (
     <div className="main-wrapper">
@@ -103,6 +81,7 @@ function Scientist() {
         />
       </Helmet>
       {/* ================= SEO END ================= */}
+
       <section
         className="banner-section position-relative"
         style={{
@@ -135,43 +114,27 @@ function Scientist() {
           </div>
         </div>
       </section>
-      <section className="staff-section section-padding">
+
+      <section className="disclaimer-section section-padding body-shape position-relative">
         <div className="container">
-          <div className="row common-space row-gap">
-            {apiData?.map((item, index) => {
-              return (
-                <div
-                  onClick={() => handlePageClick(item?.id)}
-                  key={index}
-                  className="col-sm-6 col-lg-4 col-xl-3 staff-col"
-                >
-                  <div className="team-item slow-effect h-100">
-                    <div className="team-image position-relative overflow-hidden">
-                      <figure className="image-anime m-0">
-                        <img
-                          className="slow-effect"
-                          src={`${IMG_BASE_URL}/${item?.photo}`}
-                          alt={item?.photoTitle}
-                        />
-                      </figure>
-                    </div>
-                    <div className="team-body">
-                      <div className="team-content">
-                        <h3
-                          className="team-member-name fs-20 fw-600"
-                          style={{ cursor: "pointer" }}
-                        >
-                          {item?.scientistName?.[lang]}
-                        </h3>
-                        <p className="desination-title fs-16 m-0">
-                          {item?.designation?.name?.[lang]}{" "}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+          <div class="content-wrapper">
+            <div className="row">
+              <div className="col-12">
+                <div className="section-heading mb-3">
+                  <h2 style={{textAlign:"center"}} className="section-title fs-48 fw-600 m-0">
+                    {apiData?.type?.[lang]} 
+                  </h2>
                 </div>
-              );
-            })}
+                <div className="disclaimer-text">
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: apiData?.content?.[lang],
+                    }}
+                  />
+                </div>
+                 
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -179,4 +142,4 @@ function Scientist() {
   );
 }
 
-export default Scientist;
+export default CommitteesDetails;

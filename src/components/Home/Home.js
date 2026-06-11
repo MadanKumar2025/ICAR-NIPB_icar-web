@@ -94,8 +94,6 @@ function Home() {
     }
   };
 
-  console.log("Popup", Popup);
-
   const publicationResearchTitle =
     lang === "hi" ? "प्रकाशन / अनुसंधान" : "Publication / Research";
   const instituteDescription =
@@ -123,9 +121,8 @@ function Home() {
                   </h2>
                   <p className="section-text fs-20 secondry-text m-0">
                     {lang === "hi"
-                      ? "संस्थान नवाचार, स्थिरता और वैज्ञानिक उत्कृष्टता के माध्यम से कृषि में सुधार हेतु अनेक अनुसंधान क्षेत्रों में कार्य करता है।"
-                       
-                      : "Rapid advances in genomics, biotechnology, and molecular biology have transformed modern crop improvement strategies, enabling precise identification and utilization of genes associated with yield, stress tolerance, nutritional quality, and resistance to biotic and abiotic stresses. However, the growing challenges of climate change, emerging pathogens, shrinking genetic diversity, and increasing nutritional demands necessitate the integration of advanced omics technologies and innovative breeding approaches for sustainable agriculture. In this context, research at ICAR-National Institute for Plant Biotechnology, Delhi focuses on gene discovery, functional genomics, genome analysis, genetic modification, and metabolomic studies to harness the potential of crop plants, wild relatives, and beneficial microbes. These multidisciplinary approaches aim to accelerate crop improvement, enhance nutritional security, and support the development of climate-resilient and high-value agricultural systems.All the ongoing research programmes at ICAR-NIPB, Delhi are broadly categorized into four major groups based on their respective areas of research."}
+                      ? "जीनोमिक्स और जैव प्रौद्योगिकी में तीव्र प्रगति ने फसल सुधार में क्रांतिकारी परिवर्तन किया है, जिससे उपज, तनाव सहनशीलता और पोषण गुणवत्ता से संबंधित जीनों की सटीक पहचान संभव हुई है। हालांकि, जलवायु परिवर्तन, उभरते रोगजनकों और घटती आनुवंशिक विविधता जैसी चुनौतियाँ उन्नत ओमिक्स तकनीकों और नवीन प्रजनन रणनीतियों के एकीकरण की मांग करती हैं। आईसीएआर-एनआईपीबी, दिल्ली में अनुसंधान का मुख्य केंद्र जीन खोज, क्रियात्मक जीनोमिक्स, जीनोम विश्लेषण, आनुवंशिक संशोधन और मेटाबोलोमिक्स पर है, ताकि फसलों की क्षमता और उनकी सहनशीलता को बढ़ाया जा सके।"
+                      : "Rapid advances in genomics and biotechnology have revolutionized crop improvement by enabling precise identification of genes for yield, stress tolerance, and nutritional quality. However, challenges such as climate change, emerging pathogens, and declining genetic diversity demand integration of advanced omics and innovative breeding strategies. Research at ICAR-NIPB, Delhi focuses on gene discovery, functional genomics, genome analysis, genetic modification, and metabolomics to enhance crop potential and resilience. "}
                   </p>
                 </div>
               </div>
@@ -164,9 +161,7 @@ function Home() {
               <div className="col-sm-6 col-xl-3">
                 <div className="research-box h-100 slow-effect hover-effect text-center">
                   <a className="research-links fs-22 fw-500 d-block" href="#">
-                    {lang === "hi"
-                      ? "आनुवंशिक संशोधन"
-                      : "Genetic modification"}
+                    {lang === "hi" ? "आनुवंशिक संशोधन" : "Genetic modification"}
                   </a>
                   <div className="research-content">
                     <div className="research-image-area image-effect position-relative">
@@ -183,9 +178,7 @@ function Home() {
               <div className="col-sm-6 col-xl-3">
                 <div className="research-box h-100 slow-effect hover-effect text-center">
                   <a className="research-links fs-22 fw-500 d-block" href="#">
-                    {lang === "hi"
-                      ? "जीनोम विश्लेषण"
-                      : "Genome analysis "}
+                    {lang === "hi" ? "जीनोम विश्लेषण" : "Genome analysis "}
                   </a>
                   <div className="research-content">
                     <div className="research-image-area image-effect position-relative">
@@ -561,7 +554,8 @@ function Home() {
                   </p>
                   <a href="#" className="common-btn btn-style-one mx-auto">
                     <span className="btn-static-text">
-                      {lang === "hi" ? "अनुसंधान देखें" : "Explore Research"}
+                      {/* {lang === "hi" ? "अनुसंधान देखें" : "Explore Research"} */}
+                      {lang === "hi" ? "देखें" : "Explore"}
                     </span>
                     <span className="btn-arrow">
                       <i className="fa-solid fa-arrow-right-long"></i>
@@ -586,7 +580,7 @@ function Home() {
                     className="common-btn btn-style-one mx-auto"
                   >
                     <span className="btn-static-text">
-                      {lang === "hi" ? "अनुसंधान देखें" : "Explore Research"}
+                      {lang === "hi" ? "देखें" : "Explore"}
                     </span>
                     <span className="btn-arrow">
                       <i className="fa-solid fa-arrow-right-long"></i>
@@ -611,7 +605,7 @@ function Home() {
                     className="common-btn btn-style-one mx-auto"
                   >
                     <span className="btn-static-text">
-                      {lang === "hi" ? "अनुसंधान देखें" : "Explore Research"}
+                      {lang === "hi" ? "देखें" : "Explore"}
                     </span>
                     <span className="btn-arrow">
                       <i className="fa-solid fa-arrow-right-long"></i>
@@ -636,7 +630,7 @@ function Home() {
                     className="common-btn btn-style-one mx-auto"
                   >
                     <span className="btn-static-text">
-                      {lang === "hi" ? "अनुसंधान देखें" : "Explore Research"}
+                      {lang === "hi" ? "देखें" : "Explore"}
                     </span>
                     <span className="btn-arrow">
                       <i className="fa-solid fa-arrow-right-long"></i>{" "}
@@ -663,7 +657,7 @@ function Home() {
                     className="common-btn btn-style-one mx-auto"
                   >
                     <span className="btn-static-text">
-                      {lang === "hi" ? "अनुसंधान देखें" : "Explore Research"}
+                      {lang === "hi" ? "देखें" : "Explore"}
                     </span>
                     <span className="btn-arrow">
                       <i className="fa-solid fa-arrow-right-long"></i>{" "}
@@ -688,7 +682,7 @@ function Home() {
                     className="common-btn btn-style-one mx-auto"
                   >
                     <span className="btn-static-text">
-                      {lang === "hi" ? "अनुसंधान देखें" : "Explore Research"}
+                      {lang === "hi" ? "देखें" : "Explore"}
                     </span>
                     <span className="btn-arrow">
                       <i className="fa-solid fa-arrow-right-long"></i>{" "}

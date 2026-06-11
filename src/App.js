@@ -23,6 +23,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import AllGallery from "./components/Album/AllGallery.js";
 import AlumniDetails from "./components/Alumni/AlumniDetails.js";
 import StaffDetails from "./components/Staff Details/StaffDetails.js";
+import CommitteesDetails from "./components/Committees/CommitteesDetails.js";
+import PublicationsYear from "./components/Research Publications/PublicationsYear.js";
 
 function AppContent() {
   const { theme } = useTheme();
@@ -58,6 +60,8 @@ function AppContent() {
           <Route path="/:slug/:id" element={<ScientistDetails />} />
           <Route path="/:slug/StaffDetails/:id" element={<StaffDetails />} />
           <Route path="/:slug/details/:id" element={<EventsDetails />} />
+          <Route path="/:slug/CommitteesDetails/:id" element={<CommitteesDetails />} />
+          <Route path="/:slug/:category/:id" element={<PublicationsYear />} />
         </Routes>
         <Footer />
       </div>

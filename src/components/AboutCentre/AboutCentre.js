@@ -118,7 +118,7 @@ function AboutCentre() {
           </div>
         </div>
       </section>
-         {/* <div>
+      {/* <div>
             <p>{ip?.city}</p>
             <p>{ip?.clientIP}</p>
             <p>{ip?.country}</p>

@@ -27,6 +27,7 @@ import Organogram from "./Organogram/Organogram";
 import Payment from "./Payment/Payment";
 import Feedback from "./Feedback/Feedback";
 import TrainingProgram from "./Training Program/TrainingProgram";
+import Committees from "./Committees/Committees";
 
 function DynamicRouter() {
   const { slug } = useParams();
@@ -135,6 +136,9 @@ function DynamicRouter() {
 
     case "Training Program":
       return <TrainingProgram />;
+
+    case "Committees":
+      return <Committees />;
 
     default:
       return <StaticContent />;

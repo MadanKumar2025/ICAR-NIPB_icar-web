@@ -1,23 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import React from "react";
 import { useLanguage } from "../LanguageContext";
 import { Helmet } from "react-helmet-async";
-import parse from "html-react-parser";
 
-function ResearchPublications() {
+function PublicationsYear() {
   const API_URL = process.env.REACT_APP_API_URL;
   const IMG_BASE_URL = process.env.REACT_APP_API_BASE_URL_img;
   const { lang } = useLanguage();
 
-  const [apiData, setApiData] = useState([]);
+  const [apiData, setApiData] = useState(null);
   const [PageData, setPageData] = useState(null);
-  const [selectedYear, setSelectedYear] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
-
-  const { slug } = useParams();
-  const navigate = useNavigate();
+  const { slug, id, category } = useParams();
 
   const getPage = async () => {
     if (!slug) return;
@@ -36,12 +31,11 @@ function ResearchPublications() {
     }
   };
 
-  const getData = async (apiName) => {
-    const result = apiName.split("/").pop();
-
+  const getData = async (category) => {
+    if (!id) return;
     try {
       const res = await axios.get(
-        `${API_URL}/PublicationsRoutes/get/web/${result}`,
+        `${API_URL}/PublicationsRoutes/get/web/${category}`,
         {
           headers: {
             "Cache-Control": "no-cache",
@@ -50,19 +44,7 @@ function ResearchPublications() {
         },
       );
 
-      const activeData = (res.data?.data || []).filter(
-        (item) => item.isActive === true,
-      );
-
-      setApiData(activeData);
-      //   latest year find
-      const latestYear = Math.max(...activeData.map((item) => item.year));
-      setSelectedYear(String(latestYear));
-      const defaultFiltered = activeData.filter(
-        (item) => item.year === latestYear,
-      );
-
-      setFilteredData(defaultFiltered);
+      setApiData(res.data?.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -73,30 +55,11 @@ function ResearchPublications() {
   }, [slug]);
 
   useEffect(() => {
-    if (PageData?.apiName) {
-      getData(PageData?.apiName);
+    if (category) {
+      getData(category);
     }
-  }, [PageData?.apiName]);
+  }, [id, category]);
 
-  const handleFilter = () => {
-    if (!selectedYear) {
-      setFilteredData(apiData);
-      return;
-    }
-
-    const filtered = apiData.filter(
-      (item) => String(item.year) === String(selectedYear),
-    );
-
-    setFilteredData(filtered);
-  };
-
-  const allowedPages = [
-    "Annual Report",
-    "Newsletters",
-    "Hindi Patrika",
-    "Others",
-  ];
   const handleDownload = async (e, fileUrl, fileName) => {
     e.stopPropagation();
 
@@ -125,21 +88,7 @@ function ResearchPublications() {
     }
   };
 
-  const handlePageClick = async (year, category) => {
-    try {
-      const res = await axios.get(
-        `${API_URL}/pages/get/web/6a2a90589f1cfc2feddfaef0`,
-      );
-
-      const slug = res?.data?.data?.slug;
-      if (slug) {
-        navigate(`/${slug}/${category}/${year}`);
-      }
-    } catch (error) {
-      console.error("Error fetching page slug:", error);
-    }
-  };
-
+ 
   return (
     <div className="main-wrapper">
       {/* ================= SEO START ================= */}
@@ -179,7 +128,8 @@ function ResearchPublications() {
             <div className="col-12">
               <div className="banner-title z_index1">
                 <h1 className="banner-slider-title fw-500 text-white">
-                  {PageData?.pageTitle?.[lang]}
+                  {/* {PageData?.pageTitle?.[lang]}  */}
+                  {category} {id}
                 </h1>
                 <ul className="breadcrumb-area m-0 p-0">
                   <li>
@@ -189,7 +139,8 @@ function ResearchPublications() {
                     <i className="fa-solid fa-angle-right"></i>
                   </li>
                   <li className="breadcrumb-title">
-                    {PageData?.pageTitle?.[lang]}
+                    {/* {PageData?.pageTitle?.[lang]} */}
+                    {category} {id}
                   </li>
                 </ul>
               </div>
@@ -197,59 +148,13 @@ function ResearchPublications() {
           </div>
         </div>
       </section>
-      {apiData?.[0]?.category !== "Forms" && (
-        <section className="institute-section position-relative overflow-hidden section-padding">
-          <div className="institute-top-shape">
-            <img src="images/shape/shape2_right.png" alt="" />
-          </div>
-          <div className="container position-relative z_index1">
-            <div className="row common-space row-gap institute-row">
-              {apiData?.[0]?.category !== "Forms" &&
-                [...new Set(apiData?.map((item) => item.year))]
-                  ?.sort((a, b) => b - a)
-                  ?.map((year, index) => {
-                    return (
-                      <div
-                        key={index}
-                        onClick={() =>
-                          handlePageClick(year, apiData?.[0]?.category)
-                        }
-                        className="col-sm-6 col-lg-3 institute-col"
-                      >
-                        <div className="institute-box text-center h-100 slow-effect hover-effect">
-                          <p className="institute-title fs-30 fw-500 d-block">
-                            {year}
-                          </p>
-
-                          <a
-                            href="#"
-                            className="common-btn btn-style-one mx-auto"
-                          >
-                            <span className="btn-static-text">
-                              {lang === "hi" ? "देखें" : "Explore"}
-                            </span>
-                            <span className="btn-arrow">
-                              <i className="fa-solid fa-arrow-right-long"></i>
-                            </span>
-                          </a>
-                        </div>
-                      </div>
-                    );
-                  })}
-            </div>
-          </div>
-          <div className="institute-bottom-shape">
-            <img src="images/shape/shape2_left.png" alt="" />
-          </div>
-        </section>
-      )}
-      {/* .list-details .fa-circle-check */}
       <section className="institution-section body-shape section-padding">
         <div className="container">
           <div className="row row-gap">
             <div className="col-12">
-              {apiData?.[0]?.category === "Forms" &&
-                apiData?.map((item, index) => {
+              {apiData
+                ?.filter((item) => item?.year == id)
+                ?.map((item, index) => {
                   const fileUrl = item?.file
                     ? `${IMG_BASE_URL}/files/${item.file}`
                     : null;
@@ -270,6 +175,7 @@ function ResearchPublications() {
                             <i className="fa-solid fa-circle-check fs-22"></i>
                           </div>
 
+                          {/* Title */}
                           <p
                             className="title-name m-0 fw-600 fs-16 slow-effect"
                             dangerouslySetInnerHTML={{
@@ -288,6 +194,7 @@ function ResearchPublications() {
                                 marginTop: "8px",
                                 padding: "6px 12px",
                                 border: "none",
+                                // background: "#007bff",
                                 color: "white",
                                 borderRadius: "4px",
                                 cursor: "pointer",
@@ -302,6 +209,55 @@ function ResearchPublications() {
                     </div>
                   );
                 })}
+              {/* {apiData?.map((item, index) => {
+                const fileUrl = item?.file
+                  ? `${IMG_BASE_URL}/files/${item.file}`
+                  : null;
+
+                return (
+                  <div
+                    key={item?.id || index}
+                    style={{
+                      padding: "1vw",
+                      backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#ffffff",
+                      color: "black",
+                    }}
+                  >
+                    <div className="list-details listing-download-list">
+                      <div className="list-data">
+                        <div className="sr-number">
+                          <i className="fa-solid fa-circle-check fs-22"></i>
+                        </div>
+
+                        <p
+                          className="title-name m-0 fw-600 fs-16 slow-effect"
+                          dangerouslySetInnerHTML={{
+                            __html: item?.title?.[lang],
+                          }}
+                        />
+                      </div>
+
+                      <div className="download-btn md-ms-auto">
+                        {fileUrl && (
+                          <button
+                            style={{
+                              marginTop: "8px",
+                              padding: "6px 12px",
+                              border: "none",
+                              color: "white",
+                              borderRadius: "4px",
+                              cursor: "pointer",
+                            }}
+                            className="theme-bg"
+                          >
+                            Download File
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })} */}
             </div>
           </div>
         </div>
@@ -310,4 +266,4 @@ function ResearchPublications() {
   );
 }
 
-export default ResearchPublications;
+export default PublicationsYear;
