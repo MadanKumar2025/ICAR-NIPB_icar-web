@@ -23,6 +23,10 @@ function AlumniForm({}) {
     instagram: "",
     photoTitle: "",
     photo: "",
+    passOutYear: "",
+    designation_en: "",
+    designation_hi: "",
+    mobile: "",
     isApproved: true,
   });
 
@@ -64,6 +68,10 @@ function AlumniForm({}) {
       formData.append("name_en", data?.name_en || "");
       formData.append("name_hi", data?.name_hi || "");
       formData.append("email", data?.email || "");
+      formData.append("passOutYear", data?.passOutYear || "");
+      formData.append("designation_en", data?.designation_en || "");
+      formData.append("designation_hi", data?.designation_hi || "");
+      formData.append("mobile", data?.mobile || "");
       formData.append("batch_en", data?.batch_en || "");
       formData.append("batch_hi", data?.batch_hi || "");
       formData.append("degree_en", data?.degree_en || "");
@@ -151,7 +159,7 @@ function AlumniForm({}) {
       isApproved: true,
     });
     setPreview(null);
-    navigate(-1)
+    navigate(-1);
   };
   console.log("data", data);
 
@@ -174,7 +182,10 @@ function AlumniForm({}) {
                   <div className="card-body">
                     <div className="row g-3">
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Name (English)
                         </label>
                         <input
@@ -188,7 +199,10 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Name (Hindi)
                         </label>
                         <input
@@ -202,7 +216,10 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Email
                         </label>
                         <input
@@ -216,7 +233,75 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
+                          Mobile
+                        </label>
+                        <input
+                          type="number"
+                          name="mobile"
+                          value={data?.mobile}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="mobile"
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
+                          Pass Out Year
+                        </label>
+                        <input
+                          type="number"
+                          name="passOutYear"
+                          value={data?.passOutYear}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="passOutYear"
+                          required
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
+                          Designation (English)
+                        </label>
+                        <input
+                          type="text"
+                          name="designation_en"
+                          value={data?.designation_en}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="designation_en"
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
+                          Designation (Hindi)
+                        </label>
+                        <input
+                          type="text"
+                          name="designation_hi"
+                          value={data?.designation_hi}
+                          onChange={handleChange}
+                          className="form-control"
+                          id="designation_hi"
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Batch (English)
                         </label>
                         <input
@@ -230,7 +315,10 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Batch (Hindi)
                         </label>
                         <input
@@ -244,7 +332,10 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Degree Name (English)
                         </label>
                         <input
@@ -258,7 +349,10 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Degree Name (Hindi)
                         </label>
                         <input
@@ -272,7 +366,10 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Profile Link
                         </label>
                         <input
@@ -285,7 +382,10 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Facebook
                         </label>
                         <input
@@ -298,7 +398,10 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Twitter
                         </label>
                         <input
@@ -311,7 +414,10 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           You Tube
                         </label>
                         <input
@@ -324,7 +430,10 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Linkedin
                         </label>
                         <input
@@ -337,7 +446,10 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Instagram
                         </label>
                         <input
@@ -350,7 +462,10 @@ function AlumniForm({}) {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom02" className="form-label">
+                        <label
+                          htmlFor="validationCustom02"
+                          className="form-label"
+                        >
                           Photo Title
                         </label>
                         <input
@@ -376,7 +491,10 @@ function AlumniForm({}) {
                         </select>
                       </div> */}
                       <div className="col-md-6">
-                        <label htmlFor="validationCustom05" className="form-label">
+                        <label
+                          htmlFor="validationCustom05"
+                          className="form-label"
+                        >
                           Photo
                         </label>
                         <div className="d-flex">
@@ -411,7 +529,9 @@ function AlumniForm({}) {
                     className="d-flex justify-content-between"
                   >
                     <div className="Alumni-create ">
-                      <button className="save-btn" type="submit">Save</button>
+                      <button className="save-btn" type="submit">
+                        Save
+                      </button>
                     </div>
                     {/* <div className="Alumni-create ">
                       <button onClick={handleClose}>Close</button>
@@ -419,7 +539,7 @@ function AlumniForm({}) {
                   </div>
                 </form>
               </div>
-               </div>
+            </div>
           </div>
         </div>
       </div>

@@ -57,6 +57,8 @@ function AlumniDetails() {
     }
   }, [id, PageData?.apiName]);
 
+  console.log("apiData", apiData);
+
   return (
     <div className="main-wrapper">
       {/* ================= SEO START ================= */}
@@ -126,8 +128,8 @@ function AlumniDetails() {
             <div className="col-md-5 col-lg-3 hover-effect">
               <div className="desk-image-area image-effect  position-relative">
                 <div className="inner-desk-area">
-                  <img 
-                  style={{height:"300px",objectFit:"contain"}}
+                  <img
+                    style={{ height: "300px", objectFit: "contain" }}
                     src={`${IMG_BASE_URL}/${apiData?.photo}`}
                     alt={apiData?.photoTitle}
                   />
@@ -155,15 +157,30 @@ function AlumniDetails() {
                   </div>
 
                   <div className="education-box">
-                    <div className="education-title fw-600 fs-16 theme-color mb-2">
+                   {apiData?.email && ( <div className="education-title fw-600 fs-16 theme-color mb-2">
                       Email : {apiData?.email}
-                    </div>
-                    <div className="education-title fw-600 fs-16 theme-color mb-2">
-                      Degree : {apiData?.degree?.[lang]}
-                    </div>
-                    <div className="education-title fw-600 fs-16 theme-color mb-2">
-                      Batch : {apiData?.batch?.[lang]}
-                    </div>
+                    </div>  )}
+                   {apiData?.mobile && ( <div className="education-title fw-600 fs-16 theme-color mb-2">
+                      Mobile : {apiData?.mobile}
+                    </div>  )}
+                   {apiData?.passOutYear && ( <div className="education-title fw-600 fs-16 theme-color mb-2">
+                      Pass Out Year : {apiData?.passOutYear}
+                    </div>  )}
+                    {apiData?.batch?.[lang] && (
+                      <div className="education-title fw-600 fs-16 theme-color mb-2">
+                        Degree : {apiData?.degree?.[lang]}
+                      </div>
+                    )}
+                    {apiData?.batch?.[lang] && (
+                      <div className="education-title fw-600 fs-16 theme-color mb-2">
+                        Batch : {apiData?.batch?.[lang]}
+                      </div>
+                    )}
+                    {apiData?.designation?.[lang] && (
+                      <div className="education-title fw-600 fs-16 theme-color mb-2">
+                        Designation : {apiData?.designation?.[lang]}
+                      </div>
+                    )}
                     <div className="education-details">
                       <p className="mb-1 fs-16">
                         {/* <i className="fa-solid fa-mars-stroke-right theme-color fs-16 position-relative"></i> */}

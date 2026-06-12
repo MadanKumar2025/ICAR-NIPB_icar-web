@@ -44,8 +44,6 @@ function Home() {
   };
 
   const showPopupsOneByOne = async (data) => {
-    console.log("data", data);
-
     for (const item of data) {
       await new Promise((resolve) => {
         Swal.fire({
@@ -576,7 +574,8 @@ function Home() {
                     {lang === "hi" ? "कर्मचारी कोना" : "Staff Corner"}{" "}
                   </p>
                   <Link
-                    onClick={() => handlePageClick("69fec96a5dda769842169c67")}
+                    // onClick={() => handlePageClick("69fec96a5dda769842169c67")}
+                    onClick={() => handlePageClick("6a1150b0d5ca81e12de702d4")}
                     className="common-btn btn-style-one mx-auto"
                   >
                     <span className="btn-static-text">

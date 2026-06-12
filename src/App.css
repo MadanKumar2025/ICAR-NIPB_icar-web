@@ -153,3 +153,8 @@ tbody td:nth-child(3) {
    min-height: 500px;
 }
 }
+
+.active-tab {
+  background-color: blue !important;
+  color: white;
+}

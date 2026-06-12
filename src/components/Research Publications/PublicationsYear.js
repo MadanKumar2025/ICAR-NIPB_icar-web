@@ -13,6 +13,7 @@ function PublicationsYear() {
   const [apiData, setApiData] = useState(null);
   const [PageData, setPageData] = useState(null);
   const { slug, id, category } = useParams();
+  const [activeType, setActiveType] = useState("Research Articles");
 
   const getPage = async () => {
     if (!slug) return;
@@ -88,7 +89,8 @@ function PublicationsYear() {
     }
   };
 
- 
+  console.log("apiData", apiData);
+
   return (
     <div className="main-wrapper">
       {/* ================= SEO START ================= */}
@@ -148,68 +150,112 @@ function PublicationsYear() {
           </div>
         </div>
       </section>
-      <section className="institution-section body-shape section-padding">
-        <div className="container">
-          <div className="row row-gap">
-            <div className="col-12">
-              {apiData
-                ?.filter((item) => item?.year == id)
-                ?.map((item, index) => {
-                  const fileUrl = item?.file
-                    ? `${IMG_BASE_URL}/files/${item.file}`
-                    : null;
 
-                  return (
-                    <div
-                      key={item?.id || index}
-                      style={{
-                        padding: "1vw",
-                        backgroundColor:
-                          index % 2 === 0 ? "#f2f2f2" : "#ffffff",
-                        color: "black",
-                      }}
-                    >
-                      <div className="list-details listing-download-list">
-                        <div className="list-data">
-                          <div className="sr-number">
-                            <i className="fa-solid fa-circle-check fs-22"></i>
+      {category === "ResearchPublications" && (
+        <>
+          <div className="container mt-5">
+            <div
+              className="d-flex justify-content-between w-100"
+              style={{ height: "50px" }}
+            >
+              <button
+                style={{ color: "white" }}
+                onClick={() => setActiveType("Research Articles")}
+                type="button"
+                className={`btn flex-fill me-2 ${
+                  activeType === "Research Articles" ? "active-tab" : "theme-bg"
+                }`}
+              >
+                Research Articles
+              </button>
+              <button
+                style={{ color: "white" }}
+                onClick={() => setActiveType("Review Articles")}
+                type="button"
+                className={`btn flex-fill me-2 ${
+                  activeType === "Review Articles" ? "active-tab" : "theme-bg"
+                }`}
+              >
+                Review Articles
+              </button>
+              <button
+                style={{ color: "white" }}
+                onClick={() => setActiveType("Book chapters")}
+                type="button"
+                className={`btn flex-fill me-2 ${
+                  activeType === "Book chapters" ? "active-tab" : "theme-bg"
+                }`}
+              >
+                Book chapters
+              </button>
+            </div>
+          </div>
+          <section className="institution-section body-shape section-padding">
+            <div className="container">
+              <div className="row row-gap">
+                <div className="col-12">
+                  {apiData
+                    ?.filter(
+                      (item) =>
+                        item?.year == id &&
+                        item?.articleType?.en === activeType,
+                    )
+                    ?.map((item, index) => {
+                      const fileUrl = item?.file
+                        ? `${IMG_BASE_URL}/files/${item.file}`
+                        : null;
+
+                      return (
+                        <div
+                          key={item?.id || index}
+                          style={{
+                            padding: "1vw",
+                            backgroundColor:
+                              index % 2 === 0 ? "#f2f2f2" : "#ffffff",
+                            color: "black",
+                          }}
+                        >
+                          <div className="list-details listing-download-list">
+                            <div className="list-data">
+                              <div className="sr-number">
+                                <i className="fa-solid fa-circle-check fs-22"></i>
+                              </div>
+
+                              {/* Title */}
+                              <p
+                                className="title-name m-0 fw-600 fs-16 slow-effect"
+                                dangerouslySetInnerHTML={{
+                                  __html: item?.title?.[lang],
+                                }}
+                              />
+                            </div>
+
+                            <div className="download-btn md-ms-auto">
+                              {fileUrl && (
+                                <button
+                                  onClick={(e) =>
+                                    handleDownload(e, fileUrl, item.file)
+                                  }
+                                  style={{
+                                    marginTop: "8px",
+                                    padding: "6px 12px",
+                                    border: "none",
+                                    // background: "#007bff",
+                                    color: "white",
+                                    borderRadius: "4px",
+                                    cursor: "pointer",
+                                  }}
+                                  className="theme-bg"
+                                >
+                                  Download File
+                                </button>
+                              )}
+                            </div>
                           </div>
-
-                          {/* Title */}
-                          <p
-                            className="title-name m-0 fw-600 fs-16 slow-effect"
-                            dangerouslySetInnerHTML={{
-                              __html: item?.title?.[lang],
-                            }}
-                          />
                         </div>
-
-                        <div className="download-btn md-ms-auto">
-                          {fileUrl && (
-                            <button
-                              onClick={(e) =>
-                                handleDownload(e, fileUrl, item.file)
-                              }
-                              style={{
-                                marginTop: "8px",
-                                padding: "6px 12px",
-                                border: "none",
-                                // background: "#007bff",
-                                color: "white",
-                                borderRadius: "4px",
-                                cursor: "pointer",
-                              }}
-                              className="theme-bg"
-                            >
-                              Download File
-                            </button>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              {/* {apiData?.map((item, index) => {
+                      );
+                    })}
+                  {/* {apiData?.map((item, index) => {
                 const fileUrl = item?.file
                   ? `${IMG_BASE_URL}/files/${item.file}`
                   : null;
@@ -258,10 +304,130 @@ function PublicationsYear() {
                   </div>
                 );
               })} */}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        </>
+      )}
+      {category !== "ResearchPublications" && (
+        <>
+          <section className="institution-section body-shape section-padding">
+            <div className="container">
+              <div className="row row-gap">
+                <div className="col-12">
+                  {apiData
+                    ?.filter((item) => item?.year == id)
+                    ?.map((item, index) => {
+                      const fileUrl = item?.file
+                        ? `${IMG_BASE_URL}/files/${item.file}`
+                        : null;
+
+                      return (
+                        <div
+                          key={item?.id || index}
+                          style={{
+                            padding: "1vw",
+                            backgroundColor:
+                              index % 2 === 0 ? "#f2f2f2" : "#ffffff",
+                            color: "black",
+                          }}
+                        >
+                          <div className="list-details listing-download-list">
+                            <div className="list-data">
+                              <div className="sr-number">
+                                <i className="fa-solid fa-circle-check fs-22"></i>
+                              </div>
+
+                              {/* Title */}
+                              <p
+                                className="title-name m-0 fw-600 fs-16 slow-effect"
+                                dangerouslySetInnerHTML={{
+                                  __html: item?.title?.[lang],
+                                }}
+                              />
+                            </div>
+
+                            <div className="download-btn md-ms-auto">
+                              {fileUrl && (
+                                <button
+                                  onClick={(e) =>
+                                    handleDownload(e, fileUrl, item.file)
+                                  }
+                                  style={{
+                                    marginTop: "8px",
+                                    padding: "6px 12px",
+                                    border: "none",
+                                    // background: "#007bff",
+                                    color: "white",
+                                    borderRadius: "4px",
+                                    cursor: "pointer",
+                                  }}
+                                  className="theme-bg"
+                                >
+                                  Download File
+                                </button>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  {/* {apiData?.map((item, index) => {
+                const fileUrl = item?.file
+                  ? `${IMG_BASE_URL}/files/${item.file}`
+                  : null;
+
+                return (
+                  <div
+                    key={item?.id || index}
+                    style={{
+                      padding: "1vw",
+                      backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#ffffff",
+                      color: "black",
+                    }}
+                  >
+                    <div className="list-details listing-download-list">
+                      <div className="list-data">
+                        <div className="sr-number">
+                          <i className="fa-solid fa-circle-check fs-22"></i>
+                        </div>
+
+                        <p
+                          className="title-name m-0 fw-600 fs-16 slow-effect"
+                          dangerouslySetInnerHTML={{
+                            __html: item?.title?.[lang],
+                          }}
+                        />
+                      </div>
+
+                      <div className="download-btn md-ms-auto">
+                        {fileUrl && (
+                          <button
+                            style={{
+                              marginTop: "8px",
+                              padding: "6px 12px",
+                              border: "none",
+                              color: "white",
+                              borderRadius: "4px",
+                              cursor: "pointer",
+                            }}
+                            className="theme-bg"
+                          >
+                            Download File
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })} */}
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
     </div>
   );
 }

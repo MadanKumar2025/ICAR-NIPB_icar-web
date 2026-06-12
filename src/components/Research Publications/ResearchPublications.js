@@ -140,6 +140,7 @@ function ResearchPublications() {
     }
   };
 
+  
   return (
     <div className="main-wrapper">
       {/* ================= SEO START ================= */}
@@ -199,9 +200,9 @@ function ResearchPublications() {
       </section>
       {apiData?.[0]?.category !== "Forms" && (
         <section className="institute-section position-relative overflow-hidden section-padding">
-          <div className="institute-top-shape">
+          {/* <div className="institute-top-shape">
             <img src="images/shape/shape2_right.png" alt="" />
-          </div>
+          </div> */}
           <div className="container position-relative z_index1">
             <div className="row common-space row-gap institute-row">
               {apiData?.[0]?.category !== "Forms" &&
@@ -238,9 +239,9 @@ function ResearchPublications() {
                   })}
             </div>
           </div>
-          <div className="institute-bottom-shape">
+          {/* <div className="institute-bottom-shape">
             <img src="images/shape/shape2_left.png" alt="" />
-          </div>
+          </div> */}
         </section>
       )}
       {/* .list-details .fa-circle-check */}
