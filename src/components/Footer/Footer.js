@@ -268,6 +268,17 @@ function Footer() {
                       {organization?.email2}
                     </a>
                   </div>
+                  {organization?.googleMapLink && (
+                    <iframe
+                      src={organization.googleMapLink}
+                      width="100%"
+                      height="300"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      title="Google Map"
+                    ></iframe>
+                  )}
                 </div>
               </div>
             </div>

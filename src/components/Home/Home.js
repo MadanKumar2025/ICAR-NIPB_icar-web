@@ -437,7 +437,7 @@ function Home() {
                             className="counter fs-30 fw-600 mb-0"
                             data-target="300"
                           >
-                            0
+                            41
                           </h2>
                           <span>+</span>
                         </div>
@@ -460,7 +460,7 @@ function Home() {
                             className="counter fs-30 fw-600 mb-0"
                             data-target="150"
                           >
-                            0
+                            46
                           </h2>
                           <span>+</span>
                         </div>
@@ -483,7 +483,7 @@ function Home() {
                             className="counter fs-30 fw-600 mb-0"
                             data-target="300"
                           >
-                            0
+                            2000 
                           </h2>
                           <span>+</span>
                         </div>

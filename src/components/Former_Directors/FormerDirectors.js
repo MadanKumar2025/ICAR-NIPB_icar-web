@@ -62,6 +62,8 @@ function FormerDirectors() {
     }
   }, [PageData]);
 
+  console.log("apiData", apiData?.webAddress);
+
   return (
     <div className="main-wrapper">
       {/* ================= SEO START ================= */}
@@ -133,7 +135,9 @@ function FormerDirectors() {
           <div className="row row-gap">
             {apiData?.map((item, index) => {
               return (
-                <div
+                <a
+                  href={item?.webAddress}
+                  target="_blank"
                   key={index}
                   className="col-sm-6 col-md-4 col-lg-3 directors-col"
                 >
@@ -158,7 +162,7 @@ function FormerDirectors() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               );
             })}
           </div>
