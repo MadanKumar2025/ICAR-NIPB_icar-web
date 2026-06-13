@@ -69,7 +69,7 @@ function Patents() {
     (item) => item?.type?.en === "Patents Obtained",
   );
 
-  console.log("patentApplicationsFiled", patentApplicationsFiled);
+  console.log("patentsObtained", patentsObtained);
 
   return (
     <div className="main-wrapper">
@@ -134,7 +134,7 @@ function Patents() {
           <div className="row row-gap">
             {patentApplicationsFiled?.length > 0 && (
               <>
-                {" "}
+                 
                 <div className="col-12">
                   <div class="section-heading">
                     <h2 class="section-title fs-48 fw-600 m-0">
@@ -168,7 +168,7 @@ function Patents() {
                 </div>
               </>
             )}
-            {patentApplicationsFiled?.length > 0 && (
+            {patentsObtained?.length > 0 && (
               <>
                 <div className="col-12">
                   <div class="section-heading">
@@ -196,7 +196,7 @@ function Patents() {
                       );
                     })}
                   </div>
-                </div>{" "}
+                </div> 
               </>
             )}
           </div>
