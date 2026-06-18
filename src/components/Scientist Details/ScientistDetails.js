@@ -1,3 +1,4 @@
+"use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -14,7 +15,7 @@ function ScientistDetails() {
   const [PageData, setPageData] = useState(null);
   const { slug, id } = useParams();
 
-  
+
   const getPage = async () => {
     if (!slug) return;
 
@@ -47,6 +48,8 @@ function ScientistDetails() {
       console.error("Error fetching data:", error);
     }
   };
+  // Add const tab
+  const [activeTab, setActiveTab] = useState("customTap1");
 
   useEffect(() => {
     getPage();
@@ -223,156 +226,231 @@ function ScientistDetails() {
         <div className="container">
           <div className="row">
             <div className="col-12 mt-3">
-              <div className="common-content-area research-column">
-                {apiData?.researchInterest?.[lang] && (
-                  <div className="publications-column">
-                    <h5 className="box-type-title fs-24 fw-600 theme-color">
-                      Research Area
-                    </h5>
-                    <div className="publications-info-box">
-                      <p
-                        className="fs-16"
-                        dangerouslySetInnerHTML={{
-                          __html: apiData?.researchInterest?.[lang],
-                        }}
-                      />
-                    </div>
+              <div className="common-content-area research-column tab-wrapper bg-white p-0 border-0">
+                <div className="theme-tab-panel">
+                  <div className="taps theme-tabs">
+                    <button
+                      className={`tab-btn-title ${activeTab === "customTap1" ? "active" : ""}`}
+                      onClick={() => setActiveTab("customTap1")}
+                    >
+                     <span> Research Interest</span>
+                    </button>
+
+                    <button
+                      className={`tab-btn-title ${activeTab === "customTap2" ? "active" : ""}`}
+                      onClick={() => setActiveTab("customTap2")}
+                    >
+                      <span>Publications</span>
+                    </button>
+
+                    <button
+                      className={`tab-btn-title ${activeTab === "customTap3" ? "active" : ""}`}
+                      onClick={() => setActiveTab("customTap3")}
+                    >
+                     <span> IPR</span>
+                    </button>
+
+                    <button
+                      className={`tab-btn-title ${activeTab === "customTap4" ? "active" : ""}`}
+                      onClick={() => setActiveTab("customTap4")}
+                    >
+                     <span> Awards</span>
+                    </button>
+
+                    <button
+                      className={`tab-btn-title ${activeTab === "customTap5" ? "active" : ""}`}
+                      onClick={() => setActiveTab("customTap5")}
+                    >
+                      <span>Externally Funded Projects</span>
+                    </button>
+                    <button
+                      className={`tab-btn-title ${activeTab === "customTap6" ? "active" : ""}`}
+                      onClick={() => setActiveTab("customTap6")}
+                    >
+                      <span>Lab Profile and lab photo</span>
+                    </button>
                   </div>
-                )}
-                {apiData?.publications?.[lang] && (
-                  <div className="publications-column">
-                    <h5 className="box-type-title fs-24 fw-600 theme-color">
-                      publications
-                    </h5>
-                    <div className="publications-info-box">
-                      <p
-                        className="fs-16"
-                        dangerouslySetInnerHTML={{
-                          __html: apiData?.publications?.[lang],
-                        }}
-                      />
-                    </div>
+                  <div className="tab-content p-3">
+                    {activeTab === "customTap1" && (
+                      <div className="tabs-content">
+
+                        {apiData?.researchInterest?.[lang] && (
+                          <div className="publications-column">
+                            <h5 className="box-type-title fs-24 fw-600 theme-color">
+                              Research Area
+                            </h5>
+                            <div className="publications-info-box">
+                              <p
+                                className="fs-16"
+                                dangerouslySetInnerHTML={{
+                                  __html: apiData?.researchInterest?.[lang],
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {activeTab === "customTap2" && (
+                      <div className="tabs-content">
+                        {apiData?.publications?.[lang] && (
+                          <div className="publications-column">
+                            <h5 className="box-type-title fs-24 fw-600 theme-color">
+                              Publications
+                            </h5>
+                            <div className="publications-info-box">
+                              <p
+                                className="fs-16"
+                                dangerouslySetInnerHTML={{
+                                  __html: apiData?.publications?.[lang],
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {activeTab === "customTap3" && (
+                      <div className="tabs-content">
+                        {apiData?.IPR?.[lang] && (
+                          <div className="publications-column">
+                            <h5 className="box-type-title fs-24 fw-600 theme-color">
+                              IPR
+                            </h5>
+                            <div className="publications-info-box">
+                              <p
+                                className="fs-16"
+                                dangerouslySetInnerHTML={{
+                                  __html: apiData?.IPR?.[lang],
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    {activeTab === "customTap4" && (
+                      <div className="tabs-content">
+                        {apiData?.awards?.[lang] && (
+                          <div className="publications-column">
+                            <h5 className="box-type-title fs-24 fw-600 theme-color">
+                              Awards
+                            </h5>
+                            <div className="publications-info-box">
+                              <p
+                                className="fs-16"
+                                dangerouslySetInnerHTML={{
+                                  __html: apiData?.awards?.[lang],
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    {activeTab === "customTap5" && (
+                      <div className="tabs-content">
+                        {apiData?.externallyFundedProjects?.[lang] && (
+                          <div className="publications-column">
+                            <h5 className="box-type-title fs-24 fw-600 theme-color">
+                              Externally Funded Projects{" "}
+                            </h5>
+                            <div className="publications-info-box">
+                              <p
+                                className="fs-16"
+                                dangerouslySetInnerHTML={{
+                                  __html: apiData?.externallyFundedProjects?.[lang],
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    {activeTab === "customTap6" && (
+                      <div className="tabs-content">
+                        {apiData?.labProfile.length > 1 && (
+                          <div className="lab-table">
+                            <div className="section-heading">
+                              <h5 className="box-type-title fs-24 fw-600 theme-color">
+                                Lab Profile and lab photo
+                              </h5>
+                            </div>
+                            <div className="table-listing table-responsive">
+                              <table className="table mb-0">
+                                <thead className="table-thead">
+                                  <tr>
+                                    <th className="table-title fw-600 fs-20" scope="col">
+                                      Sr. No.
+                                    </th>
+                                    <th className="table-title fw-600 fs-20" scope="col">
+                                      Name
+                                    </th>
+                                    <th className="table-title fw-600 fs-20" scope="col">
+                                      Position
+                                    </th>
+                                    <th className="table-title fw-600 fs-20" scope="col">
+                                      Duration
+                                    </th>
+                                    <th className="table-title fw-600 fs-20" scope="col">
+                                      Project
+                                    </th>
+                                    <th className="table-title fw-600 fs-20" scope="col">
+                                      Photo
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody className="table-body">
+                                  {apiData?.labProfile?.map((item, index) => {
+                                    return (
+                                      <tr key={index}>
+                                        <th scope="row" className="w-10">
+                                          {index + 1}
+                                        </th>
+                                        <td className="w-18 text-wrap">
+                                          {item?.name?.[lang]}
+                                        </td>
+                                        <td className="w-18 text-wrap">
+                                          {item?.position?.[lang]}
+                                        </td>
+                                        <td className="w-18 text-wrap">
+                                          {item?.duration?.[lang]}
+                                        </td>
+                                        <td className="w-18 text-wrap">
+                                          {item?.project?.[lang]}
+                                        </td>
+
+                                        <td className="w-18 ">
+                                          {item?.photo1 && (
+                                            <img
+                                              className="table-lab-photo"
+                                              src={`${IMG_BASE_URL}/${item?.photo1}`}
+                                              alt={item?.ImageTitle}
+                                              width={100}
+                                              height={100}
+                                            />
+                                          )}
+                                        </td>
+                                      </tr>
+                                    );
+                                  })}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
-                )}
-                {apiData?.IPR?.[lang] && (
-                  <div className="publications-column">
-                    <h5 className="box-type-title fs-24 fw-600 theme-color">
-                      IPR
-                    </h5>
-                    <div className="publications-info-box">
-                      <p
-                        className="fs-16"
-                        dangerouslySetInnerHTML={{
-                          __html: apiData?.IPR?.[lang],
-                        }}
-                      />
-                    </div>
-                  </div>
-                )}
-                {apiData?.awards?.[lang] && (
-                  <div className="publications-column">
-                    <h5 className="box-type-title fs-24 fw-600 theme-color">
-                      Awards
-                    </h5>
-                    <div className="publications-info-box">
-                      <p
-                        className="fs-16"
-                        dangerouslySetInnerHTML={{
-                          __html: apiData?.awards?.[lang],
-                        }}
-                      />
-                    </div>
-                  </div>
-                )}
-                {apiData?.externallyFundedProjects?.[lang] && (
-                  <div className="publications-column">
-                    <h5 className="box-type-title fs-24 fw-600 theme-color">
-                      Externally Funded Projects{" "}
-                    </h5>
-                    <div className="publications-info-box">
-                      <p
-                        className="fs-16"
-                        dangerouslySetInnerHTML={{
-                          __html: apiData?.externallyFundedProjects?.[lang],
-                        }}
-                      />
-                    </div>
-                  </div>
-                )}
+                </div>
               </div>
             </div>
-            {apiData?.labProfile.length > 1 && (
-              <div className="col-12">
-                <div className="section-heading">
-                  <h2 className="section-title fs-30 fw-600 mb-2">
-                    Lab Profile and lab photo
-                  </h2>
-                </div>
-                <div className="table-listing table-responsive">
-                  <table className="table mb-0">
-                    <thead className="table-thead">
-                      <tr>
-                        <th className="table-title fw-600 fs-20" scope="col">
-                          Sr. No.
-                        </th>
-                        <th className="table-title fw-600 fs-20" scope="col">
-                          Name
-                        </th>
-                        <th className="table-title fw-600 fs-20" scope="col">
-                          Position
-                        </th>
-                        <th className="table-title fw-600 fs-20" scope="col">
-                          Duration
-                        </th>
-                        <th className="table-title fw-600 fs-20" scope="col">
-                          Project
-                        </th>
-                        <th className="table-title fw-600 fs-20" scope="col">
-                          Photo
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="table-body">
-                      {apiData?.labProfile?.map((item, index) => {
-                        return (
-                          <tr key={index}>
-                            <th scope="row" className="w-10">
-                              {index + 1}
-                            </th>
-                            <td className="w-18 text-wrap">
-                              {item?.name?.[lang]}
-                            </td>
-                            <td className="w-18 text-wrap">
-                              {item?.position?.[lang]}
-                            </td>
-                            <td className="w-18 text-wrap">
-                              {item?.duration?.[lang]}
-                            </td>
-                            <td className="w-18 text-wrap">
-                              {item?.project?.[lang]}
-                            </td>
-
-                            <td className="w-18 ">
-                              {item?.photo1 && (
-                                <img
-                                  src={`${IMG_BASE_URL}/${item?.photo1}`}
-                                  alt={item?.ImageTitle}
-                                  width={100}
-                                  height={100}
-                                />
-                              )}
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </section>
+
     </div>
   );
 }

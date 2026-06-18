@@ -79,6 +79,7 @@ function Student() {
     getData();
     getDatastudent();
   }, []);
+  // console.log("apiDataStudent", apiDataStudent);
 
   return (
     <div className="main-wrapper">
@@ -188,40 +189,47 @@ function Student() {
         const studentsForCourse = apiDataStudent?.filter(
           (student) => student.studentCourse?._id === item?.id,
         );
-        console.log("studentsForCourse", studentsForCourse);
 
         return (
-          <section class="cadre-section section-padding body-shape position-relative">
-            <div class="container position-relative">
-              <div class="row">
-                <div class="col-12">
-                  <div class="section-heading text-center">
-                    <h2 class="section-title fs-3 fw-600 m-0">
+          <section
+            key={index}
+            className="cadre-section section-padding body-shape position-relative"
+          >
+            <div className="container position-relative">
+              <div className="row">
+                <div className="col-12">
+                  <div className="section-heading text-center">
+                    <h2 className="section-title fs-3 fw-600 m-0">
                       {item?.courseName?.[lang]}
                     </h2>
                   </div>
                 </div>
               </div>
-              <div class="row common-space">
-                <div class="col-12">
-                  <div class="table-listing table-responsive">
-                    <table class="table mb-0">
-                      <thead class="table-thead">
+              <div className="row common-space">
+                <div className="col-12">
+                  <div className="table-listing table-responsive">
+                    <table className="table mb-0">
+                      <thead className="table-thead">
                         <tr>
-                          <th class="table-title fw-600 fs-20" scope="col">
+                          <th className="table-title fw-600 fs-20" scope="col">
                             {lang === "hi" ? "क्रमांक" : "Sr.No."}
                           </th>
-                          <th class="table-title fw-600 fs-20" scope="col">
+                          <th className="table-title fw-600 fs-20" scope="col">
                             {lang === "hi"
                               ? "छात्र का नाम"
                               : "Name of the Student"}
                           </th>
-                          <th class="table-title fw-600 fs-20" scope="col">
+                          <th className="table-title fw-600 fs-20" scope="col">
                             {lang === "hi" ? "अनुक्रमांक" : "Roll No."}
+                          </th>
+                          <th className="table-title fw-600 fs-20" scope="col">
+                            {lang === "hi"
+                              ? "मार्गदर्शक का नाम"
+                              : "Name of the Guide."}
                           </th>
                         </tr>
                       </thead>
-                      <tbody class="table-body">
+                      <tbody className="table-body">
                         {studentsForCourse?.length > 0 ? (
                           studentsForCourse.map((student, idx) => (
                             <tr key={student.id}>
@@ -229,8 +237,11 @@ function Student() {
                               <td className="w-50 text-wrap">
                                 {student?.studentName?.[lang]}
                               </td>
-                              <td className="w-50 text-wrap">
+                              <td className="w-25 text-wrap">
                                 {student?.rollNo}
+                              </td>
+                              <td className="w-75 text-wrap">
+                                {student?.guideName?.[lang]}
                               </td>
                             </tr>
                           ))
@@ -242,13 +253,13 @@ function Student() {
                           </tr>
                         )}
                       </tbody>
-                      <tfoot className="table-tfoot">
+                      {/* <tfoot className="table-tfoot">
                         <tr>
-                          <td colspan="5" class="text-end">
+                          <td colSpan="5" className="text-end">
                             As on 03.02.2022
                           </td>
                         </tr>
-                      </tfoot>
+                      </tfoot> */}
                     </table>
                   </div>
                 </div>

@@ -111,7 +111,7 @@ function NewsBox() {
                   className="view-all"
                   onClick={() => handlePageClick("69fedeb95dda76984216ebca")}
                 >
-                  <Link>{viewMoreText}</Link>
+                  <Link><span className="position-relative">{viewMoreText} <i class="fa-solid fa-arrow-right-long"></i></span></Link>
                 </div>
               </div>
             </div>
@@ -154,7 +154,7 @@ function NewsBox() {
                   className="view-all"
                   onClick={() => handlePageClick("69feeda85dda76984216f231")}
                 >
-                  <Link>{viewMoreText}</Link>
+                  <Link><span className="position-relative">{viewMoreText} <i class="fa-solid fa-arrow-right-long"></i></span></Link>
                 </div>
               </div>
             </div>
@@ -198,7 +198,7 @@ function NewsBox() {
                   className="view-all"
                   onClick={() => handlePageClick("69feef0a5dda76984216f5e6")}
                 >
-                  <Link>{viewMoreText}</Link>
+                  <Link><span className="position-relative">{viewMoreText} <i class="fa-solid fa-arrow-right-long"></i></span></Link>
                 </div>
               </div>
             </div>
@@ -236,7 +236,7 @@ function NewsBox() {
                   className="view-all"
                   onClick={() => handlePageClick("69fef1e088fe5b04fafede90")}
                 >
-                  <Link>{viewMoreText}</Link>
+                  <Link><span className="position-relative">{viewMoreText} <i class="fa-solid fa-arrow-right-long"></i></span></Link>
                 </div>
               </div>
             </div>

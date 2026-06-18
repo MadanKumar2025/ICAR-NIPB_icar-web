@@ -34,8 +34,6 @@ function TechnicalStaff() {
 
   const getData = async (apiName) => {
     const result = apiName.split("/").pop();
-    console.log("result",result);
-    
     try {
       const res = await axios.get(`${API_URL}/staff/get/web/${result}`, {
         headers: {

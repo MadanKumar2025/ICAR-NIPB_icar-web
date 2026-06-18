@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "../LanguageContext";
 import { useTheme } from "../ThemeContext";
-// menu active ke liye
+ // menu active ke liye
 import { useLocation } from "react-router-dom";
-import { data } from "jquery";
 
 function Header() {
   const API_URL = process.env.REACT_APP_API_URL;
@@ -40,49 +39,9 @@ function Header() {
       console.error("Error fetching data:", error);
     }
   };
-  // menu active ke liye
+ // menu active ke liye
   const location = useLocation();
   const [activeMenu, setActiveMenu] = useState("home");
-
-  // Search States
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredResults, setFilteredResults] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getSearch = async (keyword) => {
-    try {
-      setLoading(true);
-
-      const response = await axios.get(
-        `${API_URL}/search/get/?keyword=${keyword}`,
-      );
-
-      console.log("Search Response:", response.data);
-
-      setFilteredResults(response?.data?.data || []);
-    } catch (error) {
-      console.error("Error fetching search results:", error);
-      setFilteredResults([]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Debounce Search
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (searchTerm.trim()) {
-        getSearch(searchTerm);
-      } else {
-        setFilteredResults([]);
-      }
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, [searchTerm]);
-
-  console.log("filteredResults", filteredResults);
 
   // // this is use for get slug
   // const handlePageClick = async (id) => {
@@ -150,66 +109,7 @@ function Header() {
   };
 
   const homeLabel = lang === "hi" ? "होम" : "HOME";
-  // const limitWords = (text, limit = 10) => {
-  //   if (!text) return "";
-  //   const words = text.split(" ");
-  //   return words.length > limit
-  //     ? words.slice(0, limit).join(" ") + "..."
-  //     : text;
-  // };
-  // const limitWords = (text, limit = 5) => {
-  //   if (!text) return "";
 
-  //   // 1. HTML remove karo (agar aata hai)
-  //   let cleanText = text.replace(/<[^>]*>/g, " ");
-
-  //   // 2. extra spaces remove karo
-  //   cleanText = cleanText.replace(/\s+/g, " ").trim();
-
-  //   // 3. words split
-  //   const words = cleanText.split(" ");
-
-  //   return words.length > limit
-  //     ? words.slice(0, limit).join(" ") + "..."
-  //     : cleanText;
-  // };
-
-  // const limitWords = (text, limit = 10) => {
-  //   if (!text) return "";
-
-  //   const clean = text
-  //     .replace(/<[^>]*>/g, " ")
-  //     .replace(/&nbsp;/g, " ")
-  //     .replace(/\s+/g, " ")
-  //     .trim();
-
-  //   const words = clean.split(" ");
-
-  //   return words.length > limit
-  //     ? words.slice(0, limit).join(" ") + "..."
-  //     : clean;
-  // }; 
- 
- const limitWords = (text, limit = 10) => {
-  if (!text) return "";
-
-  const str =
-    typeof text === "string"
-      ? text
-      : text?.en || text?.hi || "";   // 👈 important fix
-
-  const clean = str
-    .replace(/<[^>]*>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  const words = clean.split(" ");
-
-  return words.length > limit
-    ? words.slice(0, limit).join(" ") + "..."
-    : clean;
-};
   return (
     <div className={`theme-${theme}`}>
       <div className="menu-overlay"></div>
@@ -230,7 +130,6 @@ function Header() {
                       </a>
                     </div>
                   </div>
-
                   <div className="header-lang">
                     <select
                       id="langSelect"
@@ -242,7 +141,6 @@ function Header() {
                       <option value="hi">हिंदी</option>
                     </select>
                   </div>
-
                   <div className="screen-size-box">
                     <button
                       className="screen-btn"
@@ -260,7 +158,6 @@ function Header() {
                       A+
                     </button>
                   </div>
-
                   <div className="theme-switchcare d-flex align-items-center gap-2">
                     <div
                       className={`theme-btn theme-blue-btn ${theme === "blue" ? "active" : ""}`}
@@ -279,113 +176,6 @@ function Header() {
                       onClick={() => changeTheme("green")}
                     />
                   </div>
-
-                  {/* header search butoon */}
-
-                  <div
-                    className="header-search-icon"
-                    onClick={() => setSearchOpen(true)}
-                  >
-                    <span>Search...</span>
-                    <i className="fa-solid fa-magnifying-glass"></i>
-                  </div>
-
-                  {searchOpen && (
-                    <div className="search-overlay">
-                      <div className="search-popup">
-                        <button
-                          className="search-close"
-                          onClick={() => {
-                            setSearchOpen(false);
-                            setSearchTerm("");
-                            setFilteredResults([]);
-                          }}
-                        >
-                          <i className="fa-solid fa-xmark"></i>
-                        </button>
-
-                        <div className="search-box">
-                          <input
-                            className="search-input-field"
-                            type="text"
-                            placeholder="Search Here..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            autoFocus
-                          />
-
-                          <button className="search-btn">
-                            <i className="fa-solid fa-magnifying-glass"></i>
-                          </button>
-
-                          {/* {searchTerm.trim() !== "" && (
-                            <div className="search-dropdown">
-                              {filteredResults.length > 0 ? (
-                                <ul>
-                                  {filteredResults.map((item, index) => (
-                                    <Link
-                                      to={item?.url}
-                                      onClick={() => {
-                                        setSearchOpen(false);
-                                        setSearchTerm("");
-                                        setFilteredResults([]);
-                                      }}
-                                    >
-                                      <li
-                                        key={index}
-                                        dangerouslySetInnerHTML={{
-                                          __html: item?.title,
-                                        }}
-                                      ></li>
-                                      
-                                    </Link>
-                                  ))}
-                                </ul>
-                              ) : (
-                                <div className="no-result">
-                                  No Results Found
-                                </div>
-                              )}
-                            </div>
-                          )} */}
-
-                          {searchTerm.trim() !== "" && (
-                            <div className="search-dropdown">
-                              {filteredResults.length > 0 ? (
-                                <ul>
-                                  {filteredResults.map((item, index) => (
-                                    <Link
-                                      key={index}
-                                      to={item?.url}
-                                      onClick={() => {
-                                        setSearchOpen(false);
-                                        setSearchTerm("");
-                                        setFilteredResults([]);
-                                      }}
-                                    >
-                                      <li
-                                        style={{
-                                          color: "black",
-                                          fontSize: "15px",
-                                        }}
-                                        dangerouslySetInnerHTML={{
-                                          __html: limitWords(item?.title, 5),
-                                        }}
-                                      ></li>
-                                    </Link>
-                                  ))}
-                                </ul>
-                              ) : (
-                                <div className="no-result">
-                                  No Results Found
-                                </div>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  )}
                   {/* <div className="theme-switchcare d-flex align-items-center gap-2">
                   <div
                     className="theme-btn theme-blue-btn"
@@ -469,18 +259,18 @@ function Header() {
                           {homeLabel}
                         </Link> */}
                         <Link
-                          style={{ fontWeight: "500" }}
-                          to="/"
-                          className={`menu-link ${activeMenu === "home" ? "active" : ""}`}
-                          onClick={() => {
-                            setActiveMenu("home");
-                            document
-                              .getElementById("navbarSupportedContent")
-                              ?.classList.remove("show");
-                          }}
-                        >
-                          {homeLabel}
-                        </Link>
+  style={{ fontWeight: "500" }}
+  to="/"
+  className={`menu-link ${activeMenu === "home" ? "active" : ""}`}
+  onClick={() => {
+    setActiveMenu("home");
+    document
+      .getElementById("navbarSupportedContent")
+      ?.classList.remove("show");
+  }}
+>
+  {homeLabel}
+</Link>
                       </li>
 
                       {parents?.map((parent) => {
@@ -495,10 +285,10 @@ function Header() {
                             parent?.menuName_en !== "Contact Us")
                         ) {
                           return (
-                            <li className="nav-item" key={parent?.id}>
+                            <li class="nav-item" key={parent?.id}>
                               {parent?.page?.id ? (
                                 // <span
-                                //   className="menu-link"
+                                //   class="menu-link"
                                 //   style={{
                                 //     cursor: "pointer",
                                 //     fontWeight: "500",
@@ -511,28 +301,26 @@ function Header() {
                                 //   {parent?.[`menuName_${lang}`]?.toUpperCase()}
                                 // </span>
                                 <span
-                                  className={`menu-link ${
-                                    activeMenu === `parent-${parent?.id}`
-                                      ? "active"
-                                      : ""
-                                  }`}
-                                  style={{
-                                    cursor: "pointer",
-                                    fontWeight: "500",
-                                  }}
-                                  onClick={() => {
-                                    setActiveMenu(`parent-${parent?.id}`);
-                                    handlePageClick(parent?.page?.id);
-                                  }}
-                                >
-                                  {parent?.[`menuName_${lang}`]?.toUpperCase()}
-                                </span>
+  className={`menu-link ${
+    activeMenu === `parent-${parent?.id}` ? "active" : ""
+  }`}
+  style={{
+    cursor: "pointer",
+    fontWeight: "500",
+  }}
+  onClick={() => {
+    setActiveMenu(`parent-${parent?.id}`);
+    handlePageClick(parent?.page?.id);
+  }}
+>
+  {parent?.[`menuName_${lang}`]?.toUpperCase()}
+</span>
                               ) : (
                                 <a
                                   href={parent?.customUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="menu-link"
+                                  class="menu-link"
                                   style={{ fontWeight: "500" }}
                                 >
                                   {/* {parent?.menuName_en?.toUpperCase()} */}
@@ -545,23 +333,23 @@ function Header() {
 
                         // Agar child hai → dropdown menu
                         const isDropdownActive =
-                          activeMenu === `dropdown-${parent.id}` ||
-                          childItems.some(
-                            (child) => activeMenu === `child-${child.id}`,
-                          );
+  activeMenu === `dropdown-${parent.id}` ||
+  childItems.some(
+    (child) => activeMenu === `child-${child.id}`
+  );
                         return (
                           // <li
-                          //   className="nav-item dropdown custom-nav-dropdown"
+                          //   class="nav-item dropdown custom-nav-dropdown"
                           //   key={parent.id}
                           // >
                           <li
-                            className={`nav-item dropdown custom-nav-dropdown ${
-                              isDropdownActive ? "active" : ""
-                            }`}
-                            key={parent.id}
-                          >
+  className={`nav-item dropdown custom-nav-dropdown ${
+    isDropdownActive ? "active" : ""
+  }`}
+  key={parent.id}
+>
                             {/* <a
-                              className="nav-link dropdown-toggle"
+                              class="nav-link dropdown-toggle"
                               href="#"
                               id="navbarDropdown"
                               role="button"
@@ -573,21 +361,21 @@ function Header() {
                               {parent?.[`menuName_${lang}`]?.toUpperCase()}
                             </a> */}
                             <a
-                              className={`nav-link dropdown-toggle ${
-                                isDropdownActive ? "active" : ""
-                              }`}
-                              href="#"
-                              id="navbarDropdown"
-                              role="button"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                              style={{ fontWeight: "500" }}
-                            >
-                              {parent?.[`menuName_${lang}`]?.toUpperCase()}
-                            </a>
+  className={`nav-link dropdown-toggle ${
+    isDropdownActive ? "active" : ""
+  }`}
+  href="#"
+  id="navbarDropdown"
+  role="button"
+  data-bs-toggle="dropdown"
+  aria-expanded="false"
+  style={{ fontWeight: "500" }}
+>
+  {parent?.[`menuName_${lang}`]?.toUpperCase()}
+</a>
 
                             <ul
-                              className="dropdown-menu"
+                              class="dropdown-menu"
                               aria-labelledby="navbarDropdown"
                             >
                               {childItems.map((child) => (
@@ -597,7 +385,7 @@ function Header() {
                                     //   style={{
                                     //     cursor: "pointer",
                                     //   }}
-                                    //   className="dropdown-item"
+                                    //   class="dropdown-item"
                                     //   onClick={() =>
                                     //     handlePageClick(child?.page?.id)
                                     //   }
@@ -608,29 +396,25 @@ function Header() {
                                     //   ]?.toUpperCase()}
                                     // </span>
                                     <span
-                                      style={{
-                                        cursor: "pointer",
-                                      }}
-                                      className={`dropdown-item ${
-                                        activeMenu === `child-${child.id}`
-                                          ? "active"
-                                          : ""
-                                      }`}
-                                      onClick={() => {
-                                        setActiveMenu(`child-${child.id}`);
-                                        handlePageClick(child?.page?.id);
-                                      }}
-                                    >
-                                      {child?.[
-                                        `menuName_${lang}`
-                                      ]?.toUpperCase()}
-                                    </span>
+  style={{
+    cursor: "pointer",
+  }}
+  className={`dropdown-item ${
+    activeMenu === `child-${child.id}` ? "active" : ""
+  }`}
+  onClick={() => {
+    setActiveMenu(`child-${child.id}`);
+    handlePageClick(child?.page?.id);
+  }}
+>
+  {child?.[`menuName_${lang}`]?.toUpperCase()}
+</span>
                                   ) : (
                                     <a
                                       href={child?.customUrl}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="dropdown-item"
+                                      class="dropdown-item"
                                     >
                                       {/* {child?.menuName_en?.toUpperCase()} */}
                                       {child?.[
@@ -647,7 +431,7 @@ function Header() {
                     </ul>
                   </div>
                   <button
-                    className="navbar-toggler theme-toggle-btn"
+                    class="navbar-toggler theme-toggle-btn"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent"
@@ -655,7 +439,7 @@ function Header() {
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                   >
-                    <span className="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
                   </button>
                   <div className="header-contact-btn">
                     <a className="contact-link" href="#">

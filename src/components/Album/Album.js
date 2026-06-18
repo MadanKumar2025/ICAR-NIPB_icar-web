@@ -1,3 +1,12 @@
+// add new start
+"use client";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+// add new end
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLanguage } from "../LanguageContext";
@@ -95,26 +104,184 @@ function Album() {
                 />
               </div>
             ))} */}
-            {AlbumData?.slice(0, 4).map((item, index) => (
+            {/* add new gallery slider start  */}
+            <div className="gallery-slider-area position-relative">
+              <Swiper
+                modules={[Navigation, Pagination, Autoplay]}
+                navigation={{
+                  nextEl: ".gallery-next",
+                  prevEl: ".gallery-prev",
+                }}
+                pagination={{ clickable: true }}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+                loop={true}
+                spaceBetween={20}
+                breakpoints={{
+                  320: {
+                    slidesPerView: 1,
+                  },
+                  480: {
+                    slidesPerView: 2,
+                  },
+                  992: {
+                    slidesPerView: 3,
+                  },
+                  1200: {
+                    slidesPerView: 4,
+                  },
+                }}
+              >
+                {AlbumData?.slice(0, 5)?.map((item, index) => (
+                  <SwiperSlide>
+                    <div key={item.id || index}
+                      onClick={() => handlePageClick(item?.id)} className="gallery-item">
+                      <div className="gallery-area h-100 overflow-hidden">
+                        <div class="gallery-image-area overflow-hidden">
+                          <img
+                            src={`${IMG_BASE_URL}/${item?.coverPic}`}
+                            className="gallery-img"
+                            alt="gallery"
+                          />
+                        </div>
+                        <p className="desination-title fs-16 fw-500 m-0 slow-effect">
+                        {item?.title?.[lang]}
+                        </p>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+
+
+                {/* sddsa */}
+                {/* {AlbumData?.slice(0, 5)?.map((item, index) => (
+                  <SwiperSlide>
+                    <div key={item.id || index}
+                      onClick={() => handlePageClick(item?.id)} className="gallery-item">
+                      <div className="gallery-area h-100 overflow-hidden">
+                        <div class="gallery-image-area overflow-hidden">
+                          <img
+                            src={`${IMG_BASE_URL}/${item?.coverPic}`}
+                            className="gallery-img"
+                            alt="gallery"
+                          />
+                        </div>
+                        <p className="desination-title fs-16 fw-500 m-0 slow-effect">
+                          {item?.title?.[lang]}
+                        </p>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+                {AlbumData?.slice(0, 5)?.map((item, index) => (
+                  <SwiperSlide>
+                    <div key={item.id || index}
+                      onClick={() => handlePageClick(item?.id)} className="gallery-item">
+                      <div className="gallery-area h-100 overflow-hidden">
+                        <div class="gallery-image-area overflow-hidden">
+                          <img
+                            src={`${IMG_BASE_URL}/${item?.coverPic}`}
+                            className="gallery-img"
+                            alt="gallery"
+                          />
+                        </div>
+                        <p className="desination-title fs-16 fw-500 m-0 slow-effect">
+                          {item?.title?.[lang]}
+                        </p>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+                {AlbumData?.slice(0, 5)?.map((item, index) => (
+                  <SwiperSlide>
+                    <div key={item.id || index}
+                      onClick={() => handlePageClick(item?.id)} className="gallery-item">
+                      <div className="gallery-area h-100 overflow-hidden">
+                        <div class="gallery-image-area overflow-hidden">
+                          <img
+                            src={`${IMG_BASE_URL}/${item?.coverPic}`}
+                            className="gallery-img"
+                            alt="gallery"
+                          />
+                        </div>
+                        <p className="desination-title fs-16 fw-500 m-0 slow-effect">
+                          {item?.title?.[lang]}
+                        </p>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+                {AlbumData?.slice(0, 5)?.map((item, index) => (
+                  <SwiperSlide>
+                    <div key={item.id || index}
+                      onClick={() => handlePageClick(item?.id)} className="gallery-item">
+                      <div className="gallery-area h-100 overflow-hidden">
+                        <div class="gallery-image-area overflow-hidden">
+                          <img
+                            src={`${IMG_BASE_URL}/${item?.coverPic}`}
+                            className="gallery-img"
+                            alt="gallery"
+                          />
+                        </div>
+                        <p className="desination-title fs-16 fw-500 m-0 slow-effect">
+                          {item?.title?.[lang]}
+                        </p>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+                {AlbumData?.slice(0, 5)?.map((item, index) => (
+                  <SwiperSlide>
+                    <div key={item.id || index}
+                      onClick={() => handlePageClick(item?.id)} className="gallery-item">
+                      <div className="gallery-area h-100 overflow-hidden">
+                        <div class="gallery-image-area overflow-hidden">
+                          <img
+                            src={`${IMG_BASE_URL}/${item?.coverPic}`}
+                            className="gallery-img"
+                            alt="gallery"
+                          />
+                        </div>
+                        <p className="desination-title fs-16 fw-500 m-0 slow-effect">
+                          {item?.title?.[lang]}
+                        </p>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))} */}
+              </Swiper>
+              <div className="gallery-prev">
+                <i className="fa-solid fa-chevron-left"></i>
+              </div>
+
+              <div className="gallery-next">
+                <i className="fa-solid fa-chevron-right"></i>
+              </div>
+            </div>
+             {/* add new gallery slider End  */}
+             {/* comment before add slider your data  */}
+            {/* {AlbumData?.slice(0, 4).map((item, index) => (
               <div
                 className="col-sm-6 col-lg-3 gallery-col"
                 key={item.id || index}
                 onClick={() => handlePageClick(item?.id)}
               >
-               <div className="gallery-area h-100 overflow-hidden">
-                 <div class="gallery-image-area overflow-hidden">
-                  <img
-                    src={`${IMG_BASE_URL}/${item?.coverPic}`}
-                    className="gallery-img"
-                    alt="gallery"
-                  />
+                <div className="gallery-area h-100 overflow-hidden">
+                  <div class="gallery-image-area overflow-hidden">
+                    <img
+                      src={`${IMG_BASE_URL}/${item?.coverPic}`}
+                      className="gallery-img"
+                      alt="gallery"
+                    />
+                  </div>
+                  <p className="desination-title fs-16 fw-500 m-0 slow-effect">
+                    {item?.title?.[lang]}
+                  </p>
                 </div>
-                <p className="desination-title fs-16 fw-500 m-0 slow-effect">
-                  {item?.title?.[lang]}
-                </p>
-               </div>
               </div>
-            ))}
+            ))} */}
             {/* <div className="col-md-3">
               <img src="images/gallery/image2.jpg" className="gallery-img" />
             </div>
@@ -124,6 +291,7 @@ function Album() {
             <div className="col-md-3">
               <img src="images/gallery/image4.jpg" className="gallery-img" />
             </div> */}
+
           </div>
         </div>
       </section>

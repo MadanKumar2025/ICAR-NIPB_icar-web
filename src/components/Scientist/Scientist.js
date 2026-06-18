@@ -77,8 +77,7 @@ function Scientist() {
     }
   };
 
-  console.log("sass");
-  
+   
   return (
     <div className="main-wrapper">
       {/* ================= SEO START ================= */}

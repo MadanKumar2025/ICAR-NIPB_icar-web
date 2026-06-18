@@ -150,15 +150,15 @@ function FormerDirectors() {
                           alt={item?.photoTitle}
                         />
                       </figure>
-                      <div className="year-title fs-16 fw-600">
-                        {item?.workingPeriod}
-                      </div>
                     </div>
                     <div className="team-body">
                       <div className="team-content">
                         <h3 className="team-member-name fs-18 fw-600">
                           {item?.name?.[lang]}
                         </h3>
+                         <div className="year-title fs-15 mt-1 fw-600">
+                        {item?.workingPeriod}
+                      </div>
                       </div>
                     </div>
                   </div>

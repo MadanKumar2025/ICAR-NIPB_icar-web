@@ -28,6 +28,7 @@ import Payment from "./Payment/Payment";
 import Feedback from "./Feedback/Feedback";
 import TrainingProgram from "./Training Program/TrainingProgram";
 import Committees from "./Committees/Committees";
+import Professor from "./Professor/Professor";
 
 function DynamicRouter() {
   const { slug } = useParams();
@@ -139,6 +140,9 @@ function DynamicRouter() {
 
     case "Committees":
       return <Committees />;
+   
+      case "Professor":
+      return <Professor />;
 
     default:
       return <StaticContent />;

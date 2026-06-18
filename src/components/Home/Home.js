@@ -550,7 +550,7 @@ function Home() {
                   <p className="institute-title fs-22 fw-500 d-block">
                     {lang === "hi" ? "छात्र कोना" : "Student Corner"}
                   </p>
-                  <a href="#" className="common-btn btn-style-one mx-auto">
+                  <a href="#" className="common-btn btn-white mx-auto">
                     <span className="btn-static-text">
                       {/* {lang === "hi" ? "अनुसंधान देखें" : "Explore Research"} */}
                       {lang === "hi" ? "देखें" : "Explore"}
@@ -576,7 +576,7 @@ function Home() {
                   <Link
                     // onClick={() => handlePageClick("69fec96a5dda769842169c67")}
                     onClick={() => handlePageClick("6a1150b0d5ca81e12de702d4")}
-                    className="common-btn btn-style-one mx-auto"
+                    className="common-btn btn-white mx-auto"
                   >
                     <span className="btn-static-text">
                       {lang === "hi" ? "देखें" : "Explore"}
@@ -601,7 +601,7 @@ function Home() {
                   </p>
                   <Link
                     onClick={() => handlePageClick("6a0d2ff8cb0e96c74657f31d")}
-                    className="common-btn btn-style-one mx-auto"
+                    className="common-btn btn-white mx-auto"
                   >
                     <span className="btn-static-text">
                       {lang === "hi" ? "देखें" : "Explore"}
@@ -626,7 +626,7 @@ function Home() {
                   </p>
                   <Link
                     onClick={() => handlePageClick("69feccdc5dda76984216a252")}
-                    className="common-btn btn-style-one mx-auto"
+                    className="common-btn btn-white mx-auto"
                   >
                     <span className="btn-static-text">
                       {lang === "hi" ? "देखें" : "Explore"}
@@ -653,7 +653,7 @@ function Home() {
                   </p>
                   <Link
                     onClick={() => handlePageClick("69fece065dda76984216a5a0")}
-                    className="common-btn btn-style-one mx-auto"
+                    className="common-btn btn-white mx-auto"
                   >
                     <span className="btn-static-text">
                       {lang === "hi" ? "देखें" : "Explore"}
@@ -678,7 +678,7 @@ function Home() {
                   </p>
                   <Link
                     onClick={() => handlePageClick("69fecf8d5dda76984216aa1d")}
-                    className="common-btn btn-style-one mx-auto"
+                    className="common-btn btn-white mx-auto"
                   >
                     <span className="btn-static-text">
                       {lang === "hi" ? "देखें" : "Explore"}
