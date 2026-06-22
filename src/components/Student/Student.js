@@ -79,7 +79,7 @@ function Student() {
     getData();
     getDatastudent();
   }, []);
-  // console.log("apiDataStudent", apiDataStudent);
+  console.log("apiDataStudent", apiDataStudent);
 
   return (
     <div className="main-wrapper">
@@ -227,6 +227,11 @@ function Student() {
                               ? "मार्गदर्शक का नाम"
                               : "Name of the Guide."}
                           </th>
+                          <th className="table-title fw-600 fs-20" scope="col">
+                            {lang === "hi"
+                              ? "जुड़ने का वर्ष"
+                              : "Year Of Joining"}
+                          </th>
                         </tr>
                       </thead>
                       <tbody className="table-body">
@@ -242,6 +247,13 @@ function Student() {
                               </td>
                               <td className="w-75 text-wrap">
                                 {student?.guideName?.[lang]}
+                              </td>
+                              <td className="w-75 text-wrap">
+                                {student?.yearOfJoining
+                                  ? new Date(
+                                      student.yearOfJoining,
+                                    ).toLocaleDateString("en-GB")
+                                  : ""}
                               </td>
                             </tr>
                           ))

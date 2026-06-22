@@ -82,7 +82,7 @@ function Header() {
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
-  console.log("filteredResults", filteredResults);
+  // console.log("filteredResults", filteredResults);
 
   // // this is use for get slug
   // const handlePageClick = async (id) => {
@@ -129,25 +129,52 @@ function Header() {
 
   const DEFAULT_FONT_SIZE = 16; // normal size
 
-  const changeFontSize = (delta) => {
-    const root = document.documentElement;
-    const currentSize = parseInt(
-      getComputedStyle(root).getPropertyValue("--base-font-size"),
-    );
-    let newSize = currentSize + delta;
+  // const changeFontSize = (delta) => {
+  //   const root = document.documentElement;
+  //   const currentSize = parseInt(
+  //     getComputedStyle(root).getPropertyValue("--base-font-size"),
+  //   );
+  //   let newSize = currentSize + delta;
 
-    if (newSize < 12) newSize = 12;
-    if (newSize > 20) newSize = 20;
+  //   if (newSize < 12) newSize = 12;
+  //   if (newSize > 20) newSize = 20;
 
-    root.style.setProperty("--base-font-size", `${newSize}px`);
-    localStorage.setItem("fontSize", newSize);
-  };
+  //   root.style.setProperty("--base-font-size", `${newSize}px`);
+  //   localStorage.setItem("fontSize", newSize);
+  // };
 
-  const resetFontSize = () => {
-    const root = document.documentElement;
-    root.style.setProperty("--base-font-size", `${DEFAULT_FONT_SIZE}px`);
-    localStorage.setItem("fontSize", DEFAULT_FONT_SIZE);
-  };
+  //  Add New Funcation for Font size strat
+const changeFontSize = (delta) => {
+  const html = document.documentElement;
+  let currentSize = parseInt(
+    window.getComputedStyle(html).fontSize
+  );
+  let newSize = currentSize + delta;
+  if (newSize < 13) newSize = 13;
+  if (newSize > 19) newSize = 19;
+  html.style.fontSize = `${newSize}px`;
+  localStorage.setItem("fontSize", newSize);
+};
+useEffect(() => {
+  const savedSize = localStorage.getItem("fontSize");
+
+  if (savedSize) {
+    document.documentElement.style.fontSize = `${savedSize}px`;
+  }
+}, []);
+//  Add New Funcation for Font size End
+
+
+  // const resetFontSize = () => {
+  //   const root = document.documentElement;
+  //   root.style.setProperty("--base-font-size", `${DEFAULT_FONT_SIZE}px`);
+  //   localStorage.setItem("fontSize", DEFAULT_FONT_SIZE);
+  // };
+  //  Add New Funcation for Font size reset font size
+const resetFontSize = () => {
+  document.documentElement.style.fontSize = `${DEFAULT_FONT_SIZE}px`;
+  localStorage.setItem("fontSize", DEFAULT_FONT_SIZE);
+};
 
   const homeLabel = lang === "hi" ? "होम" : "HOME";
   // const limitWords = (text, limit = 10) => {
@@ -174,42 +201,21 @@ function Header() {
   //     : cleanText;
   // };
 
-  // const limitWords = (text, limit = 10) => {
-  //   if (!text) return "";
+  const limitWords = (text, limit = 10) => {
+    if (!text) return "";
 
-  //   const clean = text
-  //     .replace(/<[^>]*>/g, " ")
-  //     .replace(/&nbsp;/g, " ")
-  //     .replace(/\s+/g, " ")
-  //     .trim();
+    const clean = text
+      .replace(/<[^>]*>/g, " ")
+      .replace(/&nbsp;/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
 
-  //   const words = clean.split(" ");
+    const words = clean.split(" ");
 
-  //   return words.length > limit
-  //     ? words.slice(0, limit).join(" ") + "..."
-  //     : clean;
-  // }; 
- 
- const limitWords = (text, limit = 10) => {
-  if (!text) return "";
-
-  const str =
-    typeof text === "string"
-      ? text
-      : text?.en || text?.hi || "";   // 👈 important fix
-
-  const clean = str
-    .replace(/<[^>]*>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  const words = clean.split(" ");
-
-  return words.length > limit
-    ? words.slice(0, limit).join(" ") + "..."
-    : clean;
-};
+    return words.length > limit
+      ? words.slice(0, limit).join(" ") + "..."
+      : clean;
+  };
   return (
     <div className={`theme-${theme}`}>
       <div className="menu-overlay"></div>
@@ -246,7 +252,7 @@ function Header() {
                   <div className="screen-size-box">
                     <button
                       className="screen-btn"
-                      onClick={() => changeFontSize(-2)}
+                      onClick={() => changeFontSize(-1)}
                     >
                       A-
                     </button>
@@ -255,7 +261,7 @@ function Header() {
                     </button>
                     <button
                       className="screen-btn"
-                      onClick={() => changeFontSize(2)}
+                      onClick={() => changeFontSize(1)}
                     >
                       A+
                     </button>

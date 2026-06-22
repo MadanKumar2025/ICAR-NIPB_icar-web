@@ -33,8 +33,6 @@ function AllGallery() {
 
   const getData = async () => {
     if (!id) return;
-    console.log("PageData?.apiName",PageData?.apiName);
-    
     try {
       const res = await axios.get(`${API_URL}/${PageData?.apiName}/${id}`, {
         headers: {

@@ -1,3 +1,4 @@
+"use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -46,6 +47,9 @@ function StaffDetails() {
     }
   };
 
+  // Add const tab
+  const [activeTab, setActiveTab] = useState("customTap1");
+
   useEffect(() => {
     getPage();
   }, [slug]);
@@ -53,6 +57,8 @@ function StaffDetails() {
   useEffect(() => {
     getData();
   }, [id]);
+
+  // console.log("apiData", apiData);
 
   return (
     <div className="main-wrapper">
@@ -212,37 +218,147 @@ function StaffDetails() {
               <div className="section-heading">
                 {/* <h2 className="section-title fs-30 fw-600 mb-2">Publications </h2> */}
               </div>
-              <div className="common-content-area research-column">
-                {apiData?.Research?.[lang] && (
-                  <div className="publications-column">
-                    <h5 className="box-type-title fs-24 fw-600 theme-color">
-                      Research Area
-                    </h5>
-                    <div className="publications-info-box">
-                      <p
-                        className="fs-16"
-                        dangerouslySetInnerHTML={{
-                          __html: apiData?.Research?.[lang],
-                        }}
-                      />
-                    </div>
+              <div className="common-content-area research-column tab-wrapper bg-white p-0 border-0">
+                <div className="theme-tab-panel">
+                  <div className="taps theme-tabs">
+                    {apiData?.Research?.[lang] && (
+                      <button
+                        className={`tab-btn-title ${activeTab === "customTap1" ? "active" : ""}`}
+                        onClick={() => setActiveTab("customTap1")}
+                      >
+                        <span>
+                          {lang === "hi"
+                            ? "सौंपे गए दायित्व एवं कार्यग्रहण तिथि"
+                            : "Duties Assigned and Date of Joining"}
+                        </span>
+                      </button>
+                    )}
+                    {apiData?.Publications?.[lang] && (
+                      <button
+                        className={`tab-btn-title ${activeTab === "customTap2" ? "active" : ""}`}
+                        onClick={() => setActiveTab("customTap2")}
+                      >
+                        <span>
+                          {lang === "hi" ? "प्रकाशन" : "Publications"}
+                        </span>
+                      </button>
+                    )}
+                    {/* {apiData?.Research?.[lang] && (
+                      <button
+                        className={`tab-btn-title ${activeTab === "customTap3" ? "active" : ""}`}
+                        onClick={() => setActiveTab("customTap3")}
+                      >
+                        <span>
+                          {lang === "hi"
+                            ? "सौंपे गए दायित्व एवं कार्यग्रहण तिथि"
+                            : "Duties Assigned and Date of Joining"}
+                        </span>
+                      </button>
+                    )} */}
+                    {apiData?.Awards?.[lang] && (
+                      <button
+                        className={`tab-btn-title ${activeTab === "customTap4" ? "active" : ""}`}
+                        onClick={() => setActiveTab("customTap4")}
+                      >
+                        <span>
+                          {lang === "hi"
+                            ? "पुरस्कार एवं सम्मान"
+                            : "Awards & Honors"}
+                        </span>
+                      </button>
+                    )}
+
+                    {apiData?.IPR?.length > 1 && (
+                      <button
+                        className={`tab-btn-title ${activeTab === "customTap5" ? "active" : ""}`}
+                        onClick={() => setActiveTab("customTap5")}
+                      >
+                        <span>
+                          {lang === "hi" ? "बौद्धिक संपदा अधिकार" : "IPR"}
+                        </span>
+                      </button>
+                    )}
                   </div>
-                )}
-                {apiData?.Publications?.[lang] && (
-                  <div className="publications-column">
-                    <h5 className="box-type-title fs-24 fw-600 theme-color">
-                      Publications
-                    </h5>
-                    <div className="publications-info-box">
-                      <p
-                        className="fs-16"
-                        dangerouslySetInnerHTML={{
-                          __html: apiData?.Publications?.[lang],
-                        }}
-                      />
-                    </div>
+                  <div className="tab-content p-3">
+                    {activeTab === "customTap1" && (
+                      <div className="tabs-content">
+                        {apiData?.Research?.[lang] && (
+                          <div className="publications-column">
+                            <h5 className="box-type-title fs-24 fw-600 theme-color">
+                              {lang === "hi"
+                                ? "सौंपे गए दायित्व एवं कार्यग्रहण तिथि"
+                                : "Duties Assigned and Date of Joining"}
+                            </h5>
+                            <div className="publications-info-box">
+                              <p
+                                className="fs-16"
+                                dangerouslySetInnerHTML={{
+                                  __html: apiData?.Research?.[lang],
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    {activeTab === "customTap2" && (
+                      <div className="tabs-content">
+                        {apiData?.Publications?.[lang] && (
+                          <div className="publications-column">
+                            <h5 className="box-type-title fs-24 fw-600 theme-color">
+                              {lang === "hi" ? "प्रकाशन" : "Publications"}
+                            </h5>
+                            <div className="publications-info-box">
+                              <p
+                                className="fs-16"
+                                dangerouslySetInnerHTML={{
+                                  __html: apiData?.Publications?.[lang],
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {activeTab === "customTap4" && (
+                      <div className="tabs-content">
+                        {/* Add your Awards & Honors deta */}{" "}
+                        {apiData?.Awards?.[lang] && (
+                          <div className="publications-column">
+                            <h5 className="box-type-title fs-24 fw-600 theme-color">
+                              {lang === "hi"
+                                ? "पुरस्कार एवं सम्मान"
+                                : "Awards & Honors"}
+                            </h5>
+                            <div className="publications-info-box">
+                              {apiData?.Awards?.map((item, index) => (
+                                <p key={index}>{item?.[lang]}</p>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    {activeTab === "customTap5" && (
+                      <div className="tabs-content">
+                        {/* Add your IPR deta */}
+                        {apiData?.IPR?.length > 1 && (
+                          <div className="publications-column">
+                            <h5 className="box-type-title fs-24 fw-600 theme-color">
+                              {lang === "hi" ? "बौद्धिक संपदा अधिकार" : "IPR"}
+                            </h5>
+                            <div className="publications-info-box">
+                              {apiData?.IPR?.map((item, index) => (
+                                <p key={index}>{item?.[lang]}</p>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
-                )}
+                </div>
                 {/* this is use for html test editer  */}
                 {/* {apiData?.IPR?.[lang] && (
                   <div className="publications-column">

@@ -33,8 +33,6 @@ function InstitutionalProjects() {
   };
 
   const getData = async (apiName) => {
-    console.log("apiName",apiName);
-    
     try {
       // const res = await axios.get(`${API_URL}/institutionalProjects/get/web`, {
       const res = await axios.get(`${API_URL}/${apiName}`, {

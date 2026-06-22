@@ -37,7 +37,6 @@
   --green-2: #008400;
   --green-3: #039303;
   --green-4: #07a407;
-  --base-font-size: 16px;
 }
 
 .box1 {
@@ -97,8 +96,8 @@
 html {
   scroll-behavior: smooth;
   height: -webkit-fill-available;
+  font-size: 16px;
 }
-
 body {
   font-family: "Roboto", sans-serif;
   color: var(--bs-text-color);
@@ -991,6 +990,20 @@ color: var(--bs-light-yellow);
     display: none;
   }
 } 
+@media (max-width: 375px) {
+.header-lang select { 
+	background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23000' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 2px center;
+	padding-right: 20px;
+}
+.screen-size-box {
+	gap: 7px;
+}
+.theme-btn {
+	width: 15px;
+	min-width: 15px;
+	height: 15px;
+}
+}
 @media (max-width: 479px) {
   .nipb-logo {
     width: 104px;
@@ -1064,7 +1077,7 @@ color: var(--bs-light-yellow);
   .navbar-nav {
 	flex-direction: row;
 	align-items: center;
-	gap: 10px;
+	gap: 0;
 }
 .menu-link, .nav-link.dropdown-toggle, .contact-link { 
 	font-size: 0.875rem;
@@ -1207,7 +1220,9 @@ color: var(--bs-light-yellow);
   margin: 30px 0 25px;
   transition: all 0.4s ease;
 }
-
+.theme-hi .hero-style .slide-title h1 {
+	line-height: 1.5;
+}
 .banner-slider-text {
   font-size: 1.125rem;
   margin: 0 0 40px;
@@ -1645,6 +1660,9 @@ i.fa-chevron-circle-right {
 	border-bottom: 29px solid transparent;
 	border-right: 39px solid var(--box2);
 	border-left: 30px solid transparent;
+}
+.theme-hi .view-all::before {
+	border-right: 36px solid var(--box2);
 }
 .view-all:hover::before {
 	border: none;
@@ -2238,6 +2256,7 @@ i.fa-chevron-circle-right {
   font-weight: 600;
   margin-bottom: 23px;
   font-size: 1.25rem;
+  display: block;
 }
 
 .footer-links-list a {
@@ -2281,6 +2300,25 @@ i.fa-chevron-circle-right {
   background: #fff;
   opacity: 0.3;
 }
+@media (min-width: 992px) and (max-width: 1199px) {
+.footer-links:nth-child(3) {
+	width: 58%;
+}
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .footer-links:nth-child(3) .footer-links-list {
+  display: grid !important;
+  grid-template-columns: 49% 49%;
+  gap: 16px 7px !important;
+}
+ .footer-contact {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    gap: 21px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 30px;
+  }
+}
 @media (min-width: 576px) and (max-width: 991px) {
   .footer-about-col {
     order: 0;
@@ -2294,14 +2332,18 @@ i.fa-chevron-circle-right {
     order: 1;
     width: 100%;
   }
-  .quick-links-groups {
-    display: grid !important;
-    grid-template-columns: 50% 50%;
-  }
-  .contact-col {
-    order: 4;
-    width: 60%;
-  }
+.footer-links:nth-child(3) .footer-links-list {
+  display: grid !important;
+  grid-template-columns: 49% 49%;
+  gap: 16px 7px !important;
+}
+}
+@media (min-width: 480px) and (max-width: 576px) { 
+.footer-links:nth-child(3) .footer-links-list {
+  display: grid !important;
+  grid-template-columns: 49% 49%;
+  gap: 16px 7px !important;
+}
 }
 
 @media (min-width: 576px) {
@@ -3815,21 +3857,18 @@ i.fa-chevron-circle-right {
 }
 .theme-tab-panel .tab-content {
   border: 1px solid var(--bs-gray-500);
-  border-radius: 0 15px 15px 15px;
+  border-radius: 0 10px 15px 15px;
 }
 .table-lab-photo {
 	width: 100%;
 	height: 90px;
 	object-fit: contain;
 }
-@media (min-width:1200px) {
+/* @media (min-width:1200px) {
 .tab-btn-title {
 	flex: 1 1 auto !important;
 }
-.theme-tab-panel .tab-content {
-  border-radius: 0 0 15px 15px;
-}
-}
+} */
 /*===== publication page ===*/
 .publication-tabs-panels {
   gap: 10px 5px;

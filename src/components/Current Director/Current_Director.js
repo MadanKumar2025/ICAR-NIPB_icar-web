@@ -168,36 +168,15 @@ function Current_Director() {
                   </div>
                   <p>{apiData?.education?.[lang]}</p>
                 </div>
-                {/* <div className="desk-about-content">
-                  <p>
-                    Dr. Ramcharan Bhattacharya is a distinguished scientist with
-                    extensive experience in the field of plant biotechnology and
-                    agricultural research. As the Director, he is responsible
-                    for providing strategic leadership and guiding the institute
-                    in fulfilling its core objectives of research excellence and
-                    innovation.
-                    <br></br>
-                    Over the years, he has been actively engaged in advancing
-                    research in plant molecular biology, with a focus on
-                    developing sustainable solutions for improving crop
-                    performance and resilience. His work has contributed to
-                    strengthening scientific understanding as well as supporting
-                    national priorities related to agriculture and food
-                    security.
-                    <br></br>
-                    In his current role, Dr. Bhattacharya emphasizes the
-                    importance of collaborative research, capacity building, and
-                    the integration of modern technologies in agricultural
-                    science. He has played a key role in promoting
-                    interdisciplinary approaches and fostering an environment
-                    that encourages innovation and knowledge sharing.
-                    <br></br>
-                    “Our focus remains on strengthening research and innovation
-                    to address emerging challenges in agriculture, while
-                    contributing to sustainable development and national
-                    priorities.”
-                  </p>
-                </div> */}
+                  {apiData?.message?.en && (
+                  <div className="desk-about-content">
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: apiData?.message?.[lang],
+                      }}
+                    ></p>
+                  </div>
+                )}
               </div>
             </div>
           </div>

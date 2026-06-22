@@ -119,10 +119,10 @@ function Director() {
     }
   };
 
-// Marque news const
+  // Marque news const
   const [paused, setPaused] = useState(false);
   const trackRef = useRef(null);
-// Marque news usestate
+  // Marque news usestate
   useEffect(() => {
     const track = trackRef.current;
     if (track && track.children.length > 0) {
@@ -227,7 +227,7 @@ function Director() {
     }
   };
   const aboutText =
-  lang === "hi" ? "संस्थान के बारे में" : "About the Institute";
+    lang === "hi" ? "संस्थान के बारे में" : "About the Institute";
   const readMoreText = lang === "hi" ? "और पढ़ें" : "Read More";
   return (
     <>
@@ -236,7 +236,8 @@ function Director() {
           <div className="row about-page-row">
             <div className="col-lg-6 col-xl-3 hover-effect about-image-col">
               <div className="about-image-area image-effect position-relative overflow-hidden">
-                <img class="w-100"
+                <img
+                  class="w-100"
                   src={`${IMG_BASE_URL}/${DirectorData?.data?.[0]?.photo}`}
                   alt={DirectorData?.data[0]?.photoTitle}
                 />
@@ -264,7 +265,7 @@ function Director() {
                     className="btn-static-text"
                     onClick={() => handlePageClick("6a02c787adbccb91e02a14fe")}
                   >
-                   {readMoreText}
+                    {readMoreText}
                   </span>
                   <span className="btn-arrow">
                     <i className="fa-solid fa-arrow-right-long"></i>{" "}
@@ -274,8 +275,7 @@ function Director() {
             </div>
             <div className="col-lg-6 col-xl-3 about-new-col">
               <div className="new-vertical-area">
-              
-              {/* <div className="vertical-marquee">
+                {/* <div className="vertical-marquee">
                   <div className="vertical-track">
                     <div className="marquee-item"><span className="new-box-info"> AI Expense Tracking</span></div>
                     <div className="marquee-item"><span className="new-box-info"> Smart Savings Goals</span></div>
@@ -289,51 +289,62 @@ function Director() {
                       <span className="new-box-info">Financial Insights </span></div>
                   </div>
                 </div> */}
-                 <div className="marquee-wrapper">
-                   <div className="marwue-new-header">
-                     <h3 className="new-vertical-heading text-center fs-20 fw-600 text-white m-0">News & Highlights</h3>
-<button
-  className="marquee-status-btn"
-  onClick={() => setPaused(!paused)}
->
-  {paused ? (
-    <i className="fa-solid fa-play new-status-icon"></i>
-  ) : (
-    <i className="fa-solid fa-pause new-status-icon"></i>
-  )}
-</button>
-                   </div>
+                <div className="marquee-wrapper">
+                  <div className="marwue-new-header">
+                    <h3 className="new-vertical-heading text-center fs-20 fw-600 text-white m-0">
+                      News & Highlights
+                    </h3>
+                    <button
+                      className="marquee-status-btn"
+                      onClick={() => setPaused(!paused)}
+                    >
+                      {paused ? (
+                        <i className="fa-solid fa-play new-status-icon"></i>
+                      ) : (
+                        <i className="fa-solid fa-pause new-status-icon"></i>
+                      )}
+                    </button>
+                  </div>
 
-      <div className={`marquee-container ${paused ? "paused" : ""}`}>
-        <div className="marquee-track" ref={trackRef}>
-          
-          <div className="marquee-card">
-             <img className="slow-effect new-blink-shape" src="images/resources/new_blink.png" alt=""/>
-            <div className="new-box-info">
-             <a href="/">Crop Improvement</a>
-            </div>
-          </div>
-           <div className="marquee-card">
-            <div className="new-box-info">
-              <p>Plant Breeding</p>
-            </div>
-          </div> 
-           <div className="marquee-card">
-            <div className="new-box-info">
-             <a href="/">Soil Health</a>
-            </div>
-          </div> 
+                  <div
+                    className={`marquee-container ${paused ? "paused" : ""}`}
+                  >
+                    <div className="marquee-track" ref={trackRef}>
+                      <div className="marquee-card">
+                        <img
+                          className="slow-effect new-blink-shape"
+                          src="images/resources/new_blink.png"
+                          alt=""
+                        />
+                        <div className="new-box-info">
+                          <a href="/">Crop Improvement</a>
+                        </div>
+                      </div>
+                      <div className="marquee-card">
+                        <div className="new-box-info">
+                          <p>Plant Breeding</p>
+                        </div>
+                      </div>
+                      <div className="marquee-card">
+                        <div className="new-box-info">
+                          <a href="/">Soil Health</a>
+                        </div>
+                      </div>
 
-          <div className="marquee-card">
-             <img className="slow-effect new-blink-shape" src="images/resources/new_blink.png" alt=""/>
-            <div className="new-box-info">
-             <p>Climate Research</p>
-            </div>
-          </div>
-          </div>
-      </div>
-    </div>
+                      <div className="marquee-card">
+                        <img
+                          className="slow-effect new-blink-shape"
+                          src="images/resources/new_blink.png"
+                          alt=""
+                        />
+                        <div className="new-box-info">
+                          <p>Climate Research</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
           </div>
           <div className="row">
@@ -344,7 +355,7 @@ function Director() {
                     <h3 className="fs-26 fw-600 heading-color m-0">
                       {Page_OurVision?.data?.pageTitle?.[lang]}
                     </h3>
-                    <div className="vision-icon"> 
+                    <div className="vision-icon">
                       <img
                         className="slow-effect icon-effect1"
                         src="images/icons/vision.svg"
@@ -353,11 +364,11 @@ function Director() {
                     </div>
                   </div>
                   <div className="vision-text">
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: Content_OurVision?.data[0]?.content?.[lang],
-                    }}
-                  />
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: Content_OurVision?.data[0]?.content?.[lang],
+                      }}
+                    />
                   </div>
                 </div>
                 <div className="vision-box mission-box theme-gray slow-effect hover-effect h-100">
@@ -374,10 +385,11 @@ function Director() {
                     </div>
                   </div>
                   <div className="vision-text">
-                  <p dangerouslySetInnerHTML={{
-                      __html: Content_OurMission?.data[0]?.content?.[lang],
-                    }}
-                  />
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: Content_OurMission?.data[0]?.content?.[lang],
+                      }}
+                    />
                   </div>
                 </div>
                 <div className="vision-box mandate-box theme-gray slow-effect hover-effect h-100">

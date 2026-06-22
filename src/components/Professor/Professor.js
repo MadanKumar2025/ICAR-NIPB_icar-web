@@ -153,7 +153,7 @@ function Professor() {
                     {apiData?.name?.[lang]}
                   </h2>
                   <p class="director-text fs-20 fw-600 theme-color">
-                    {lang === "hi" ? "निदेशक" : "Director"}
+                    {lang === "hi" ? "प्रोफेसर" : "Professor"}
                   </p>
                 </div>
                 <div className="director-contact">

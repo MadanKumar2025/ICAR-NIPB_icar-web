@@ -14,7 +14,7 @@ function PublicationsYear() {
   const [PageData, setPageData] = useState(null);
   const { slug, id, category } = useParams();
   const [activeType, setActiveType] = useState("Research Articles");
-
+  const [loading, setLoading] = useState(false);
   const getPage = async () => {
     if (!slug) return;
 
@@ -63,7 +63,7 @@ function PublicationsYear() {
 
   const handleDownload = async (e, fileUrl, fileName) => {
     e.stopPropagation();
-
+    setLoading(true);
     try {
       const response = await fetch(fileUrl);
 
@@ -86,13 +86,20 @@ function PublicationsYear() {
     } catch (error) {
       console.error("Download failed:", error);
       alert("File download failed");
+    } finally {
+      setLoading(false);
     }
   };
 
-  console.log("apiData", apiData);
-
+ 
   return (
     <div className="main-wrapper">
+      {loading && (
+        <div className="loader-overlay">
+          <div className="spinner"></div>
+          <p>Downloading...</p>
+        </div>
+      )}
       {/* ================= SEO START ================= */}
       <Helmet>
         <title>{PageData?.pageTitle?.[lang] || "Technical Staff"}</title>
@@ -158,96 +165,103 @@ function PublicationsYear() {
               <div className="row row-gap">
                 <div className="col-12">
                   <div className="publication-details">
-                  <div className="publication-tabs-panels d-flex flex-wrap justify-content-sm-between w-100"
-                  >
-                    <button
-                      onClick={() => setActiveType("Research Articles")}
-                      type="button"
-                      className={`btn flex-sm-fill publication-tab-btn ${activeType === "Research Articles" ? "active-tab" : ""
+                    <div className="publication-tabs-panels d-flex flex-wrap justify-content-sm-between w-100">
+                      <button
+                        onClick={() => setActiveType("Research Articles")}
+                        type="button"
+                        className={`btn flex-sm-fill publication-tab-btn ${
+                          activeType === "Research Articles" ? "active-tab" : ""
                         }`}
-                    >
-                      {lang === "hi" ? " शोध लेख " : " Research Articles"}
-                    </button>
-                    <button
-                      onClick={() => setActiveType("Review Articles")}
-                      type="button"
-                      className={`btn flex-sm-fill publication-tab-btn ${activeType === "Review Articles" ? "active-tab" : ""
+                      >
+                        {lang === "hi" ? " शोध लेख " : " Research Articles"}
+                      </button>
+                      <button
+                        onClick={() => setActiveType("Review Articles")}
+                        type="button"
+                        className={`btn flex-sm-fill publication-tab-btn ${
+                          activeType === "Review Articles" ? "active-tab" : ""
                         }`}
-                    >
-                      {lang === "hi" ? " समीक्षा लेख " : "    Review Articles"}
-                    </button>
-                    <button
-                      onClick={() => setActiveType("Book chapters")}
-                      type="button"
-                      className={`btn flex-sm-fill publication-tab-btn ${activeType === "Book chapters" ? "active-tab" : ""
+                      >
+                        {lang === "hi"
+                          ? " समीक्षा लेख "
+                          : "    Review Articles"}
+                      </button>
+                      <button
+                        onClick={() => setActiveType("Book chapters")}
+                        type="button"
+                        className={`btn flex-sm-fill publication-tab-btn ${
+                          activeType === "Book chapters" ? "active-tab" : ""
                         }`}
-                    >
-                      {lang === "hi" ? " पुस्तक अध्याय " : "    Book chapters"}
-                    </button>
-                  </div>
-                  <div className="publication-panel-contents bg-white">
-                    {apiData
-                      ?.filter(
-                        (item) =>
-                          item?.year == id &&
-                          item?.articleType?.en === activeType,
-                      )
-                      ?.map((item, index) => {
-                        const fileUrl = item?.file
-                          ? `${IMG_BASE_URL}/files/${item.file}`
-                          : null;
+                      >
+                        {lang === "hi"
+                          ? " पुस्तक अध्याय "
+                          : "    Book chapters"}
+                      </button>
+                    </div>
+                    <div className="publication-panel-contents bg-white">
+                      {apiData
+                        ?.filter(
+                          (item) =>
+                            item?.year == id &&
+                            item?.articleType?.en === activeType,
+                        )
+                        ?.map((item, index) => {
+                          const fileUrl = item?.file
+                            ? `${IMG_BASE_URL}/files/${item.file}`
+                            : null;
 
-                        return (
-                          <div className="single-list mt-3"
-                            key={item?.id || index}
-                            // style={{
-                            //   padding: "1vw",
-                            //   backgroundColor:
-                            //     index % 2 === 0 ? "#f2f2f2" : "#ffffff",
-                            //   color: "black",
-                            // }}
-                          >
-                            <div className="list-details listing-download-list">
-                              <div className="list-data">
-                                <div className="sr-number">
-                                  <i className="fa-solid fa-circle-check fs-22"></i>
+                          return (
+                            <div
+                              className="single-list mt-3"
+                              key={item?.id || index}
+                              // style={{
+                              //   padding: "1vw",
+                              //   backgroundColor:
+                              //     index % 2 === 0 ? "#f2f2f2" : "#ffffff",
+                              //   color: "black",
+                              // }}
+                            >
+                              <div className="list-details listing-download-list">
+                                <div className="list-data">
+                                  <div className="sr-number">
+                                    <i className="fa-solid fa-circle-check fs-22"></i>
+                                  </div>
+
+                                  {/* Title */}
+                                  <p
+                                    className="title-name m-0 fw-600 fs-16 slow-effect"
+                                    dangerouslySetInnerHTML={{
+                                      __html: item?.title?.[lang],
+                                    }}
+                                  />
                                 </div>
 
-                                {/* Title */}
-                                <p
-                                  className="title-name m-0 fw-600 fs-16 slow-effect"
-                                  dangerouslySetInnerHTML={{
-                                    __html: item?.title?.[lang],
-                                  }}
-                                />
-                              </div>
-
-                              <div className="download-btn md-ms-auto">
-                                {fileUrl && (
-                                  <button
-                                    onClick={(e) =>
-                                      handleDownload(e, fileUrl, item.file)
-                                    }
-                                    style={{
-                                      marginTop: "8px",
-                                      padding: "6px 12px",
-                                      border: "none",
-                                      // background: "#007bff",
-                                      color: "white",
-                                      borderRadius: "4px",
-                                      cursor: "pointer",
-                                    }}
-                                    className="theme-bg"
-                                  >
-                                    Download File
-                                  </button>
-                                )}
+                                <div className="download-btn md-ms-auto">
+                                  {fileUrl && (
+                                    <button
+                                      onClick={(e) =>
+                                        handleDownload(e, fileUrl, item.file)
+                                      }
+                                      style={{
+                                        marginTop: "8px",
+                                        padding: "6px 12px",
+                                        border: "none",
+                                        // background: "#007bff",
+                                        color: "white",
+                                        borderRadius: "4px",
+                                        cursor: "pointer",
+                                      }}
+                                      className="theme-bg"
+                                    >
+                                      Download File
+                                    </button>
+                                  )}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        );
-                      })}
-                  </div>
+                          );
+                        })}
+                    </div>
                   </div>
                   {/* {apiData?.map((item, index) => {
                 const fileUrl = item?.file

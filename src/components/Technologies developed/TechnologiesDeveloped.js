@@ -161,23 +161,26 @@ function TechnologiesDeveloped() {
                   <thead class="table-thead">
                     <tr>
                       <th class="table-title fw-600 fs-20" scope="col">
-                       {lang === "hi" ? "क्रमांक" : "Sr.No."}
+                        {lang === "hi" ? "क्रमांक" : "Sr.No."}
                       </th>
                       <th class="table-title fw-600 fs-20" scope="col">
                         {lang === "hi"
-  ? "आईसीएआर के साथ समझौता ज्ञापन करने वाले अन्य पक्ष/संस्थान का नाम"
-  : "Name of other party/Institute entered MoU with ICAR"}
+                          ? "आईसीएआर के साथ समझौता ज्ञापन करने वाले अन्य पक्ष/संस्थान का नाम"
+                          : "Name of other party/Institute entered MoU with ICAR"}
                       </th>
                       <th class="table-title fw-600 fs-20" scope="col">
-                    {lang === "hi"
-  ? "आईसीएआर के सहयोगी संस्थान का नाम"
-  : "Name of Collaborating Institute of ICAR"}
+                        {lang === "hi"
+                          ? "आईसीएआर के सहयोगी संस्थान का नाम"
+                          : "Name of Collaborating Institute of ICAR"}
                       </th>
                       <th class="table-title fw-600 fs-20" scope="col">
-                       {lang === "hi" ? "प्रौद्योगिकी का नाम" : "Name of Technology"}
+                        {lang === "hi"
+                          ? "प्रौद्योगिकी का नाम"
+                          : "Name of Technology"}
                       </th>
                       <th class="table-title fw-600 fs-20" scope="col">
-{lang === "hi" ? "एमओयू दिनांक" : "MoU date"}                      </th>
+                        {lang === "hi" ? "एमओयू दिनांक" : "MoU date"}{" "}
+                      </th>
                     </tr>
                   </thead>
                   <tbody class="table-body">

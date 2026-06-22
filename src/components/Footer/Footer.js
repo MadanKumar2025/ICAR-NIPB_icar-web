@@ -150,7 +150,7 @@ function Footer() {
                 // Agar child hai
                 return (
                   <div
-                    className="col-xxl-3 col-xl-3 col-lg-5 col-md-6 col-sm-8 contact-col"
+                    className="col-xxl-3 col-xl-3 col-lg-5 col-md-6 footer-links"
                     key={parent.id}
                   >
                     <div className="widget-footer-links">
@@ -238,9 +238,10 @@ function Footer() {
                   </ul>
                 </div>
               </div> */}
-              <div className="col-xxl-3 col-xl-3 col-lg-5 col-md-6 col-sm-8 contact-col">
+              <div className="col-xxl-3 col-xl-3 contact-col">
                 <div className="footer-contact">
-                  <h5 className="widget-title text-white fw-700">
+                  <div className="footer-contact-details">
+                    <h5 className="widget-title text-white fw-700">
                     {lang === "hi" ? "संपर्क करें" : "Contact Us"}
                   </h5>
                   <div className="footer-single-info footer-address">
@@ -267,6 +268,7 @@ function Footer() {
                     <a href={`mailto:${organization?.email2}`}>
                       {organization?.email2}
                     </a>
+                  </div>
                   </div>
                   {organization?.googleMapLink && (
                     <iframe
