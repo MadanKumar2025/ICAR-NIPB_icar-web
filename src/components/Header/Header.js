@@ -17,6 +17,8 @@ function Header() {
   const [menu, setMenu] = useState();
   const [organization, setOrganization] = useState();
   const navigate = useNavigate();
+  // add new sticky header
+  const [isSticky, setIsSticky] = useState(false);
 
   const getOrganization = async (page = 1) => {
     try {
@@ -69,6 +71,20 @@ function Header() {
     }
   };
 
+  // Add New Sticky Scroll Function
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   // Debounce Search
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -144,26 +160,23 @@ function Header() {
   // };
 
   //  Add New Funcation for Font size strat
-const changeFontSize = (delta) => {
-  const html = document.documentElement;
-  let currentSize = parseInt(
-    window.getComputedStyle(html).fontSize
-  );
-  let newSize = currentSize + delta;
-  if (newSize < 13) newSize = 13;
-  if (newSize > 19) newSize = 19;
-  html.style.fontSize = `${newSize}px`;
-  localStorage.setItem("fontSize", newSize);
-};
-useEffect(() => {
-  const savedSize = localStorage.getItem("fontSize");
+  const changeFontSize = (delta) => {
+    const html = document.documentElement;
+    let currentSize = parseInt(window.getComputedStyle(html).fontSize);
+    let newSize = currentSize + delta;
+    if (newSize < 13) newSize = 13;
+    if (newSize > 19) newSize = 19;
+    html.style.fontSize = `${newSize}px`;
+    localStorage.setItem("fontSize", newSize);
+  };
+  useEffect(() => {
+    const savedSize = localStorage.getItem("fontSize");
 
-  if (savedSize) {
-    document.documentElement.style.fontSize = `${savedSize}px`;
-  }
-}, []);
-//  Add New Funcation for Font size End
-
+    if (savedSize) {
+      document.documentElement.style.fontSize = `${savedSize}px`;
+    }
+  }, []);
+  //  Add New Funcation for Font size End
 
   // const resetFontSize = () => {
   //   const root = document.documentElement;
@@ -171,10 +184,10 @@ useEffect(() => {
   //   localStorage.setItem("fontSize", DEFAULT_FONT_SIZE);
   // };
   //  Add New Funcation for Font size reset font size
-const resetFontSize = () => {
-  document.documentElement.style.fontSize = `${DEFAULT_FONT_SIZE}px`;
-  localStorage.setItem("fontSize", DEFAULT_FONT_SIZE);
-};
+  const resetFontSize = () => {
+    document.documentElement.style.fontSize = `${DEFAULT_FONT_SIZE}px`;
+    localStorage.setItem("fontSize", DEFAULT_FONT_SIZE);
+  };
 
   const homeLabel = lang === "hi" ? "होम" : "HOME";
   // const limitWords = (text, limit = 10) => {
@@ -219,7 +232,10 @@ const resetFontSize = () => {
   return (
     <div className={`theme-${theme}`}>
       <div className="menu-overlay"></div>
-      <header className="header-section p-0 position-relative">
+      {/* <header className="header-section p-0 position-relative"> */}
+      <header
+        className={`header-section p-0 position-relative ${isSticky ? "sticky-header" : ""}`}
+      >
         <div className="top-header-wrap">
           <div className="container">
             <div className="row">

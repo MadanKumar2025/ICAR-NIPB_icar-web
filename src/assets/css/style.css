@@ -563,7 +563,7 @@ button {
   opacity: 0.5;
 }
 .header-lang select {
-  height: 34px;
+	height: 28px;
 }
 
 .screen-size-box {
@@ -732,17 +732,17 @@ button {
 	padding: 5px 5px 5px 24px;
 	margin-left: auto;
 	cursor: pointer;
-} 
+	height: 33px;
+}
 .header-search-icon i {
-  width: 30px;
-  height: 30px;
-  background: var(--bs-primary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  border-radius: 50%;
-  padding: 15px;
+	width: 30px;
+	height: 30px;
+	color: var(--bs-primary);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	padding: 0;
 }
 }
 @media (min-width:768px) {
@@ -760,9 +760,8 @@ button {
 .header-search-icon {
 	min-width: 230px
 }
-.header-search-icon i {
-	width: 37px;
-	height: 37px;
+.icar-logo, .nipb-logo {
+	width: 90px;
 }
 }
 @media (min-width:1200px) {
@@ -816,7 +815,7 @@ button {
 }
 .contact-link {
 	background: #fff;
-	padding: 13px 14px;
+	padding: 7px 10px;
 	border-radius: 100px;
 	display: flex;
 	gap: 5px;
@@ -2715,6 +2714,33 @@ i.fa-chevron-circle-right {
   border-top: 1px solid #dddddd;
   padding-top: 15px;
   margin-top: 15px;
+}
+.header-section {
+  position: relative;
+  width: 100%;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.sticky-header {
+	position: fixed !important;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: #fff;
+	z-index: 9999;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+	animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
 }
 @media (min-width: 768px) {
   .chairmain-hih-light {

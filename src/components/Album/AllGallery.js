@@ -50,7 +50,7 @@ function AllGallery() {
             "Cache-Control": "no-cache",
             Pragma: "no-cache",
           },
-        });        
+        });
         dataAlbum = res.data?.data ? [res.data.data] : [];
       }
 
@@ -79,6 +79,8 @@ function AllGallery() {
       getData();
     }
   }, [id, PageData?.apiName]);
+
+  console.log("apiData", apiData);
 
   return (
     <div className="main-wrapper">
@@ -151,7 +153,10 @@ function AllGallery() {
             {apiData?.map((item, index) => {
               //   console.log("item", item);
               return (
-                <div key={index} className="col-sm-6 col-lg-4 col-xl-3 staff-col">
+                <div
+                  key={index}
+                  className="col-sm-6 col-lg-4 col-xl-3 staff-col"
+                >
                   <div className="team-item slow-effect h-100">
                     <div className="team-image position-relative overflow-hidden">
                       <figure className="image-anime m-0">
@@ -161,6 +166,28 @@ function AllGallery() {
                             src={`${IMG_BASE_URL}/${item?.photo}`}
                             alt={item?.title?.[lang] || "image"}
                           />
+                        ) : item?.document ? (
+                          <a
+                            href={`${IMG_BASE_URL}/${item?.document}`}
+                            // href="http://14.139.229.204/uploads/1782192872409-276719872.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="pdf-card d-flex flex-column align-items-center justify-content-center w-100 h-100 text-decoration-none"
+                            style={{
+                              minHeight: "200px",
+                              background: "#fff5f5",
+                              color: "#e74c3c",
+                              fontSize: "18px",
+                              fontWeight: "600",
+                              gap: "10px",
+                            }}
+                          >
+                            <i
+                              className="fa-solid fa-file-pdf"
+                              style={{ fontSize: "50px" }}
+                            ></i>
+                            <span>View PDF</span>
+                          </a>
                         ) : item?.videoUrl ? (
                           <iframe
                             className="slow-effect"
@@ -178,11 +205,11 @@ function AllGallery() {
                             style={{
                               width: "100%",
                               height: "200px",
-                              backgroundColor: "#ddd",
+                              backgroundColor: "#cccccc",
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "center",
-                              color: "#888",
+                              color: "#000000",
                             }}
                           >
                             No Media

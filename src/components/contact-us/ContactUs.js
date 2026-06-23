@@ -56,7 +56,7 @@ function ContactUs() {
     }
   }, [PageData?.apiName]);
 
-  // console.log("apiData", apiData);
+  console.log("apiData", apiData);
 
   return (
     <div className="main-wrapper">
@@ -157,17 +157,23 @@ function ContactUs() {
                           <i class="fa-solid fa-map-marker-alt"></i>
                         </div>
                         <div className="contact-details-info">
-                        <div class="director-address">
-                          <h4 class="addess-title fw-600 fs-24">{lang === "hi" ? "पता" : "Address"}</h4>
-                          <p class="m-0 fs-18 text-black">
-                            {apiData?.addressLine1?.[lang]} &{" "}
-                            {apiData?.addressLine2?.[lang]}
-                          </p>
-                        </div>
-                        <div class="director-address mt-3">
-                          <h4 class="addess-title fw-600 fs-24">{lang === "hi" ? "पिन कोड" : "Pin Code"}</h4>
-                          <p class="m-0 fs-18 text-black">{apiData?.pinCode}</p>
-                        </div>
+                          <div class="director-address">
+                            <h4 class="addess-title fw-600 fs-24">
+                              {lang === "hi" ? "पता" : "Address"}
+                            </h4>
+                            <p class="m-0 fs-18 text-black">
+                              {apiData?.addressLine1?.[lang]} &{" "}
+                              {apiData?.addressLine2?.[lang]}
+                            </p>
+                          </div>
+                          <div class="director-address mt-3">
+                            <h4 class="addess-title fw-600 fs-24">
+                              {lang === "hi" ? "पिन कोड" : "Pin Code"}
+                            </h4>
+                            <p class="m-0 fs-18 text-black">
+                              {apiData?.pinCode}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -178,7 +184,9 @@ function ContactUs() {
                         <div class="director-contact-icon d-none"></div>
                         <div class="director-contact">
                           <h4 class="addess-title fw-600 fs-24">
-                            {lang === "hi" ? "सामान्य पूछताछ" : "General Enquiry"}
+                            {lang === "hi"
+                              ? "सामान्य पूछताछ"
+                              : "General Enquiry"}
                           </h4>
                           <div class="single-contact">
                             <div class="contact-title me-2 fs-17 fw-500">
@@ -205,8 +213,17 @@ function ContactUs() {
                             </div>
                             <div class="contct-info">
                               <span class="fs-18">
-                                {" "}
                                 {apiData?.contactNumber}
+                              </span>
+                            </div>
+                          </div>
+                          <div class="single-contact">
+                            <div class="contact-title me-2 fs-17 fw-500">
+                              <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contct-info">
+                              <span class="fs-18">
+                                {apiData?.officeHours?.[lang]}
                               </span>
                             </div>
                           </div>
@@ -257,189 +274,6 @@ function ContactUs() {
               </div>
             </div>
           </div>
-          {/* <div class="row row-gap mt-5">
-            <div class="col-sm-6 col-xl-3">
-              <div class="officer-card h-100">
-                <div class="inner-officer-card">
-                  <div class="officer-header">
-                    <div class="officer-icon">
-                      <i class="fas fa-user"></i>
-                    </div>
-                    <div class="officer-besic-info position-relative z_index1">
-                      <h5 class="officer-title m-0 fw-600 fs-22">
-                        Mr. Sumit Singh
-                      </h5>
-                      <p class="mb-0 officer-designation fs-16">
-                        Senior Administrative Officer
-                      </p>
-                    </div>
-                  </div>
-                  <div class="officer-details">
-                    <div class="officer-contact">
-                      <div class="single-content">
-                        <div class="contct-icon">
-                          <i class="fas fa-phone fs-18"></i>
-                        </div>
-                        <div class="contact-info">
-                          <p class="m-0 fs-16">
-                            011-25843533, 011-25841787, 25842789 (Ext 295)
-                          </p>
-                        </div>
-                      </div>
-                      <div class="single-content">
-                        <div class="contct-icon">
-                          <i class="fas fa-envelope fs-18"></i>
-                        </div>
-                        <div class="contact-info">
-                          <a
-                            href="mailto:sumit.singh@icar.gov.in"
-                            class="fs-16 m-0"
-                          >
-                            sumit.singh@icar.gov.in
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-              <div class="officer-card h-100">
-                <div class="inner-officer-card">
-                  <div class="officer-header">
-                    <div class="officer-icon">
-                      <i class="fas fa-user"></i>
-                    </div>
-                    <div class="officer-besic-info position-relative z_index1">
-                      <h5 class="officer-title m-0 fw-600 fs-22">
-                        Mr. Rahul Kumar
-                      </h5>
-                      <p class="mb-0 officer-designation fs-16">
-                        Senior Finance and Accounts Officer
-                      </p>
-                    </div>
-                  </div>
-                  <div class="officer-details">
-                    <div class="officer-contact">
-                      <div class="single-content">
-                        <div class="contct-icon">
-                          <i class="fas fa-phone fs-18"></i>
-                        </div>
-                        <div class="contact-info">
-                          <p class="m-0 fs-16">
-                            011-25842126, 011-25841787, 25842789 (Ext 292)
-                          </p>
-                        </div>
-                      </div>
-                      <div class="single-content">
-                        <div class="contct-icon">
-                          <i class="fas fa-envelope fs-18"></i>
-                        </div>
-                        <div class="contact-info">
-                          <a
-                            href="mailto:rahul.kumar@icar.gov.in"
-                            class="fs-16 m-0"
-                          >
-                            rahul.kumar@icar.gov.in
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-              <div class="officer-card h-100">
-                <div class="inner-officer-card">
-                  <div class="officer-header">
-                    <div class="officer-icon">
-                      <i class="fas fa-user"></i>
-                    </div>
-                    <div class="officer-besic-info position-relative z_index1">
-                      <h5 class="officer-title m-0 fw-600 fs-22">
-                        Mrs. Sangeeta Jain
-                      </h5>
-                      <p class="mb-0 officer-designation fs-16">
-                        Assistant Administrative Officer
-                      </p>
-                    </div>
-                  </div>
-                  <div class="officer-details">
-                    <div class="officer-contact">
-                      <div class="single-content">
-                        <div class="contct-icon">
-                          <i class="fas fa-phone fs-18"></i>
-                        </div>
-                        <div class="contact-info">
-                          <p class="m-0 fs-16">
-                            011-25842150, 011-25841787, 25842789 (Ext 293)
-                          </p>
-                        </div>
-                      </div>
-                      <div class="single-content">
-                        <div class="contct-icon">
-                          <i class="fas fa-envelope fs-18"></i>
-                        </div>
-                        <div class="contact-info">
-                          <a href="mailto:aao@nrcpb.org" class="fs-16 m-0">
-                            aao@nrcpb.org
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-              <div class="officer-card h-100">
-                <div class="inner-officer-card">
-                  <div class="officer-header">
-                    <div class="officer-icon">
-                      <i class="fas fa-user"></i>
-                    </div>
-                    <div class="officer-besic-info position-relative z_index1">
-                      <h5 class="officer-title m-0 fw-600 fs-22">
-                        Mr. Vipin Kumar
-                      </h5>
-                      <p class="mb-0 officer-designation fs-16">
-                        Assistant Administrative Officer
-                      </p>
-                    </div>
-                  </div>
-                  <div class="officer-details">
-                    <div class="officer-contact">
-                      <div class="single-content">
-                        <div class="contct-icon">
-                          <i class="fas fa-phone fs-18"></i>
-                        </div>
-                        <div class="contact-info">
-                          <p class="m-0 fs-16">
-                            011-25842150, 25841787 (Ext 324)
-                          </p>
-                        </div>
-                      </div>
-                      <div class="single-content">
-                        <div class="contct-icon">
-                          <i class="fas fa-envelope fs-18"></i>
-                        </div>
-                        <div class="contact-info">
-                          <a
-                            href="mailto:vipin.kumar1@icar.gov.in"
-                            class="fs-16 m-0"
-                          >
-                            vipin.kumar1@icar.gov.in
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
         </div>
       </section>
     </div>
