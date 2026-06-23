@@ -74,7 +74,7 @@ function Header() {
   // Add New Sticky Scroll Function
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 10) {
         setIsSticky(true);
       } else {
         setIsSticky(false);
@@ -234,7 +234,7 @@ function Header() {
       <div className="menu-overlay"></div>
       {/* <header className="header-section p-0 position-relative"> */}
       <header
-        className={`header-section p-0 position-relative ${isSticky ? "sticky-header" : ""}`}
+        className={`header-section p-0 position-relative  ${isSticky ? "sticky-header" : ""}`}
       >
         <div className="top-header-wrap">
           <div className="container">

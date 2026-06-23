@@ -852,17 +852,6 @@ color: var(--bs-light-yellow);
 .common-btn:hover .btn-arrow i {
 	animation: animate_arrow 2s infinite;
 }
-.header-section.is-sticky .header-menu-bar {
-  position: fixed !important;
-  animation: 0.35s ease-out slideDown;
-  width: 100%;
-  top: 0px;
-  background: var(--bs-primary);
-  box-shadow: 1px 1px 12px 4px #0000001c;
-}
-.header-section.is-sticky .header-menu-bar .contact-link {
-  padding: 8px 14px;
-}
 /* ===== NAVBAR BASIC ===== */
 .navbar {
   position: relative;
