@@ -499,6 +499,7 @@ button {
 /*--- Main-header ---*/
 .middle-header {
   padding: 8px 0;
+  background: #fff;
 }
 
 /*--- Top-header ---*/
@@ -2643,6 +2644,11 @@ i.fa-chevron-circle-right {
   .image-anime {
     aspect-ratio: 2/2;
   }
+.figure-box img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
 }
 @media (min-width: 460px) and (max-width: 575px) {
   .staff-col {
@@ -2653,6 +2659,36 @@ i.fa-chevron-circle-right {
     height: 160px;
     min-width: 160px;
   }
+
+}
+@media (min-width: 576px) {
+.figure-box {
+	max-height: 162px;
+	width: 100%;
+	object-fit: contain;
+	background: #eeeeeec4;
+	aspect-ratio: 2/2;
+}
+}
+@media (min-width: 768px) {
+.figure-box {
+	max-height: 223px;
+}
+}
+@media (min-width: 992px) {
+.figure-box {
+	max-height: 195px;
+}
+}
+@media (min-width: 1200px) {
+.figure-box {
+	max-height: 180px;
+}
+}
+@media (min-width: 1400px) {
+.figure-box {
+	max-height: 205px;
+}
 }
 /*======== Director Page ========*/
 .desk-header {
@@ -2708,7 +2744,7 @@ i.fa-chevron-circle-right {
   position: relative;
   width: 100%;
   z-index: 999;
-  transition: all 0.3s ease;
+  transition:0.5s all ease-in-out;
 }
 
 .sticky-header {

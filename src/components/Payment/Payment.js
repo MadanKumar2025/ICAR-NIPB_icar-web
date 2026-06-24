@@ -55,8 +55,6 @@ function Payment() {
     }
   }, [PageData?.apiName]);
 
-  
-
   return (
     <div className="main-wrapper">
       {/* ================= SEO START ================= */}
@@ -116,26 +114,42 @@ function Payment() {
       <section className="payment-section body-shape section-padding">
         <div className="container">
           <div className="qr-wrapper">
-          <div className="row align-items-center">
-            <div className="col-md-6">
-              <div className="payment-details">
-                 <div className="title-name m-0 fw-600 fs-16 slow-effect"
-          dangerouslySetInnerHTML={{
-            __html: apiData?.[0]?.bankDetails?.[lang],
-          }}
-        />
+            <div className="row align-items-center">
+              <div className="col-md-6">
+                <div className="text-center">
+                  <h4>
+                    {lang === "hi" ? " बैंक लेन-देन " : " Bank Transaction"}
+                    <hr />
+                  </h4>
+                </div>
+
+                <div className="payment-details">
+                  <div
+                    className="title-name m-0 fw-600 fs-16 slow-effect"
+                    dangerouslySetInnerHTML={{
+                      __html: apiData?.[0]?.bankDetails?.[lang],
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="text-center">
+                  <h4>
+                    {lang === "hi" ? " यूपीआई लेन-देन " : " UPI Transaction"}
+                    <hr />
+                  </h4>
+                </div>
+                <div className="gr-code-image text-center">
+                  <img
+                    src={`${IMG_BASE_URL}/${apiData?.[0]?.photo}`}
+                    alt={apiData?.[0]?.photoTitle}
+                  />
+                </div>
               </div>
             </div>
-            <div className="col-md-6">
-              <div className="gr-code-image text-center">
-                <img src={`${IMG_BASE_URL}/${apiData?.[0]?.photo}`} alt={apiData?.[0]?.photoTitle}/>
-        {/* <p>{apiData?.[0]?.bankDetails?.[lang]}</p> */}
-              </div>
-            </div>
-          </div>
           </div>
         </div>
-        </section>
+      </section>
     </div>
   );
 }

@@ -248,7 +248,10 @@ function Home() {
               </div>
             </div>
             <div className="row common-space row-gap">
-              <div className="col-md-6 col-lg-4">
+              <div
+                className="col-md-6 col-lg-4"
+                onClick={() => handlePageClick("6a3b7129529ac7f247e66427")}
+              >
                 <div className="programs-box h-100">
                   <div className="program-image-area text-center position-relative">
                     <img src="images/resources/msc_phd_programs.png" alt="" />
@@ -483,7 +486,7 @@ function Home() {
                             className="counter fs-30 fw-600 mb-0"
                             data-target="300"
                           >
-                            2000 
+                            2000
                           </h2>
                           <span>+</span>
                         </div>

@@ -152,13 +152,15 @@ function InstitutionalProjects() {
                   <thead class="table-thead">
                     <tr>
                       <th class="table-title fw-600 fs-20" scope="col">
-                       {lang === "hi" ? "मुख्य परियोजना" : "Main Project"}
+                        {lang === "hi" ? "मुख्य परियोजना" : "Main Project"}
                       </th>
                       <th class="table-title fw-600 fs-20" scope="col">
-                       {lang === "hi" ? "उप परियोजना" : "Sub Project"}
+                        {lang === "hi" ? "उप परियोजना" : "Sub Project"}
                       </th>
                       <th class="table-title fw-600 fs-20" scope="col">
-                      {lang === "hi" ? "मुख्य अन्वेषक" : "Principal Investigators"}
+                        {lang === "hi"
+                          ? "मुख्य अन्वेषक"
+                          : "Principal Investigators"}
                       </th>
                     </tr>
                   </thead>
@@ -179,7 +181,10 @@ function InstitutionalProjects() {
                                   <strong>
                                     {mainItem.mainProject?.[lang]}
                                   </strong>
-                                  Group Leader: {mainItem.groupLeader?.[lang]}
+                                  <br />
+                                  <br />
+                                  <b> Group Leader: </b> <br />{" "}
+                                  {mainItem.groupLeader?.[lang]}
                                 </td>
                               )}
 
@@ -201,7 +206,9 @@ function InstitutionalProjects() {
                   <tfoot className="table-tfoot">
                     <tr>
                       <td colspan="5" class="text-end">
-                        {lang === "hi" ? "दिनांक 03.02.2022 तक" : "As on 03.02.2022"}
+                        {lang === "hi"
+                          ? "दिनांक 03.02.2022 तक"
+                          : "As on 03.02.2022"}
                       </td>
                     </tr>
                   </tfoot>

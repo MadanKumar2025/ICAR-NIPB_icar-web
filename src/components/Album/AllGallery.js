@@ -159,7 +159,7 @@ function AllGallery() {
                 >
                   <div className="team-item slow-effect h-100">
                     <div className="team-image position-relative overflow-hidden">
-                      <figure className="m-0">
+                      <figure className="figure-box m-0">
                         {item?.photo ? (
                           <img
                             className="slow-effect"
