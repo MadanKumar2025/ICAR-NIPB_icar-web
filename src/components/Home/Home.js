@@ -139,14 +139,17 @@ function Home() {
               </div> */}
             </div>
             <div className="row common-space row-gap">
-              <div className="col-sm-6 col-xl-3">
+              <div
+                className="col-sm-6 col-xl-3"
+                onClick={() => handlePageClick("6a3b7e54529ac7f247e6893b")}
+              >
                 <div className="research-box h-100 slow-effect hover-effect text-center">
-                  <a className="research-links fs-22 fw-500 d-block" href="#">
+                  <a className="research-links fs-22 fw-500 d-block">
                     {lang === "hi" ? "जीन की खोज" : "Gene discovery"}
                   </a>
                   <div className="research-content">
                     <div className="research-image-area image-effect position-relative">
-                      <img src="images/resources/crop_improvement.png" alt="" />
+                      <img src="images/resources/1.jpeg" alt="" />
                     </div>
                     <p className="research-text m-0 mt-3 fs-15">
                       {lang === "hi"
@@ -156,14 +159,16 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-xl-3">
+              <div className="col-sm-6 col-xl-3" 
+              onClick={() => handlePageClick("6a3b8245529ac7f247e69695")}
+              >
                 <div className="research-box h-100 slow-effect hover-effect text-center">
                   <a className="research-links fs-22 fw-500 d-block" href="#">
                     {lang === "hi" ? "आनुवंशिक संशोधन" : "Genetic modification"}
                   </a>
                   <div className="research-content">
                     <div className="research-image-area image-effect position-relative">
-                      <img src="images/resources/crop_improvement.png" alt="" />
+                      <img src="images/resources/2.jpeg" alt="" />
                     </div>
                     <p className="research-text m-0 mt-3 fs-15">
                       {lang === "hi"
@@ -173,14 +178,16 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-xl-3">
+              <div className="col-sm-6 col-xl-3"
+              onClick={() => handlePageClick("6a3b83f6529ac7f247e6a122")}
+              >
                 <div className="research-box h-100 slow-effect hover-effect text-center">
                   <a className="research-links fs-22 fw-500 d-block" href="#">
                     {lang === "hi" ? "जीनोम विश्लेषण" : "Genome analysis "}
                   </a>
                   <div className="research-content">
                     <div className="research-image-area image-effect position-relative">
-                      <img src="images/resources/crop_improvement.png" alt="" />
+                      <img src="images/resources/3.jpeg" alt="" />
                     </div>
                     <p className="research-text m-0 mt-3 fs-15">
                       {lang === "hi"
@@ -190,7 +197,9 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-xl-3">
+              <div className="col-sm-6 col-xl-3"
+              onClick={() => handlePageClick("6a3b86c0529ac7f247e6b064")}
+              >
                 <div className="research-box h-100 slow-effect hover-effect text-center">
                   <a className="research-links fs-22 fw-500 d-block" href="#">
                     {lang === "hi"
@@ -199,7 +208,7 @@ function Home() {
                   </a>
                   <div className="research-content">
                     <div className="research-image-area image-effect position-relative">
-                      <img src="images/resources/crop_improvement.png" alt="" />
+                      <img src="images/resources/4.jpeg" alt="" />
                     </div>
                     <p className="research-text m-0 mt-3 fs-15">
                       {lang === "hi"
