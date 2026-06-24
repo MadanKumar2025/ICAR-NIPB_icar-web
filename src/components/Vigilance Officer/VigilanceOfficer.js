@@ -140,7 +140,7 @@ function VigilanceOfficer() {
               return (
                 <div key={index} className="col-sm-6 col-lg-4 col-xl-3">
                   <div className="team-item slow-effect h-100">
-                    <div className="team-image position-relative overflow-hidden">
+                    {/* <div className="team-image position-relative overflow-hidden">
                       <figure className="image-anime m-0">
                         <img
                           className="slow-effect"
@@ -148,7 +148,7 @@ function VigilanceOfficer() {
                           alt={item?.photoTitle}
                         />
                       </figure>
-                    </div>
+                    </div> */}
                     <div className="team-body">
                       <div className="team-content">
                         <h3

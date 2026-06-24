@@ -159,8 +159,9 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-xl-3" 
-              onClick={() => handlePageClick("6a3b8245529ac7f247e69695")}
+              <div
+                className="col-sm-6 col-xl-3"
+                onClick={() => handlePageClick("6a3b8245529ac7f247e69695")}
               >
                 <div className="research-box h-100 slow-effect hover-effect text-center">
                   <a className="research-links fs-22 fw-500 d-block" href="#">
@@ -178,8 +179,9 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-xl-3"
-              onClick={() => handlePageClick("6a3b83f6529ac7f247e6a122")}
+              <div
+                className="col-sm-6 col-xl-3"
+                onClick={() => handlePageClick("6a3b83f6529ac7f247e6a122")}
               >
                 <div className="research-box h-100 slow-effect hover-effect text-center">
                   <a className="research-links fs-22 fw-500 d-block" href="#">
@@ -197,8 +199,9 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-xl-3"
-              onClick={() => handlePageClick("6a3b86c0529ac7f247e6b064")}
+              <div
+                className="col-sm-6 col-xl-3"
+                onClick={() => handlePageClick("6a3b86c0529ac7f247e6b064")}
               >
                 <div className="research-box h-100 slow-effect hover-effect text-center">
                   <a className="research-links fs-22 fw-500 d-block" href="#">

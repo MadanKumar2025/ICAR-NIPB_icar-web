@@ -229,6 +229,23 @@ function Director() {
   const aboutText =
     lang === "hi" ? "संस्थान के बारे में" : "About the Institute";
   const readMoreText = lang === "hi" ? "और पढ़ें" : "Read More";
+
+  const [NewsData, setNewsData] = useState();
+  const getNews = async (page = 1) => {
+    try {
+      const response = await axios.get(`${API_URL}/news/get/web`);
+
+      const activeData = (response?.data?.data || []).filter(
+        (item) => item.isActive === true,
+      );
+      setNewsData(activeData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  useEffect(() => {
+    getNews();
+  }, []);
   return (
     <>
       <section className="home-about-section section-padding">
@@ -310,7 +327,7 @@ function Director() {
                     className={`marquee-container ${paused ? "paused" : ""}`}
                   >
                     <div className="marquee-track" ref={trackRef}>
-                      <div className="marquee-card">
+                      {/* <div className="marquee-card">
                         <img
                           className="slow-effect new-blink-shape"
                           src="images/resources/new_blink.png"
@@ -340,7 +357,32 @@ function Director() {
                         <div className="new-box-info">
                           <p>Climate Research</p>
                         </div>
-                      </div>
+                      </div> */}
+
+                      {NewsData?.filter((item) => item.type === "News").map(
+                        (item, index) => (
+                          <li key={item.id}>
+                            <a
+                              href={
+                                item?.link ||
+                                `${IMG_BASE_URL}/files/${item?.documentFile}`
+                              }
+                              target="_blank"
+                              className="new-info"
+                            >
+                              <span className="icon-news">
+                                <img
+                                  src="images/resources/new_blink.png"
+                                  alt=""
+                                />
+                              </span>
+                              <span className="new-text">
+                                {item?.title?.[lang] || "No Title"}
+                              </span>
+                            </a>
+                          </li>
+                        ),
+                      )}
                     </div>
                   </div>
                 </div>
