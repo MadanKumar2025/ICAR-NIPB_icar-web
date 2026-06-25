@@ -59,7 +59,7 @@ function NewsBox() {
     }
   };
 
-  const newsText = lang === "hi" ? "समाचार" : "News";
+  const newsText = lang === "hi" ? "सामाजिक माध्यम" : "Social Media";
   const viewMoreText = lang === "hi" ? "और देखें" : "View More";
 
   const tenderText = lang === "hi" ? "निविदा" : "Tender";
@@ -72,49 +72,6 @@ function NewsBox() {
       <section className="news-section section-padding">
         <div className="container">
           <div className="row">
-            <div className="col-md-6 col-xl-3">
-              <div className="marquee-column position-relative">
-                <h4 className="marquee-heading fs-24 box box1 fw-600 text-center">
-                  {newsText}
-                </h4>
-                <div className="marquee-box">
-                  <div className="marquee-content vertical_scroll">
-                    <ul className="p-0 m-0 d-flex flex-column">
-                      {NewsData?.filter((item) => item.type === "News").map(
-                        (item, index) => (
-                          <li key={item.id}>
-                            <a
-                              href={
-                                item?.link ||
-                                `${IMG_BASE_URL}/files/${item?.documentFile}`
-                              }
-                              target="_blank"
-                              className="new-info"
-                            >
-                              <span className="icon-news">
-                                <img
-                                  src="images/resources/new_blink.png"
-                                  alt=""
-                                />
-                              </span>
-                              <span className="new-text">
-                                {item?.title?.[lang] || "No Title"}
-                              </span>
-                            </a>
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                  </div>
-                </div>
-                <div
-                  className="view-all"
-                  onClick={() => handlePageClick("69fedeb95dda76984216ebca")}
-                >
-                  <Link><span className="position-relative">{viewMoreText} <i class="fa-solid fa-arrow-right-long"></i></span></Link>
-                </div>
-              </div>
-            </div>
             <div className="col-md-6 col-xl-3">
               <div className="marquee-column position-relative">
                 <h4 className="marquee-heading fs-24 box box2 fw-600 text-center">
@@ -154,7 +111,12 @@ function NewsBox() {
                   className="view-all"
                   onClick={() => handlePageClick("69feeda85dda76984216f231")}
                 >
-                  <Link><span className="position-relative">{viewMoreText} <i class="fa-solid fa-arrow-right-long"></i></span></Link>
+                  <Link>
+                    <span className="position-relative">
+                      {viewMoreText}{" "}
+                      <i class="fa-solid fa-arrow-right-long"></i>
+                    </span>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -198,7 +160,12 @@ function NewsBox() {
                   className="view-all"
                   onClick={() => handlePageClick("69feef0a5dda76984216f5e6")}
                 >
-                  <Link><span className="position-relative">{viewMoreText} <i class="fa-solid fa-arrow-right-long"></i></span></Link>
+                  <Link>
+                    <span className="position-relative">
+                      {viewMoreText}{" "}
+                      <i class="fa-solid fa-arrow-right-long"></i>
+                    </span>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -236,7 +203,60 @@ function NewsBox() {
                   className="view-all"
                   onClick={() => handlePageClick("69fef1e088fe5b04fafede90")}
                 >
-                  <Link><span className="position-relative">{viewMoreText} <i class="fa-solid fa-arrow-right-long"></i></span></Link>
+                  <Link>
+                    <span className="position-relative">
+                      {viewMoreText}{" "}
+                      <i class="fa-solid fa-arrow-right-long"></i>
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 col-xl-3">
+              <div className="marquee-column position-relative">
+                <h4 className="marquee-heading fs-24 box box1 fw-600 text-center">
+                  {newsText}
+                </h4>
+                <div className="marquee-box">
+                  <div className="marquee-content vertical_scroll">
+                    <ul className="p-0 m-0 d-flex flex-column">
+                      {/* {NewsData?.filter((item) => item.type === "News").map(
+                        (item, index) => (
+                          <li key={item.id}>
+                            <a
+                              href={
+                                item?.link ||
+                                `${IMG_BASE_URL}/files/${item?.documentFile}`
+                              }
+                              target="_blank"
+                              className="new-info"
+                            >
+                              <span className="icon-news">
+                                <img
+                                  src="images/resources/new_blink.png"
+                                  alt=""
+                                />
+                              </span>
+                              <span className="new-text">
+                                {item?.title?.[lang] || "No Title"}
+                              </span>
+                            </a>
+                          </li>
+                        ),
+                      )} */}
+                    </ul>
+                  </div>
+                </div>
+                <div
+                  className="view-all"
+                  // onClick={() => handlePageClick("69fedeb95dda76984216ebca")}
+                >
+                  <Link>
+                    <span className="position-relative">
+                      {viewMoreText}{" "}
+                      <i class="fa-solid fa-arrow-right-long"></i>
+                    </span>
+                  </Link>
                 </div>
               </div>
             </div>
