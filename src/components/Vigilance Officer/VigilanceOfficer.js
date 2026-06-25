@@ -34,19 +34,21 @@ function VigilanceOfficer() {
   // console.log("PageData", PageData);
 
   const getData = async (apiName) => {
-    console.log("apiName",apiName);
-    
+    console.log("apiName", apiName);
+
     const result = apiName.split("/").pop();
     try {
-      const res = await axios.get(`${API_URL}/VigilanceOfficerRoutes/get/web/${result}`, {
-        headers: {
-          "Cache-Control": "no-cache",
-          Pragma: "no-cache",
+      const res = await axios.get(
+        `${API_URL}/VigilanceOfficerRoutes/get/web/${result}`,
+        {
+          headers: {
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+          },
         },
-      });
+      );
       const activeData = (res.data?.data || []).filter(
-        (item) =>
-          item.isActive === true,
+        (item) => item.isActive === true,
       );
 
       setApiData(activeData);

@@ -60,7 +60,7 @@ function Header() {
         `${API_URL}/search/get/?keyword=${keyword}`,
       );
 
-      console.log("Search Response:", response.data);
+      // console.log("Search Response:", response.data);
 
       setFilteredResults(response?.data?.data || []);
     } catch (error) {
@@ -217,18 +217,27 @@ function Header() {
   const limitWords = (text, limit = 10) => {
     if (!text) return "";
 
-    const clean = text
+    // console.log("text", text);
+    // var clean = text;
+
+    const clean = String(text)
       .replace(/<[^>]*>/g, " ")
       .replace(/&nbsp;/g, " ")
       .replace(/\s+/g, " ")
       .trim();
 
-    const words = clean.split(" ");
+    const words = clean?.split(" ");
+
+    // const words = (clean, limit = 10) => {
+    //   console.log("clean:", clean, typeof clean);
+    //   return clean.split(" ").slice(0, limit).join(" ");
+    // };
 
     return words.length > limit
       ? words.slice(0, limit).join(" ") + "..."
       : clean;
   };
+
   return (
     <div className={`theme-${theme}`}>
       <div className="menu-overlay"></div>

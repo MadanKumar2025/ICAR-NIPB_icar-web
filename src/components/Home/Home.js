@@ -414,8 +414,9 @@ function Home() {
                   <div className="achievement-image h-100">
                     <img
                       className="w-100"
-                      src="images/resources/achievement_bg.jpg"
-                      alt=""
+                      src="images/icons/achievement_2.jpeg"
+                      // src="images/resources/achievement_bg.jpg"
+                      alt="Institutional Achievements and Milestones"
                     />
                   </div>
                 </div>
