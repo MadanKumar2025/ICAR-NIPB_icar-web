@@ -308,9 +308,9 @@ function Director() {
                 </div> */}
                 <div className="marquee-wrapper">
                   <div className="marwue-new-header">
-                    <h3 className="new-vertical-heading text-center fs-20 fw-600 text-white m-0">
+                    <p className="new-vertical-heading text-center fs-16 fw-600 text-white m-0">
                       News & Highlights
-                    </h3>
+                    </p>
                     <button
                       className="marquee-status-btn"
                       onClick={() => setPaused(!paused)}
@@ -326,6 +326,7 @@ function Director() {
                   <div
                     className={`marquee-container ${paused ? "paused" : ""}`}
                   >
+                    <div className="inner-marquee">
                     <div className="marquee-track" ref={trackRef}>
                       {/* <div className="marquee-card">
                         <img
@@ -361,7 +362,7 @@ function Director() {
 
                       {NewsData?.filter((item) => item.type === "News").map(
                         (item, index) => (
-                          <li key={item.id}>
+                          <div key={item.id}>
                             <a
                               href={
                                 item?.link ||
@@ -380,9 +381,10 @@ function Director() {
                                 {item?.title?.[lang] || "No Title"}
                               </span>
                             </a>
-                          </li>
+                          </div>
                         ),
                       )}
+                    </div>
                     </div>
                   </div>
                 </div>

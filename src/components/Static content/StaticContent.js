@@ -143,11 +143,11 @@ function StaticContent() {
           <div class="content-wrapper">
             <div className="row">
               <div className="col-12">
-                <div className="section-heading mb-3">
+                {/* <div className="section-heading mb-3">
                   <h2 className="section-title fs-48 fw-600 m-0">
                     {PageData?.pageTitle?.[lang]}{" "}
                   </h2>
-                </div>
+                </div> */}
                 <div className="disclaimer-text">
                   <p
                     dangerouslySetInnerHTML={{

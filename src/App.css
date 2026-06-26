@@ -27,10 +27,10 @@ tbody td {
   border: 1px solid #ccc;
   vertical-align: top;
 }
-tbody td:first-child {
+/* tbody td:first-child {
   font-weight: bold;
   width: 30%;
-}
+} */
 tbody td:nth-child(2) {
   /* width: 50%; */
 }

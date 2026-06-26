@@ -125,7 +125,7 @@ function ContactUs() {
                     ? "संपर्क जानकारी"
                     : "Contact Information"}{" "}
                 </h2>
-                <p class="section-text fs-20 secondry-text m-0">
+                <p class="section-text fs-16 secondry-text m-0">
                   {lang === "hi"
                     ? "हमारे समर्पित अधिकारियों से संपर्क करें"
                     : "Get in touch with our dedicated officials"}{" "}

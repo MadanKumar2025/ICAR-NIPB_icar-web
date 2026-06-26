@@ -49,7 +49,11 @@ function Banner() {
           prevEl: ".custom-prev",
         }}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 3000 }}
+      autoplay={{
+            delay: 3000,                // 100 se badha kar 3000 kiya (3 seconds)
+            pauseOnMouseEnter: true,    // Hover karne par stop hoga, hatne par automatic shuru
+            disableOnInteraction: false // Pagination click karne ke baad bhi autoplay zinda rahega
+          }}
         loop={true}
         className="swiper-container"
       >

@@ -173,7 +173,7 @@ function Patents() {
                 <div className="col-12">
                   <div class="section-heading">
                     <h2 class="section-title fs-48 fw-600 m-0">
-                      {lang === "hi" ? "प्राप्त पेटेंट" : "Patents Obtained"} :
+                      {lang === "hi" ? "पेटेंट" : "Patents"} :
                       -
                     </h2>
                   </div>

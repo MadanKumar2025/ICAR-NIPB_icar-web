@@ -117,7 +117,7 @@ function Home() {
                       ? "पादप जैव प्रौद्योगिकी एवं अनुसंधान क्षेत्र"
                       : "Plant Biotechnology & Research Areas"}{" "}
                   </h2>
-                  <p className="section-text fs-20 secondry-text m-0">
+                  <p className="section-text fs-16 secondry-text m-0">
                     {lang === "hi"
                       ? "जीनोमिक्स और जैव प्रौद्योगिकी में तीव्र प्रगति ने फसल सुधार में क्रांतिकारी परिवर्तन किया है, जिससे उपज, तनाव सहनशीलता और पोषण गुणवत्ता से संबंधित जीनों की सटीक पहचान संभव हुई है। हालांकि, जलवायु परिवर्तन, उभरते रोगजनकों और घटती आनुवंशिक विविधता जैसी चुनौतियाँ उन्नत ओमिक्स तकनीकों और नवीन प्रजनन रणनीतियों के एकीकरण की मांग करती हैं। आईसीएआर-एनआईपीबी, दिल्ली में अनुसंधान का मुख्य केंद्र जीन खोज, क्रियात्मक जीनोमिक्स, जीनोम विश्लेषण, आनुवंशिक संशोधन और मेटाबोलोमिक्स पर है, ताकि फसलों की क्षमता और उनकी सहनशीलता को बढ़ाया जा सके।"
                       : "Rapid advances in genomics and biotechnology have revolutionized crop improvement by enabling precise identification of genes for yield, stress tolerance, and nutritional quality. However, challenges such as climate change, emerging pathogens, and declining genetic diversity demand integration of advanced omics and innovative breeding strategies. Research at ICAR-NIPB, Delhi focuses on gene discovery, functional genomics, genome analysis, genetic modification, and metabolomics to enhance crop potential and resilience. "}
@@ -269,7 +269,7 @@ function Home() {
                     <img src="images/resources/msc_phd_programs.png" alt="" />
                   </div>
                   <div className="program-info-area text-center">
-                    <h5 className="program-box-title fs-25 slow-effect">
+                    <h5 className="program-box-title fs-24 slow-effect">
                       {lang === "hi"
                         ? "एमएससी / पीएचडी कार्यक्रम"
                         : "MSc / PhD Programs"}
@@ -294,7 +294,7 @@ function Home() {
                     />
                   </div>
                   <div className="program-info-area text-center">
-                    <h5 className="program-box-title fs-25 slow-effect">
+                    <h5 className="program-box-title fs-24 slow-effect">
                       {lang === "hi"
                         ? "अनुसंधान फेलोशिप"
                         : "Research Fellowships"}
@@ -319,7 +319,7 @@ function Home() {
                     <img src="images/resources/training_programs.png" alt="" />
                   </div>
                   <div className="program-info-area text-center">
-                    <h5 className="program-box-title fs-25 slow-effect">
+                    <h5 className="program-box-title fs-24 slow-effect">
                       {lang === "hi"
                         ? "प्रशिक्षण कार्यक्रम"
                         : "Training Programs"}
@@ -357,7 +357,7 @@ function Home() {
               >
                 <div className="publication-box position-relative">
                   <img
-                    src="images/resources/research_publications.jpg"
+                    src="images/resources/research_publications.jpeg"
                     alt=""
                   />
                   <a className="publication-title position-absolute text-white fs-20 ">
@@ -373,7 +373,7 @@ function Home() {
                 onClick={() => handlePageClick("69fd7240e54a380e472ce487")}
               >
                 <div className="publication-box position-relative">
-                  <img src="images/resources/annual_reports.jpg" alt="" />
+                  <img src="images/resources/annual_reports1.jpeg" alt="" />
                   <a className="publication-title position-absolute text-white fs-20 ">
                     {lang === "hi" ? "वार्षिक रिपोर्ट" : "Annual Reports"}
                   </a>
@@ -385,7 +385,7 @@ function Home() {
                 onClick={() => handlePageClick("69fd74e7e54a380e472cebca")}
               >
                 <div className="publication-box position-relative">
-                  <img src="images/resources/newsletter.jpg" alt="" />
+                  <img src="images/resources/newsletter2.jpeg" alt="" />
                   <a className="publication-title position-absolute text-white fs-20 ">
                     {lang === "hi" ? "समाचार पत्रिका" : "Newsletter"}
                   </a>
@@ -394,12 +394,12 @@ function Home() {
               <div
                 className="col-sm-6 col-lg-3"
                 style={{ cursor: "pointer" }}
-                onClick={() => handlePageClick("69fd78fde54a380e472ceec6")}
+                onClick={() => handlePageClick("6a0d91bb3c687f6b2675ca2d")}
               >
                 <div className="publication-box position-relative">
-                  <img src="images/resources/other.jpg" alt="" />
+                  <img src="images/resources/other1.jpeg" alt="" />
                   <a className="publication-title position-absolute text-white fs-20 ">
-                    {lang === "hi" ? "अन्य" : "Other"}
+                    {lang === "hi" ? "हिंदी पत्रिका ( वंशाणु )" : "Hindi Patrika ( वंशाणु )"}
                   </a>
                 </div>
               </div>
@@ -439,7 +439,7 @@ function Home() {
                           : "Institutional Achievements and Milestones"}
                       </h2>
                     </div>
-                    <div className="funfact-section">
+                    <div className="funfact-section mt-3">
                       <div className="funfact-box">
                         <div className="research-icon">
                           <img
@@ -457,7 +457,7 @@ function Home() {
                           </h2>
                           <span>+</span>
                         </div>
-                        <div className=" fs-18 fw-500">
+                        <div className=" fs-16 fw-500">
                           {lang === "hi"
                             ? "उत्कृष्टता के वर्ष"
                             : "Years of Excellence"}
@@ -480,7 +480,7 @@ function Home() {
                           </h2>
                           <span>+</span>
                         </div>
-                        <div className=" fs-18 fw-500">
+                        <div className=" fs-16 fw-500">
                           {lang === "hi"
                             ? "वित्तपोषित अनुसंधान परियोजनाएँ"
                             : "Funded Research Projects"}
@@ -503,7 +503,7 @@ function Home() {
                           </h2>
                           <span>+</span>
                         </div>
-                        <div className=" fs-18 fw-500">
+                        <div className=" fs-16 fw-500">
                           {lang === "hi"
                             ? "वैज्ञानिक प्रकाशन"
                             : "Scientific Publications"}
@@ -526,7 +526,7 @@ function Home() {
                           </h2>
                           <span>+</span>
                         </div>
-                        <div className=" fs-18 fw-500">
+                        <div className=" fs-16 fw-500">
                           {lang === "hi"
                             ? "वैश्विक सहयोग"
                             : "Global Collaborations"}
@@ -547,7 +547,7 @@ function Home() {
             <div className="row">
               <div className="col-md-9 mx-auto">
                 <div className="section-heading">
-                  <p className="section-text fs-20 secondry-text text-center m-0">
+                  <p className="section-text fs-16 secondry-text text-center m-0">
                     {instituteDescription}
                   </p>
                 </div>
@@ -563,7 +563,7 @@ function Home() {
                       alt=""
                     />
                   </div>
-                  <p className="institute-title fs-22 fw-500 d-block">
+                  <p className="institute-title fs-20 fw-500 d-block">
                     {lang === "hi" ? "छात्र कोना" : "Student Corner"}
                   </p>
                   <a href="#" className="common-btn btn-white mx-auto">
@@ -586,7 +586,7 @@ function Home() {
                       alt=""
                     />
                   </div>
-                  <p className="institute-title fs-22 fw-500 d-block">
+                  <p className="institute-title fs-20 fw-500 d-block">
                     {lang === "hi" ? "कर्मचारी कोना" : "Staff Corner"}{" "}
                   </p>
                   <Link
@@ -612,7 +612,7 @@ function Home() {
                       alt=""
                     />
                   </div>
-                  <p className="institute-title fs-22 fw-500 d-block">
+                  <p className="institute-title fs-20 fw-500 d-block">
                     {lang === "hi" ? "आउटरीच कार्यक्रम" : "Outreach Programme"}
                   </p>
                   <Link
@@ -637,7 +637,7 @@ function Home() {
                       alt=""
                     />
                   </div>
-                  <p className="institute-title fs-22 fw-500 d-block">
+                  <p className="institute-title fs-20 fw-500 d-block">
                     {lang === "hi" ? "समितियाँ" : "Committees"}
                   </p>
                   <Link
@@ -662,7 +662,7 @@ function Home() {
                       alt=""
                     />
                   </div>
-                  <p className="institute-title fs-22 fw-500 d-block">
+                  <p className="institute-title fs-20 fw-500 d-block">
                     {lang === "hi"
                       ? "एसएआईएफ @ आईसीएआर-एनआईपीबी"
                       : "SAIF @ICAR-NIPB"}
@@ -689,7 +689,7 @@ function Home() {
                       alt=""
                     />
                   </div>
-                  <p className="institute-title fs-22 fw-500 d-block">
+                  <p className="institute-title fs-20 fw-500 d-block">
                     {lang === "hi" ? "सूचना का अधिकार" : "RTI"}{" "}
                   </p>
                   <Link

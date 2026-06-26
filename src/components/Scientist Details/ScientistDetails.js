@@ -48,7 +48,7 @@ function ScientistDetails() {
     }
   };
   // Add const tab
-  const [activeTab, setActiveTab] = useState("customTap1");
+  const [activeTab, setActiveTab] = useState("customTap2");
 
   useEffect(() => {
     getPage();
@@ -183,12 +183,31 @@ function ScientistDetails() {
                           </div>
                           <div className="education-details">
                             <p className="mb-1 fs-16">
-                              <i className="fa-solid fa-mars-stroke-right theme-color fs-16 position-relative"></i>
+                              {/* <i className="fa-solid fa-mars-stroke-right theme-color fs-16 position-relative"></i> */}
                               <span>{apiData?.education?.[lang]}</span>
                             </p>
                           </div>
                         </div>
                       )}
+                      <div className="tabs-content">
+                        {apiData?.researchInterest?.[lang] && (
+                          <div className="publications-column">
+                            <div className="education-title fw-600 fs-16 theme-color mb-2">
+                              {lang === "hi"
+                                ? "अनुसंधान क्षेत्र :"
+                                : " Research Area : "}
+                            </div>
+                            <div className="publications-info-box">
+                              <p
+                                className="fs-16"
+                                dangerouslySetInnerHTML={{
+                                  __html: apiData?.researchInterest?.[lang],
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
                       {apiData?.designation?.name?.[lang] && (
                         <div className="education-box d-flex">
                           <div className="education-title fw-600 fs-16 theme-color mb-2">
@@ -228,7 +247,7 @@ function ScientistDetails() {
               <div className="common-content-area research-column tab-wrapper bg-white p-0 border-0">
                 <div className="theme-tab-panel">
                   <div className="taps theme-tabs">
-                    {apiData?.researchInterest?.[lang] && (
+                    {/* {apiData?.researchInterest?.[lang] && (
                       <button
                         className={`tab-btn-title ${activeTab === "customTap1" ? "active" : ""}`}
                         onClick={() => setActiveTab("customTap1")}
@@ -237,7 +256,7 @@ function ScientistDetails() {
                           {lang === "hi" ? "शोध रुचि" : "Research Interest"}
                         </span>
                       </button>
-                    )}
+                    )} */}
 
                     {apiData?.publications?.[lang] && (
                       <button
@@ -308,11 +327,11 @@ function ScientistDetails() {
                       <div className="tabs-content">
                         {apiData?.researchInterest?.[lang] && (
                           <div className="publications-column">
-                            <h5 className="box-type-title fs-24 fw-600 theme-color">
+                            <span>
                               {lang === "hi"
                                 ? "अनुसंधान क्षेत्र"
                                 : " Research Area"}
-                            </h5>
+                            </span>
                             <div className="publications-info-box">
                               <p
                                 className="fs-16"
