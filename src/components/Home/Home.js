@@ -285,7 +285,10 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-4">
+              <div
+                className="col-md-6 col-lg-4"
+                onClick={() => handlePageClick("6a3e09c09af603262fa72866")}
+              >
                 <div className="programs-box h-100">
                   <div className="program-image-area text-center position-relative">
                     <img
@@ -399,7 +402,9 @@ function Home() {
                 <div className="publication-box position-relative">
                   <img src="images/resources/other1.jpeg" alt="" />
                   <a className="publication-title position-absolute text-white fs-20 ">
-                    {lang === "hi" ? "हिंदी पत्रिका ( वंशाणु )" : "Hindi Patrika ( वंशाणु )"}
+                    {lang === "hi"
+                      ? "हिंदी पत्रिका ( वंशाणु )"
+                      : "Hindi Patrika ( वंशाणु )"}
                   </a>
                 </div>
               </div>
@@ -566,7 +571,7 @@ function Home() {
                   <p className="institute-title fs-20 fw-500 d-block">
                     {lang === "hi" ? "छात्र कोना" : "Student Corner"}
                   </p>
-                  <a href="#" className="common-btn btn-white mx-auto">
+                  <a   onClick={() => handlePageClick("6a3e7c7276d79ebd8706ab15")} className="common-btn btn-white mx-auto">
                     <span className="btn-static-text">
                       {/* {lang === "hi" ? "अनुसंधान देखें" : "Explore Research"} */}
                       {lang === "hi" ? "देखें" : "Explore"}

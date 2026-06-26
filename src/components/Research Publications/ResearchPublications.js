@@ -15,6 +15,7 @@ function ResearchPublications() {
   const [PageData, setPageData] = useState(null);
   const [selectedYear, setSelectedYear] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -97,9 +98,37 @@ function ResearchPublications() {
     "Hindi Patrika",
     "Others",
   ];
+  // const handleDownload = async (e, fileUrl, fileName) => {
+  //   e.stopPropagation();
+
+  //   try {
+  //     const response = await fetch(fileUrl);
+
+  //     if (!response.ok) {
+  //       throw new Error("File not found");
+  //     }
+
+  //     const blob = await response.blob();
+  //     const url = window.URL.createObjectURL(blob);
+
+  //     const link = document.createElement("a");
+  //     link.href = url;
+  //     link.download = fileName || "download";
+
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
+
+  //     window.URL.revokeObjectURL(url);
+  //   } catch (error) {
+  //     console.error("Download failed:", error);
+  //     alert("File download failed");
+  //   }
+  // };
+
   const handleDownload = async (e, fileUrl, fileName) => {
     e.stopPropagation();
-
+    setLoading(true);
     try {
       const response = await fetch(fileUrl);
 
@@ -122,6 +151,8 @@ function ResearchPublications() {
     } catch (error) {
       console.error("Download failed:", error);
       alert("File download failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -140,9 +171,16 @@ function ResearchPublications() {
     }
   };
 
+  // console.log("apiData",apiData);
   
   return (
     <div className="main-wrapper">
+      {loading && (
+        <div className="loader-overlay">
+          <div className="spinner"></div>
+          <p>Downloading...</p>
+        </div>
+      )}
       {/* ================= SEO START ================= */}
       <Helmet>
         <title>{PageData?.pageTitle?.[lang] || "Technical Staff"}</title>
@@ -198,51 +236,128 @@ function ResearchPublications() {
           </div>
         </div>
       </section>
-      {apiData?.[0]?.category !== "Forms" && (
-        <section className="institute-section position-relative overflow-hidden section-padding">
-          {/* <div className="institute-top-shape">
-            <img src="images/shape/shape2_right.png" alt="" />
-          </div> */}
-          <div className="container position-relative z_index1">
-            <div className="row common-space row-gap institute-row">
-              {apiData?.[0]?.category !== "Forms" &&
-                [...new Set(apiData?.map((item) => item.year))]
-                  ?.sort((a, b) => b - a)
-                  ?.map((year, index) => {
-                    return (
-                      <div
-                        key={index}
-                        onClick={() =>
-                          handlePageClick(year, apiData?.[0]?.category)
-                        }
-                        className="col-sm-6 col-lg-3 institute-col"
-                      >
-                        <div className="institute-box text-center h-100 slow-effect hover-effect">
-                          <p className="institute-title fs-30 fw-500 d-block">
-                            {year}
-                          </p>
+      {apiData?.[0]?.category !== "Forms" &&
+        apiData?.[0]?.category !== "Newsletters"  &&
+        apiData?.[0]?.category !== "HindiPatrika"  &&
+        apiData?.[0]?.category !== "AnnualReport" && (
+          <section className="institute-section position-relative overflow-hidden section-padding">
+            <div className="container position-relative z_index1">
+              <div className="row common-space row-gap institute-row">
+                {apiData?.[0]?.category !== "Forms" &&
+                  apiData?.[0]?.category !== "AnnualReport" &&
+                  [...new Set(apiData?.map((item) => item.year))]
+                    ?.sort((a, b) => b - a)
+                    ?.map((year, index) => {
+                      return (
+                        <div
+                          key={index}
+                          onClick={() =>
+                            handlePageClick(year, apiData?.[0]?.category)
+                          }
+                          className="col-sm-6 col-lg-3 institute-col"
+                        >
+                          <div className="institute-box text-center h-100 slow-effect hover-effect">
+                            <p className="institute-title fs-30 fw-500 d-block">
+                              {year}
+                            </p>
 
-                          <a
-                            href="#"
-                            className="common-btn btn-style-one mx-auto"
-                          >
-                            <span className="btn-static-text">
-                              {lang === "hi" ? "देखें" : "Explore"}
-                            </span>
-                            <span className="btn-arrow">
-                              <i className="fa-solid fa-arrow-right-long"></i>
-                            </span>
-                          </a>
+                            <a
+                              href="#"
+                              className="common-btn btn-style-one mx-auto"
+                            >
+                              <span className="btn-static-text">
+                                {lang === "hi" ? "देखें" : "Explore"}
+                              </span>
+                              <span className="btn-arrow">
+                                <i className="fa-solid fa-arrow-right-long"></i>
+                              </span>
+                            </a>
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+              </div>
             </div>
-          </div>
-          {/* <div className="institute-bottom-shape">
+            {/* <div className="institute-bottom-shape">
             <img src="images/shape/shape2_left.png" alt="" />
           </div> */}
-        </section>
+          </section>
+        )}
+      {(apiData?.[0]?.category === "AnnualReport" 
+      || apiData?.[0]?.category === "HindiPatrika" 
+      || apiData?.[0]?.category === "Newsletters" )&& (
+        <>
+          <section className="institute-section position-relative overflow-hidden section-padding">
+            <div className="container position-relative z_index1">
+              <div className="row common-space row-gap institute-row">
+                {apiData?.map((item, index) => {
+                  const fileUrl = item?.file
+                    ? `${IMG_BASE_URL}/files/${item?.file}`
+                    : null;
+
+                  return (
+                    <>
+                      <div
+                        key={index}
+                        className="col-sm-6 col-lg-4 col-xl-3 staff-col"
+                      >
+                        <div className="team-item slow-effect h-100">
+                          <div className="team-image position-relative overflow-hidden">
+                            <figure className="figure-box m-0">
+                              <img
+                                className="slow-effect"
+                                src={`${IMG_BASE_URL}/files/${item?.image}`}
+                                alt=""
+                              />
+                            </figure>
+                          </div>
+                          <div className="team-body">
+                            <div className="team-content">
+                              <div
+                                className="download-btn d-flex justify-content-center align-items-center"
+                                style={{ width: "100%" }}
+                              > 
+                                <h3
+                                  className="team-member-name fs-20 fw-600"
+                                  style={{ cursor: "pointer" }}
+                                  dangerouslySetInnerHTML={{
+                                    __html: item?.title?.[lang],
+                                  }}
+                                ></h3>
+                              </div>
+                              <div
+                                className="download-btn d-flex justify-content-center align-items-center"
+                                style={{ width: "100%" }}
+                              >
+                                <button
+                                  onClick={(e) =>
+                                    handleDownload(e, fileUrl, item.file)
+                                  }
+                                  style={{
+                                    // marginTop: "8px",
+                                    padding: "6px 12px",
+                                    border: "none",
+                                    // background: "#007bff",
+                                    color: "white",
+                                    borderRadius: "4px",
+                                    cursor: "pointer",
+                                  }}
+                                  className="theme-bg"
+                                >
+                                  Download File
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        </>
       )}
       {/* .list-details .fa-circle-check */}
       <section className="institution-section body-shape section-padding">

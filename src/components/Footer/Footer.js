@@ -11,6 +11,7 @@ import "swiper/css/autoplay";
 
 import { Autoplay } from "swiper/modules";
 import GovernmentLogoSlider from "./GovernmentLogoSlider";
+import VisitorCounter from "../VisitorCounter";
 
 function Footer() {
   const API_URL = process.env.REACT_APP_API_URL;
@@ -289,6 +290,9 @@ function Footer() {
                 <div className="copyright-area position-relative">
                   <p className="text-white text-center m-0 fs-16">
                     {copyrightText}
+                  </p>
+                  <p>
+                    {/* <VisitorCounter /> */}
                   </p>
                 </div>
               </div>
