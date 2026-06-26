@@ -251,13 +251,13 @@ function Home() {
                   </h2>
                 </div>
               </div>
-              <div className="col-lg-4 offset-lg-1">
+              {/* <div className="col-lg-4 offset-lg-1">
                 <p className="m-0 text-white">
                   {lang === "hi"
                     ? "संस्थान पादप जैव प्रौद्योगिकी और कृषि विज्ञान में स्नातकोत्तर शिक्षा एवं विशेष प्रशिक्षण कार्यक्रम प्रदान करता है।"
                     : "The institute offers postgraduate education and specialized training programs in plant biotechnology and agricultural sciences."}
                 </p>
-              </div>
+              </div> */}
             </div>
             <div className="row common-space row-gap">
               <div
@@ -527,7 +527,7 @@ function Home() {
                             className="counter fs-30 fw-600 mb-0"
                             data-target="50"
                           >
-                            0
+                            10
                           </h2>
                           <span>+</span>
                         </div>
