@@ -151,9 +151,9 @@ function Events() {
                         <div className="sr-number">
                           <i className="fa-solid fa-circle-check fs-22"></i>
                           <span className="card-number fs-16 fw-600">
-                            <span className="position-relative">
+                            {/* <span className="position-relative">
                               {index + 1}
-                            </span>
+                            </span> */}
                           </span>
                         </div>
                         <p className="title-name m-0 fw-600 fs-16 slow-effect">

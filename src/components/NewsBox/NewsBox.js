@@ -44,7 +44,7 @@ function NewsBox() {
   }, []);
 
   // this is use for get slug
-  const handlePageClick = async (id) => {
+  const handlePageClick = async (id) => {    
     try {
       const res = await axios.get(`${API_URL}/pages/get/web/${id}`);
 
@@ -53,6 +53,22 @@ function NewsBox() {
 
       if (slug) {
         navigate(`/${slug}`);
+      }
+    } catch (error) {
+      console.error("Error fetching page slug:", error);
+    }
+  };
+   const EventshandlePageClick = async (id) => {
+    try {
+      const res = await axios.get(
+        `${API_URL}/pages/get/web/69fef1e088fe5b04fafede90`,
+      );
+
+      const slug = res?.data?.data?.slug;
+      console.log("slug ", slug);
+
+      if (slug) {
+        navigate(`/${slug}/details/${id}`);
       }
     } catch (error) {
       console.error("Error fetching page slug:", error);
@@ -67,6 +83,8 @@ function NewsBox() {
   const careerJobText = lang === "hi" ? "करियर / नौकरी" : "Career/Job";
 
   const eventsText = lang === "hi" ? "कार्यक्रम" : "Events";
+  console.log("EventData",EventData);
+  
   return (
     <>
       <section className="news-section section-padding">
@@ -179,9 +197,10 @@ function NewsBox() {
                     <ul className="p-0 m-0 d-flex flex-column">
                       {EventData?.map((item, index) => (
                         <li key={item.id}>
-                          <a
-                            href={item?.registrationLink}
-                            target="_blank"
+                          <Link
+                            // href={item?.registrationLink}
+                              onClick={() => EventshandlePageClick(item?.id)}
+                            // target="_blank"
                             className="new-info"
                           >
                             <span className="icon-news">
@@ -193,7 +212,7 @@ function NewsBox() {
                             <span className="new-text">
                               {item.name?.[lang] || "No Title"}
                             </span>
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -205,7 +224,7 @@ function NewsBox() {
                 >
                   <Link>
                     <span className="position-relative">
-                      {viewMoreText}{" "}
+                      {viewMoreText} 
                       <i class="fa-solid fa-arrow-right-long"></i>
                     </span>
                   </Link>
