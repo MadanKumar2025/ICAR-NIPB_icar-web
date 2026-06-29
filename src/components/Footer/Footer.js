@@ -4,14 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "../LanguageContext";
 import { useTheme } from "../ThemeContext";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/autoplay";
 
-import { Autoplay } from "swiper/modules";
 import GovernmentLogoSlider from "./GovernmentLogoSlider";
-import VisitorCounter from "../VisitorCounter";
 
 function Footer() {
   const API_URL = process.env.REACT_APP_API_URL;
@@ -243,33 +239,33 @@ function Footer() {
                 <div className="footer-contact">
                   <div className="footer-contact-details">
                     <h5 className="widget-title text-white fw-700">
-                    {lang === "hi" ? "संपर्क करें" : "Contact Us"}
-                  </h5>
-                  <div className="footer-single-info footer-address">
-                    <i className="fas fa-map-marker-alt"></i>
-                    <p>
-                      {organization?.addressLine1?.[lang]}
-                      {organization?.addressLine2?.[lang]}
-                    </p>
-                  </div>
-                  <div className="footer-single-info footer-phone">
-                    <i className="fas fa-phone"></i>{" "}
-                    <a href={`tel:${organization?.contactNumber}`}>
-                      {organization?.contactNumber}
-                    </a>
-                  </div>
-                  <div className="footer-single-info footer-mail">
-                    <i className="fas fa-envelope"></i>
-                    <a href={`mailto:${organization?.email1}`}>
-                      {organization?.email1}
-                    </a>
-                  </div>
-                  <div className="footer-single-info footer-mail">
-                    <i className="fas fa-envelope"></i>
-                    <a href={`mailto:${organization?.email2}`}>
-                      {organization?.email2}
-                    </a>
-                  </div>
+                      {lang === "hi" ? "संपर्क करें" : "Contact Us"}
+                    </h5>
+                    <div className="footer-single-info footer-address">
+                      <i className="fas fa-map-marker-alt"></i>
+                      <p>
+                        {organization?.addressLine1?.[lang]}
+                        {organization?.addressLine2?.[lang]}
+                      </p>
+                    </div>
+                    <div className="footer-single-info footer-phone">
+                      <i className="fas fa-phone"></i>{" "}
+                      <a href={`tel:${organization?.contactNumber}`}>
+                        {organization?.contactNumber}
+                      </a>
+                    </div>
+                    <div className="footer-single-info footer-mail">
+                      <i className="fas fa-envelope"></i>
+                      <a href={`mailto:${organization?.email1}`}>
+                        {organization?.email1}
+                      </a>
+                    </div>
+                    <div className="footer-single-info footer-mail">
+                      <i className="fas fa-envelope"></i>
+                      <a href={`mailto:${organization?.email2}`}>
+                        {organization?.email2}
+                      </a>
+                    </div>
                   </div>
                   {organization?.googleMapLink && (
                     <iframe
@@ -290,9 +286,6 @@ function Footer() {
                 <div className="copyright-area position-relative">
                   <p className="text-white text-center m-0 fs-16">
                     {copyrightText}
-                  </p>
-                  <p>
-                    {/* <VisitorCounter /> */}
                   </p>
                 </div>
               </div>

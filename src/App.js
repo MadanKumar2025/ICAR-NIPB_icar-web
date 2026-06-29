@@ -172,6 +172,7 @@ function AppContent() {
           <Route path="/:slug/:category/:id" element={<PublicationsYear />} />
         </Routes>
         <Footer />
+        
       </div>
     </>
   );
