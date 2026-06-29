@@ -115,7 +115,7 @@ function EventsDetails() {
 
       <section className="achievements-section section-padding pb-0">
         <div className="container">
-          <div className="row">
+          {/* <div className="row">
             <div className="col-12 hover-effect position-relative">
               <div className="Event-full-banner image-effect">
                 <img
@@ -126,7 +126,7 @@ function EventsDetails() {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="event-full-details common-space">
             <div className="row row-gap m-0">
               <div className="col-lg-7">
@@ -143,7 +143,7 @@ function EventsDetails() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-lg-12 event-col">
+                  {/* <div className="col-lg-12 event-col">
                     <div className="single-event-column">
                       <div className="event-details">
                         <p className="event-box-title fs-20 fw-600 text-black mb-0">
@@ -154,8 +154,8 @@ function EventsDetails() {
                         </span>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-lg-12 event-col">
+                  </div> */}
+                  {/* <div className="col-lg-12 event-col">
                     <div className="single-event-column">
                       <div className="event-details">
                         <p className="event-box-title fs-20 fw-600 text-black mb-0">
@@ -187,9 +187,9 @@ function EventsDetails() {
                         </span>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
-                  <div className="col-lg-12 event-col">
+                  {/* <div className="col-lg-12 event-col">
                     <div className="single-event-column">
                       <div className="event-details">
                         <p className="event-box-title fs-20 fw-600 text-black mb-0">
@@ -222,9 +222,9 @@ function EventsDetails() {
                         </span>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
-                  <div className="col-lg-12 event-col">
+                  {/* <div className="col-lg-12 event-col">
                     <div className="single-event-column">
                       <div className="event-details">
                         <p className="event-box-title fs-20 fw-600 text-black mb-0">
@@ -233,6 +233,21 @@ function EventsDetails() {
                         <span className="event-box-info fs-16 d-block">
                           {apiData?.registrationLink}
                         </span>
+                      </div>
+                    </div>
+                  </div> */}
+                  <div className="col-lg-12 event-col">
+                    <div className="single-event-column">
+                      <div className="event-details">
+                        <p className="event-box-title fs-20 fw-600 text-black mb-0">
+                          Event Description
+                        </p>
+                        <span
+                          className="event-box-info fs-16 d-block"
+                          dangerouslySetInnerHTML={{
+                            __html: apiData?.description?.[lang],
+                          }}
+                        ></span>
                       </div>
                     </div>
                   </div>

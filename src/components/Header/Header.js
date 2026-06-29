@@ -6,6 +6,7 @@ import { useTheme } from "../ThemeContext";
 // menu active ke liye
 import { useLocation } from "react-router-dom";
 import { data } from "jquery";
+import Swal from "sweetalert2";
 
 function Header() {
   const API_URL = process.env.REACT_APP_API_URL;
@@ -238,49 +239,43 @@ function Header() {
       : clean;
   };
 
-// ADD NEW FUNCATION FOR TOP TO BOTTOM BUTTON START
-const [showButton, setShowButton] = useState(false);
-const [isAtBottom, setIsAtBottom] = useState(false);
-const [scrollProgress, setScrollProgress] = useState(0);
-useEffect(() => {
-  const handleScroll = () => {
-    const scrollTop = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    setShowButton(scrollTop > 10);
-    setIsAtBottom(
-      scrollTop + windowHeight >= documentHeight - 20
-    );
-    const totalHeight = documentHeight - windowHeight;
-    const progress = (scrollTop / totalHeight) * 100;
-    setScrollProgress(progress);
+  // ADD NEW FUNCATION FOR TOP TO BOTTOM BUTTON START
+  const [showButton, setShowButton] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      setShowButton(scrollTop > 10);
+      setIsAtBottom(scrollTop + windowHeight >= documentHeight - 20);
+      const totalHeight = documentHeight - windowHeight;
+      const progress = (scrollTop / totalHeight) * 100;
+      setScrollProgress(progress);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  const handleScrollClick = () => {
+    if (isAtBottom) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   };
-  window.addEventListener("scroll", handleScroll);
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, []);
-const handleScrollClick = () => {
-  if (isAtBottom) {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  } else {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth",
-    });
-  }
-};
-const radius = 25;
-const circumference = 2 * Math.PI * radius;
-const offset =
-  circumference -
-  (scrollProgress / 100) * circumference;
-// ADD NEW FUNCATION FOR TOP TO BOTTOM BUTTON End
-
-
+  const radius = 25;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (scrollProgress / 100) * circumference;
+  // ADD NEW FUNCATION FOR TOP TO BOTTOM BUTTON End
 
   return (
     <div className={`theme-${theme}`}>
@@ -609,6 +604,26 @@ const offset =
                                   rel="noopener noreferrer"
                                   className="menu-link"
                                   style={{ fontWeight: "500" }}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+
+                                    Swal.fire({
+                                      title: "Continue?",
+                                      text: "This page will redirect you to an external website. Do you want to continue?",
+                                      icon: "warning",
+                                      showCancelButton: true,
+                                      confirmButtonText: "Continue",
+                                      cancelButtonText: "Cancel",
+                                    }).then((result) => {
+                                      if (result.isConfirmed) {
+                                        window.open(
+                                          parent?.customUrl,
+                                          "_blank",
+                                          "noopener,noreferrer",
+                                        );
+                                      }
+                                    });
+                                  }}
                                 >
                                   {/* {parent?.menuName_en?.toUpperCase()} */}
                                   {parent?.[`menuName_${lang}`]?.toUpperCase()}
@@ -706,6 +721,26 @@ const offset =
                                       target="_blank"
                                       rel="noopener noreferrer"
                                       className="dropdown-item"
+                                      onClick={(e) => {
+                                        e.preventDefault();
+
+                                        Swal.fire({
+                                          title: "Continue?",
+                                          text: "This page will redirect you to an external website. Do you want to continue?",
+                                          icon: "warning",
+                                          showCancelButton: true,
+                                          confirmButtonText: "Continue",
+                                          cancelButtonText: "Cancel",
+                                        }).then((result) => {
+                                          if (result.isConfirmed) {
+                                            window.open(
+                                              child?.customUrl,
+                                              "_blank",
+                                              "noopener,noreferrer",
+                                            );
+                                          }
+                                        });
+                                      }}
                                     >
                                       {/* {child?.menuName_en?.toUpperCase()} */}
                                       {child?.[
@@ -754,39 +789,28 @@ const offset =
         </div>
       </header>
       <button
-  className={`scroll-progress-btn ${
-    showButton ? "show" : ""
-  }`}
-  onClick={handleScrollClick}
->
-  <svg
-    className="progress-ring"
-    width="60"
-    height="60"
-  >
-    <circle
-      className="progress-ring-bg"
-      cx="30"
-      cy="30"
-      r={radius}
-    />
+        className={`scroll-progress-btn ${showButton ? "show" : ""}`}
+        onClick={handleScrollClick}
+      >
+        <svg className="progress-ring" width="60" height="60">
+          <circle className="progress-ring-bg" cx="30" cy="30" r={radius} />
 
-    <circle
-      className="progress-ring-fill"
-      cx="30"
-      cy="30"
-      r={radius}
-      strokeDasharray={circumference}
-      strokeDashoffset={offset}
-    />
-  </svg>
+          <circle
+            className="progress-ring-fill"
+            cx="30"
+            cy="30"
+            r={radius}
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+          />
+        </svg>
 
-  <i
-    className={`fa-solid fa-arrow-down ${
-      isAtBottom ? "rotate-icon" : ""
-    }`}
-  ></i>
-</button>
+        <i
+          className={`fa-solid fa-arrow-down ${
+            isAtBottom ? "rotate-icon" : ""
+          }`}
+        ></i>
+      </button>
     </div>
   );
 }
