@@ -83,8 +83,7 @@ function NewsBox() {
   const careerJobText = lang === "hi" ? "करियर / नौकरी" : "Career/Job";
 
   const eventsText = lang === "hi" ? "कार्यक्रम" : "Events";
-  console.log("EventData",EventData);
-  
+   
   return (
     <>
       <section className="news-section section-padding">

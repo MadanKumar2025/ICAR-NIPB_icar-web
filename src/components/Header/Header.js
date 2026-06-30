@@ -24,7 +24,6 @@ function Header() {
   const getOrganization = async (page = 1) => {
     try {
       const response = await axios.get(`${API_URL}/organization/get/web`);
-
       setOrganization(response?.data?.data[0]);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -288,6 +287,8 @@ function Header() {
     });
   };
 
+  // console.log("organization",organization);
+
   return (
     <div className={`theme-${theme}`}>
       <div className="menu-overlay"></div>
@@ -508,7 +509,11 @@ function Header() {
                   </span>
                   <span
                     className="header-logo-sub-title"
-                    style={{cursor:"pointer", fontSize:"15px" }}
+                    style={{
+                      cursor: "pointer",
+                      fontSize: "16px",
+                      color: "blue",
+                    }}
                     onClick={() =>
                       showIsoPhoto(
                         organization?.isoPhoto

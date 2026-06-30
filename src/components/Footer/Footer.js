@@ -20,6 +20,7 @@ function Footer() {
 
   const [menu, setMenu] = useState();
   const [organization, setOrganization] = useState();
+  const [visitor, setVisitor] = useState();
 
   const getMenu = async (page = 1) => {
     try {
@@ -33,6 +34,24 @@ function Footer() {
       console.error("Error fetching data:", error);
     }
   };
+
+  const getVisitor = async (page = 1) => {
+    try {
+      const response = await axios.get(`${API_URL}/organization/Visitor`);
+      // console.log("response getVisitor", response?.data?.data);
+      setVisitor(response?.data?.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const updateVisitor = async () => {
+  try {
+    await axios.post(`${API_URL}/organization/Update/Visitor`);
+  } catch (error) {
+    console.error("Error updating visitor:", error);
+  }
+};
 
   // this is use for get slug
   const handlePageClick = async (id) => {
@@ -60,6 +79,8 @@ function Footer() {
   useEffect(() => {
     getMenu();
     getOrganization();
+    getVisitor();
+    updateVisitor()
   }, []);
 
   const footerText =
@@ -77,6 +98,8 @@ function Footer() {
   );
 
   const children = menu?.filter((item) => item.menuType === "child");
+  console.log("visitor", visitor);
+
   return (
     <div className={`theme-${theme}`}>
       <GovernmentLogoSlider />
@@ -99,6 +122,27 @@ function Footer() {
                     />
                   </Link>
                   <p className="text-white fs-16">{footerText}</p>
+                </div>
+                <h5 className="visitor-heading text-white mt-4 pt-2">
+                  Visitor Count
+                </h5>
+                <div class="visitor-count">
+                  {/* <span>0</span>
+                  <span>0</span>
+                  <span>0</span>
+                  <span>1</span>
+                  <span>4</span>
+                  <span>7</span>
+                  <span>1</span> */}
+                  <div className="visitor-count">
+                    {visitor?.totalViews
+                      ?.toString()
+                      .padStart(7, "0")
+                      .split("")
+                      .map((digit, index) => (
+                        <span key={index}>{digit}</span>
+                      ))}
+                  </div>
                 </div>
               </div>
 
@@ -281,6 +325,7 @@ function Footer() {
                 </div>
               </div>
             </div>
+
             <div className="row">
               <div className="col-12">
                 <div className="copyright-area position-relative">
