@@ -277,6 +277,17 @@ function Header() {
   const offset = circumference - (scrollProgress / 100) * circumference;
   // ADD NEW FUNCATION FOR TOP TO BOTTOM BUTTON End
 
+  const showIsoPhoto = (imageUrl) => {
+    Swal.fire({
+      title: "ISO Certificate",
+      imageUrl: imageUrl,
+      imageWidth: 400,
+      imageHeight: 300,
+      imageAlt: "ISO Photo",
+      confirmButtonText: "Close",
+    });
+  };
+
   return (
     <div className={`theme-${theme}`}>
       <div className="menu-overlay"></div>
@@ -494,6 +505,19 @@ function Header() {
                   <span className="header-logo-sub-title">
                     {organization?.addressLine1?.[lang]},
                     {organization?.addressLine2?.[lang]}
+                  </span>
+                  <span
+                    className="header-logo-sub-title"
+                    style={{cursor:"pointer", fontSize:"15px" }}
+                    onClick={() =>
+                      showIsoPhoto(
+                        organization?.isoPhoto
+                          ? `${IMG_BASE_URL}/${organization.isoPhoto}`
+                          : "",
+                      )
+                    }
+                  >
+                    {organization?.isoNumber}
                   </span>
                 </div>
                 <div className="nipb-logo">

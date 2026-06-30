@@ -152,6 +152,7 @@ function AppContent() {
   return (
     <>
       {/* <div className={`theme-hi theme-${theme}`}> */}
+      
       <div
         className={lang === "hi" ? `theme-hi theme-${theme}` : `theme-${theme}`}
       >

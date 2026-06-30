@@ -695,7 +695,7 @@ function Home() {
                     />
                   </div>
                   <p className="institute-title fs-20 fw-500 d-block">
-                    {lang === "hi" ? "सूचना का अधिकार" : "RTI"}{" "}
+                    {lang === "hi" ? "सूचना का अधिकार एवं महिला प्रकोष्ठ " : "RTI & Women Cell"} 
                   </p>
                   <Link
                     onClick={() => handlePageClick("69fecf8d5dda76984216aa1d")}
