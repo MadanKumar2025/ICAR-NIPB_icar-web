@@ -143,21 +143,7 @@ function Header() {
     setTheme(newTheme);
   };
 
-  const DEFAULT_FONT_SIZE = 16; // normal size
-
-  // const changeFontSize = (delta) => {
-  //   const root = document.documentElement;
-  //   const currentSize = parseInt(
-  //     getComputedStyle(root).getPropertyValue("--base-font-size"),
-  //   );
-  //   let newSize = currentSize + delta;
-
-  //   if (newSize < 12) newSize = 12;
-  //   if (newSize > 20) newSize = 20;
-
-  //   root.style.setProperty("--base-font-size", `${newSize}px`);
-  //   localStorage.setItem("fontSize", newSize);
-  // };
+  const DEFAULT_FONT_SIZE = 16;
 
   //  Add New Funcation for Font size strat
   const changeFontSize = (delta) => {
@@ -406,6 +392,7 @@ function Header() {
                                 <ul>
                                   {filteredResults.map((item, index) => (
                                     <Link
+                                      key={index}
                                       to={item?.url}
                                       onClick={() => {
                                         setSearchOpen(false);
@@ -414,12 +401,22 @@ function Header() {
                                       }}
                                     >
                                       <li
-                                        key={index}
+                                        style={{
+                                          color: "black",
+                                          fontSize: "15px",
+                                        }}
+                                        // dangerouslySetInnerHTML={{
+                                        //   __html: limitWords(item?.title, 5),
+                                        // }}
                                         dangerouslySetInnerHTML={{
-                                          __html: item?.title,
+                                          __html: limitWords(
+                                            item?.title?.[lang] ||
+                                              item?.title?.en ||
+                                              item?.title,
+                                            5,
+                                          ),
                                         }}
                                       ></li>
-                                      
                                     </Link>
                                   ))}
                                 </ul>
@@ -430,7 +427,6 @@ function Header() {
                               )}
                             </div>
                           )} */}
-
                           {searchTerm.trim() !== "" && (
                             <div className="search-dropdown">
                               {filteredResults.length > 0 ? (
@@ -451,7 +447,13 @@ function Header() {
                                           fontSize: "15px",
                                         }}
                                         dangerouslySetInnerHTML={{
-                                          __html: limitWords(item?.title, 5),
+                                          // Yahan humne .title ke sath ?.[lang] jod diya hai taaki object ki jagah text dikhe
+                                          __html: limitWords(
+                                            item?.title?.[lang] ||
+                                              item?.title?.en ||
+                                              item?.title,
+                                            5,
+                                          ),
                                         }}
                                       ></li>
                                     </Link>
