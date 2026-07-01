@@ -38,7 +38,7 @@ function Footer() {
   const getVisitor = async (page = 1) => {
     try {
       const response = await axios.get(`${API_URL}/organization/Visitor`);
-      // console.log("response getVisitor", response?.data?.data);
+      console.log("response getVisitor", response);
       setVisitor(response?.data?.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -46,12 +46,12 @@ function Footer() {
   };
 
   const updateVisitor = async () => {
-  try {
-    await axios.post(`${API_URL}/organization/Update/Visitor`);
-  } catch (error) {
-    console.error("Error updating visitor:", error);
-  }
-};
+    try {
+      await axios.post(`${API_URL}/organization/Update/Visitor`);
+    } catch (error) {
+      console.error("Error updating visitor:", error);
+    }
+  };
 
   // this is use for get slug
   const handlePageClick = async (id) => {
@@ -80,7 +80,7 @@ function Footer() {
     getMenu();
     getOrganization();
     getVisitor();
-    updateVisitor()
+    updateVisitor();
   }, []);
 
   const footerText =
